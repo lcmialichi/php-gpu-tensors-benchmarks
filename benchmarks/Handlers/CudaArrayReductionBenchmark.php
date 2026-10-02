@@ -146,6 +146,11 @@ class CudaArrayReductionBenchmark extends Benchmark
     #[InjectArgs("argsReduction")]
     public function cudaArrayArgMin(CudaArray $tensor, ?int $axis): void
     {
+        if ($axis === null) {
+            $tensor->argMin();
+            return;
+        }
+
         $tensor->argMin($axis);
     }
 }
