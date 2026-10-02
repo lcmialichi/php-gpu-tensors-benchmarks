@@ -106,6 +106,7 @@ class BenchmarkResult implements \JsonSerializable
             ],
             "memory" => [
                 "format" => "B",
+                "scope" => "PHP heap delta; excludes GPU VRAM",
                 "min" => $this->getMinMemoryUsage(),
                 "max" => $this->getMaxMemoryUsage(),
                 "avg" => $this->getAvgMemoryUsage(),

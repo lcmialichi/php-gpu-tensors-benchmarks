@@ -15,7 +15,7 @@ class JsonExporter implements ExporterInterface
             mkdir($dir, 0755, true);
         }
 
-        $path = $dir . DIRECTORY_SEPARATOR . "cuda-benchmark-" . time() . ".json";
+        $path = $dir . DIRECTORY_SEPARATOR . "cuda-benchmark-" . $report->getReportId() . ".json";
         file_put_contents($path, $json);
 
         return $path;

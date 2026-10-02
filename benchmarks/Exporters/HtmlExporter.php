@@ -28,7 +28,7 @@ class HtmlExporter implements ExporterInterface
 
     public function export(BenchmarkReport $report, string $dir): string
     {
-        $path = $dir . DIRECTORY_SEPARATOR . "cuda-benchmark-" . time() . ".html";
+        $path = $dir . DIRECTORY_SEPARATOR . "cuda-benchmark-" . $report->getReportId() . ".html";
 
         if (!is_dir($dir)) {
             mkdir($dir, 0755, true);
@@ -42,6 +42,7 @@ class HtmlExporter implements ExporterInterface
 
     private function generateHtml(BenchmarkReport $report): string
     {
+        $environment = $report->getEnvironment();
         $benchmarksData = [];
         $allResults = [];
 
@@ -54,6 +55,15 @@ class HtmlExporter implements ExporterInterface
         $summaryHtml = $this->generateSummaryTable($benchmarksData);
         $comparisonHtml = $this->generateComparisonTable($allResults, $benchmarksData);
         $chartsHtml = $this->generateChartsSection($benchmarksData);
+        $environmentSummary = sprintf(
+            "PHP %s %s | %s %s | CUDA %s | driver %s",
+            $environment["php"]["version"],
+            $environment["php"]["thread_safety"],
+            $environment["host"]["os"],
+            $environment["host"]["architecture"],
+            $environment["cuda"]["runtime_version"],
+            $environment["cuda"]["driver_version"]
+        );
 
         $benchmarksDataJson = json_encode($benchmarksData, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP);
 
@@ -62,6 +72,7 @@ class HtmlExporter implements ExporterInterface
                 '{{TITLE}}',
                 '{{DEVICE}}',
                 '{{GENERATED_AT}}',
+                '{{ENVIRONMENT}}',
                 '{{TIMESTAMP}}',
                 '{{SUMMARY_SECTION}}',
                 '{{COMPARISON_SECTION}}',
@@ -72,9 +83,10 @@ class HtmlExporter implements ExporterInterface
             ],
             [
                 'CUDA Benchmark Report - ' . date('Y-m-d H:i:s'),
-                $report->getDevice(),
+                htmlspecialchars($environment["gpu"]["name"], ENT_QUOTES | ENT_SUBSTITUTE, "UTF-8"),
                 date('Y-m-d H:i:s'),
-                time(),
+                htmlspecialchars($environmentSummary, ENT_QUOTES | ENT_SUBSTITUTE, "UTF-8"),
+                $report->getReportId(),
                 $summaryHtml,
                 $comparisonHtml,
                 $chartsHtml,
@@ -267,7 +279,7 @@ class HtmlExporter implements ExporterInterface
         $html .= '</div>';
         $html .= '<div class="stat-content">';
         $html .= '<div class="stat-value">' . $this->formatBytes($avgMemory) . '</div>';
-        $html .= '<div class="stat-label">Avg Memory</div>';
+        $html .= '<div class="stat-label">Avg PHP Heap Delta</div>';
         $html .= '</div>';
         $html .= '</div>';
         $html .= '</div>';
@@ -382,7 +394,7 @@ class HtmlExporter implements ExporterInterface
                 $html .= '</div>';
 
                 $html .= '<div class="metric">';
-                $html .= '<div class="metric-label"><i class="bi bi-memory"></i> Memory</div>';
+                $html .= '<div class="metric-label"><i class="bi bi-memory"></i> PHP Heap Delta</div>';
                 $html .= '<div class="metric-value">' . $this->formatBytes($avgMemory) . '</div>';
                 $html .= '</div>';
 
@@ -495,7 +507,7 @@ class HtmlExporter implements ExporterInterface
         $html .= '<label class="form-label">Metric</label>';
         $html .= '<select class="form-select metric-select">';
         $html .= '<option value="time">Time (ms)</option>';
-        $html .= '<option value="memory">Memory (MB)</option>';
+        $html .= '<option value="memory">PHP Heap Delta (MB)</option>';
         $html .= '<option value="ops">Operations/sec (K)</option>';
         $html .= '</select>';
         $html .= '</div>';

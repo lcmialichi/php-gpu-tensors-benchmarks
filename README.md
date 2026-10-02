@@ -41,5 +41,26 @@ php -n -d extension=/path/to/cuda.so run_benchmarks.php --matmul
 ```
 
 JSON and HTML reports are written to `benchmarks/reports/` and are ignored by
-Git. Include the PHP, CUDA Toolkit, driver, and GPU versions when comparing or
-sharing results; timings are sensitive to those conditions and to data sizes.
+Git. They include PHP thread mode, host, CUDA driver/runtime, GPU model, and
+device memory so runs can be interpreted later. The memory metric is PHP heap
+delta, not GPU VRAM.
+
+## Compare runs
+
+Run the same selection in each PHP mode, keeping the host, GPU, CUDA Toolkit,
+and benchmark options fixed. Save each generated JSON path, then compare them:
+
+```bash
+php run_benchmarks.php --matmul
+php run_benchmarks.php --matmul
+php compare_reports.php \
+	benchmarks/reports/<nts-report>.json \
+	benchmarks/reports/<zts-report>.json \
+	published-reports/php85-nts-vs-zts/matmul
+```
+
+The first file is the baseline; the second is the candidate. The comparison
+HTML/JSON pairs cases by benchmark and metadata, uses median latency, and
+reports percentage change and speedup. Unmatched cases are listed separately.
+Set `BENCHMARK_REVISION` to the benchmark repository commit when generating
+reports so each result records its source revision.

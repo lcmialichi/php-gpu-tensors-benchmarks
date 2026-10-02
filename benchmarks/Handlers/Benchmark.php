@@ -44,12 +44,12 @@ abstract class Benchmark implements BenchmarkInterface
 
     protected function doRun(callable $exec, array $args): array
     {
-        $memoryS = memory_get_usage(true);
+        $memoryS = memory_get_usage(false);
         $timeS = hrtime(true);
 
         $exec(...$args);
         $timeE = hrtime(true);
-        $memoryE = memory_get_usage(true);
+        $memoryE = memory_get_usage(false);
 
         return [($timeE - $timeS) / 1e6, $memoryE - $memoryS];
     }
