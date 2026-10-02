@@ -1,8 +1,9 @@
 # PHP GPU Tensors Benchmarks
 
 Standalone benchmark suite for [PHP GPU Tensors](https://github.com/lcmialichi/php-cuda-ext).
-It compares tensor arithmetic, reductions, shape operations, host-to-device
-transfers, and matrix multiplication.
+It measures tensor arithmetic, reductions, shape operations, host-to-device
+transfers, and matrix multiplication, producing readable HTML and structured
+JSON reports for inspecting workload latency and runtime behavior.
 
 ## Requirements
 
@@ -46,29 +47,30 @@ Git. They include PHP thread mode, host, CUDA driver/runtime, GPU model, and
 device memory so runs can be interpreted later. The memory metric is PHP heap
 delta, not GPU VRAM.
 
-## Compare runs
+## Compare reports
 
-Run the same selection in each PHP mode, keeping the host, GPU, CUDA Toolkit,
-and benchmark options fixed. Save each generated JSON path, then compare them:
+Run the same selection before and after a change, keeping the host, GPU, CUDA
+Toolkit, and benchmark options fixed. Save each generated JSON path, then
+compare them:
 
 ```bash
 BENCHMARK_REVISION=$(git rev-parse --short HEAD) php -d memory_limit=-1 run_benchmarks.php --matmul
 BENCHMARK_REVISION=$(git rev-parse --short HEAD) php -d memory_limit=-1 run_benchmarks.php --matmul
 php compare_reports.php \
-	benchmarks/reports/<nts-report>.json \
-	benchmarks/reports/<zts-report>.json \
-	published-reports/php85-nts-vs-zts/matmul
+	benchmarks/reports/<baseline>.json \
+	benchmarks/reports/<candidate>.json \
+	published-reports/<comparison-name>
 ```
 
-The first file is the baseline; the second is the candidate. The comparison
-HTML/JSON pairs cases by benchmark and metadata, uses median latency, and
-reports percentage change and speedup. Unmatched cases are listed separately.
-Set `BENCHMARK_REVISION` to the benchmark repository commit when generating
-reports so each result records its source revision.
+The comparison pairs cases by benchmark and metadata, summarizes median
+latency, percentage change, and speedup, and lists unmatched cases. Reports
+also capture the source revision and hardware/runtime environment to make
+results easier to interpret and reproduce.
 
-## Published comparison
+## Published reports
 
-The [PHP 8.5 NTS vs ZTS report](published-reports/php85-nts-vs-zts/README.md)
-includes raw JSON/HTML runs and a matched comparison for matrix multiplication
-and data transfers on an RTX A2000. The [full-suite comparison](published-reports/php85-nts-vs-zts-full/README.md)
-adds 368 matched cases across all benchmark groups, including the raw reports.
+The [full-suite report](published-reports/php85-nts-vs-zts-full/README.md)
+covers 368 cases across five workload groups and includes the comparison plus
+raw JSON/HTML reports for exploring latency and environment details. A focused
+[runtime-mode example](published-reports/php85-nts-vs-zts/README.md) shows the
+same report format for matrix multiplication and data transfers.
