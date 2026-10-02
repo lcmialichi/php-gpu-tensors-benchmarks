@@ -1,0 +1,174 @@
+{
+    "schema_version": 1,
+    "generated_at": "2026-10-02T21:41:39+00:00",
+    "baseline": {
+        "label": "8.5.11 NTS / NVIDIA RTX A2000 12GB",
+        "source": "cuda-benchmark-20261002-214030-94054062752747.json",
+        "generated_at": "2026-10-02T21:40:31+00:00",
+        "environment": {
+            "php": {
+                "version": "8.5.11",
+                "version_id": 80511,
+                "sapi": "cli",
+                "thread_safety": "NTS",
+                "integer_bits": 64,
+                "benchmark_revision": "0cfc076"
+            },
+            "host": {
+                "os": "Linux",
+                "release": "5.15.167.4-microsoft-standard-WSL2",
+                "architecture": "x86_64"
+            },
+            "cuda": {
+                "driver_version": "13.0",
+                "runtime_version": "12.6"
+            },
+            "gpu": {
+                "name": "NVIDIA RTX A2000 12GB",
+                "compute_capability": "8.6",
+                "memory_bytes": 12878086144
+            }
+        }
+    },
+    "candidate": {
+        "label": "8.5.11 ZTS / NVIDIA RTX A2000 12GB",
+        "source": "cuda-benchmark-20261002-214108-94091099321211.json",
+        "generated_at": "2026-10-02T21:41:08+00:00",
+        "environment": {
+            "php": {
+                "version": "8.5.11",
+                "version_id": 80511,
+                "sapi": "cli",
+                "thread_safety": "ZTS",
+                "integer_bits": 64,
+                "benchmark_revision": "0cfc076"
+            },
+            "host": {
+                "os": "Linux",
+                "release": "5.15.167.4-microsoft-standard-WSL2",
+                "architecture": "x86_64"
+            },
+            "cuda": {
+                "driver_version": "13.0",
+                "runtime_version": "12.6"
+            },
+            "gpu": {
+                "name": "NVIDIA RTX A2000 12GB",
+                "compute_capability": "8.6",
+                "memory_bytes": 12878086144
+            }
+        }
+    },
+    "summary": {
+        "matched_cases": 8,
+        "faster": 2,
+        "slower": 6,
+        "similar_or_unavailable": 0
+    },
+    "comparisons": [
+        {
+            "benchmark": "CudaArray Linear Algebra & Multi-Tensor Operations Benchmark",
+            "name": "CudaArray::matmul()",
+            "metadata": {
+                "shape": " 1024x768 x 768x512",
+                "type": " 2D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.2382745,
+            "candidate_median_ms": 0.27352350000000003,
+            "change_percent": 14.793442017505033,
+            "speedup": 0.871129902915106
+        },
+        {
+            "benchmark": "CudaArray Linear Algebra & Multi-Tensor Operations Benchmark",
+            "name": "CudaArray::matmul()",
+            "metadata": {
+                "shape": " 128x128 x 128x128",
+                "type": " 2D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.050292500000000004,
+            "candidate_median_ms": 0.051007,
+            "change_percent": 1.4206889695282454,
+            "speedup": 0.9859921187288021
+        },
+        {
+            "benchmark": "CudaArray Linear Algebra & Multi-Tensor Operations Benchmark",
+            "name": "CudaArray::matmul()",
+            "metadata": {
+                "shape": " 1x1000000 x 1000000x1",
+                "type": " 2D (extreme)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.082842,
+            "candidate_median_ms": 0.0799535,
+            "change_percent": -3.4867579247241762,
+            "speedup": 1.03612724896346
+        },
+        {
+            "benchmark": "CudaArray Linear Algebra & Multi-Tensor Operations Benchmark",
+            "name": "CudaArray::matmul()",
+            "metadata": {
+                "shape": " 1x512x512 x 64x512x512",
+                "type": " 3D (broadcast)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 3.6737505,
+            "candidate_median_ms": 3.768249,
+            "change_percent": 2.572262324292295,
+            "speedup": 0.9749224374503914
+        },
+        {
+            "benchmark": "CudaArray Linear Algebra & Multi-Tensor Operations Benchmark",
+            "name": "CudaArray::matmul()",
+            "metadata": {
+                "shape": " 32x256x256 x 32x256x256",
+                "type": " 3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.4116805,
+            "candidate_median_ms": 0.414785,
+            "change_percent": 0.7541042143118292,
+            "speedup": 0.9925153995443422
+        },
+        {
+            "benchmark": "CudaArray Linear Algebra & Multi-Tensor Operations Benchmark",
+            "name": "CudaArray::matmul()",
+            "metadata": {
+                "shape": " 64x1024x512 x 64x512x256",
+                "type": " 3D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 3.700813,
+            "candidate_median_ms": 3.6645659999999998,
+            "change_percent": -0.9794334380040376,
+            "speedup": 1.0098912122199464
+        },
+        {
+            "benchmark": "CudaArray Linear Algebra & Multi-Tensor Operations Benchmark",
+            "name": "CudaArray::matmul()",
+            "metadata": {
+                "shape": " 8x64x256x256 x 8x64x256x256",
+                "type": " 4D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 3.9542080000000004,
+            "candidate_median_ms": 4.01572,
+            "change_percent": 1.5556086073367805,
+            "speedup": 0.9846821989580948
+        },
+        {
+            "benchmark": "CudaArray Linear Algebra & Multi-Tensor Operations Benchmark",
+            "name": "CudaArray::matmul()",
+            "metadata": {
+                "shape": "16x16 x 16x16",
+                "type": " 2D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.0440235,
+            "candidate_median_ms": 0.047245499999999996,
+            "change_percent": 7.318818358376767,
+            "speedup": 0.9318030288598915
+        }
+    ]
+}

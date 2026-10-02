@@ -1,0 +1,247 @@
+{
+    "schema_version": 2,
+    "report_id": "20261002-214030-94054062752747",
+    "generated_at": "2026-10-02T21:40:31+00:00",
+    "device": "NVIDIA RTX A2000 12GB",
+    "environment": {
+        "php": {
+            "version": "8.5.11",
+            "version_id": 80511,
+            "sapi": "cli",
+            "thread_safety": "NTS",
+            "integer_bits": 64,
+            "benchmark_revision": "0cfc076"
+        },
+        "host": {
+            "os": "Linux",
+            "release": "5.15.167.4-microsoft-standard-WSL2",
+            "architecture": "x86_64"
+        },
+        "cuda": {
+            "driver_version": "13.0",
+            "runtime_version": "12.6"
+        },
+        "gpu": {
+            "name": "NVIDIA RTX A2000 12GB",
+            "compute_capability": "8.6",
+            "memory_bytes": 12878086144
+        }
+    },
+    "benchmarks": [
+        {
+            "class": "Benchmarks\\Support\\BenchmarkClassResult",
+            "name": "CudaArray Linear Algebra & Multi-Tensor Operations Benchmark",
+            "description": "CudaArray linear algebra & multi-tensor operations methods Benchmark",
+            "results": [
+                {
+                    "name": "CudaArray::matmul()",
+                    "type": "CUDA",
+                    "iterations": 50,
+                    "metadata": {
+                        "shape": "16x16 x 16x16",
+                        "type": " 2D"
+                    },
+                    "time": {
+                        "format": "MS",
+                        "min": 0.033846,
+                        "max": 0.075909,
+                        "avg": 0.04492353999999999,
+                        "median": 0.0440235,
+                        "p95": 0.049406,
+                        "total": 2.2461769999999994
+                    },
+                    "memory": {
+                        "format": "B",
+                        "scope": "PHP heap delta; excludes GPU VRAM",
+                        "min": 0,
+                        "max": 0,
+                        "avg": 0,
+                        "total": 0
+                    }
+                },
+                {
+                    "name": "CudaArray::matmul()",
+                    "type": "CUDA",
+                    "iterations": 50,
+                    "metadata": {
+                        "shape": " 128x128 x 128x128",
+                        "type": " 2D"
+                    },
+                    "time": {
+                        "format": "MS",
+                        "min": 0.033149,
+                        "max": 0.227492,
+                        "avg": 0.05401532,
+                        "median": 0.050292500000000004,
+                        "p95": 0.061551,
+                        "total": 2.700766
+                    },
+                    "memory": {
+                        "format": "B",
+                        "scope": "PHP heap delta; excludes GPU VRAM",
+                        "min": 0,
+                        "max": 0,
+                        "avg": 0,
+                        "total": 0
+                    }
+                },
+                {
+                    "name": "CudaArray::matmul()",
+                    "type": "CUDA",
+                    "iterations": 50,
+                    "metadata": {
+                        "shape": " 32x256x256 x 32x256x256",
+                        "type": " 3D"
+                    },
+                    "time": {
+                        "format": "MS",
+                        "min": 0.383838,
+                        "max": 0.804372,
+                        "avg": 0.42869118,
+                        "median": 0.4116805,
+                        "p95": 0.503197,
+                        "total": 21.434559
+                    },
+                    "memory": {
+                        "format": "B",
+                        "scope": "PHP heap delta; excludes GPU VRAM",
+                        "min": 0,
+                        "max": 0,
+                        "avg": 0,
+                        "total": 0
+                    }
+                },
+                {
+                    "name": "CudaArray::matmul()",
+                    "type": "CUDA",
+                    "iterations": 50,
+                    "metadata": {
+                        "shape": " 1x512x512 x 64x512x512",
+                        "type": " 3D (broadcast)"
+                    },
+                    "time": {
+                        "format": "MS",
+                        "min": 3.543941,
+                        "max": 5.356174,
+                        "avg": 3.7881446000000008,
+                        "median": 3.6737505,
+                        "p95": 4.220812,
+                        "total": 189.40723000000003
+                    },
+                    "memory": {
+                        "format": "B",
+                        "scope": "PHP heap delta; excludes GPU VRAM",
+                        "min": 0,
+                        "max": 0,
+                        "avg": 0,
+                        "total": 0
+                    }
+                },
+                {
+                    "name": "CudaArray::matmul()",
+                    "type": "CUDA",
+                    "iterations": 50,
+                    "metadata": {
+                        "shape": " 1024x768 x 768x512",
+                        "type": " 2D"
+                    },
+                    "time": {
+                        "format": "MS",
+                        "min": 0.217872,
+                        "max": 0.738919,
+                        "avg": 0.2515351399999999,
+                        "median": 0.2382745,
+                        "p95": 0.262283,
+                        "total": 12.576756999999995
+                    },
+                    "memory": {
+                        "format": "B",
+                        "scope": "PHP heap delta; excludes GPU VRAM",
+                        "min": 0,
+                        "max": 0,
+                        "avg": 0,
+                        "total": 0
+                    }
+                },
+                {
+                    "name": "CudaArray::matmul()",
+                    "type": "CUDA",
+                    "iterations": 50,
+                    "metadata": {
+                        "shape": " 64x1024x512 x 64x512x256",
+                        "type": " 3D"
+                    },
+                    "time": {
+                        "format": "MS",
+                        "min": 3.421963,
+                        "max": 4.438559,
+                        "avg": 3.7707499199999988,
+                        "median": 3.700813,
+                        "p95": 4.195605,
+                        "total": 188.53749599999995
+                    },
+                    "memory": {
+                        "format": "B",
+                        "scope": "PHP heap delta; excludes GPU VRAM",
+                        "min": 0,
+                        "max": 0,
+                        "avg": 0,
+                        "total": 0
+                    }
+                },
+                {
+                    "name": "CudaArray::matmul()",
+                    "type": "CUDA",
+                    "iterations": 50,
+                    "metadata": {
+                        "shape": " 1x1000000 x 1000000x1",
+                        "type": " 2D (extreme)"
+                    },
+                    "time": {
+                        "format": "MS",
+                        "min": 0.069417,
+                        "max": 0.108289,
+                        "avg": 0.08296321999999998,
+                        "median": 0.082842,
+                        "p95": 0.096253,
+                        "total": 4.148160999999999
+                    },
+                    "memory": {
+                        "format": "B",
+                        "scope": "PHP heap delta; excludes GPU VRAM",
+                        "min": 0,
+                        "max": 0,
+                        "avg": 0,
+                        "total": 0
+                    }
+                },
+                {
+                    "name": "CudaArray::matmul()",
+                    "type": "CUDA",
+                    "iterations": 50,
+                    "metadata": {
+                        "shape": " 8x64x256x256 x 8x64x256x256",
+                        "type": " 4D"
+                    },
+                    "time": {
+                        "format": "MS",
+                        "min": 3.546394,
+                        "max": 4.966704,
+                        "avg": 4.05620078,
+                        "median": 3.9542080000000004,
+                        "p95": 4.595901,
+                        "total": 202.810039
+                    },
+                    "memory": {
+                        "format": "B",
+                        "scope": "PHP heap delta; excludes GPU VRAM",
+                        "min": 0,
+                        "max": 0,
+                        "avg": 0,
+                        "total": 0
+                    }
+                }
+            ]
+        }
+    ]
+}

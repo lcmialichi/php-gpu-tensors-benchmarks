@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CUDA Benchmark Report - 2026-10-02 21:41:08</title>
+    <!-- Bootstrap 5 Dark Theme -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Custom Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>:root {
+    --primary: #6366f1;
+    --primary-dark: #4f46e5;
+    --secondary: #8b5cf6;
+    --success: #10b981;
+    --info: #06b6d4;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+    --dark: #1e293b;
+    --light: #f8fafc;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+[data-bs-theme="dark"] {
+    --bs-body-bg: #0f172a;
+    --bs-body-color: #e2e8f0;
+    --bs-border-color: #334155;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    min-height: 100vh;
+}
+
+/* Glass Effect Cards */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* Header */
+.header-section {
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+    border-radius: 16px;
+    border: 1px solid var(--glass-border);
+}
+
+/* Navigation */
+.nav-tabs-section .nav-link {
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    margin: 0 0.25rem;
+    color: var(--bs-body-color);
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.nav-tabs-section .nav-link:hover {
+    background: rgba(99, 102, 241, 0.1);
+    border-color: rgba(99, 102, 241, 0.3);
+}
+
+.nav-tabs-section .nav-link.active {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    border-color: transparent;
+    color: white;
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+}
+
+/* Tables */
+.table {
+    --bs-table-bg: transparent;
+    --bs-table-striped-bg: rgba(255, 255, 255, 0.02);
+    --bs-table-hover-bg: rgba(99, 102, 241, 0.1);
+}
+
+.table thead th {
+    border-bottom: 2px solid var(--primary);
+    color: var(--primary);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.875rem;
+}
+
+/* Badges */
+.badge {
+    padding: 0.5em 1em;
+    font-weight: 500;
+    border-radius: 8px;
+}
+
+.bg-time {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%) !important;
+}
+
+.bg-memory {
+    background: linear-gradient(135deg, var(--info) 0%, #0ea5e9 100%) !important;
+}
+
+.bg-ops {
+    background: linear-gradient(135deg, var(--success) 0%, #34d399 100%) !important;
+}
+
+.status-badge {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.status-success {
+    background: linear-gradient(135deg, var(--success) 0%, #34d399 100%);
+    color: white;
+}
+
+/* Stat Cards */
+.stat-card {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid var(--glass-border);
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--primary);
+    box-shadow: 0 8px 32px rgba(99, 102, 241, 0.2);
+}
+
+.stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    color: white;
+    font-size: 1.25rem;
+}
+
+.stat-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.25rem;
+}
+
+.stat-label {
+    color: #94a3b8;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+/* Test Cards */
+.test-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.test-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary);
+    box-shadow: 0 16px 48px rgba(99, 102, 241, 0.3);
+}
+
+.test-card-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--glass-border);
+    background: rgba(99, 102, 241, 0.05);
+}
+
+.test-card-header h6 {
+    margin: 0;
+    font-weight: 600;
+    color: var(--bs-body-color);
+}
+
+.test-card-body {
+    padding: 1.5rem;
+    flex: 1;
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.metric {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 1rem;
+    text-align: center;
+}
+
+.metric-label {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.metric-value {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--bs-body-color);
+}
+
+/* Performance Bar */
+.performance-bar {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+.bar-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 0.75rem;
+    color: #94a3b8;
+}
+
+.bar-track {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+    border-radius: 3px;
+    transition: width 1s ease;
+}
+
+/* Buttons */
+.btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.view-details-btn {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    border: none;
+    color: white;
+    width: 100%;
+    padding: 0.75rem;
+    margin-top: auto;
+}
+
+.view-details-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(99, 102, 241, 0.4);
+    color: white;
+}
+
+/* Chart Controls */
+.chart-controls {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.chart-container {
+    position: relative;
+    height: 400px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+/* Modal */
+.modal-content {
+    background: #1e293b;
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.modal-header {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    border-bottom: none;
+    padding: 1.5rem 2rem;
+}
+
+.modal-title {
+    color: white;
+    font-weight: 600;
+}
+
+.modal-body {
+    padding: 2rem;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, #7c3aed 100%);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tab-pane {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Add to existing CSS */
+
+/* Horizontal chart specific styles */
+.chart-container {
+    position: relative;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.chart-container.horizontal-scroll {
+    height: auto;
+    min-height: 400px;
+    max-height: 800px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.chart-container.horizontal-scroll canvas {
+    min-height: 400px;
+    height: auto !important;
+}
+
+.chartjs-tooltip {
+    background: rgba(15, 23, 42, 0.95) !important;
+    border: 1px solid var(--glass-border) !important;
+    border-radius: 8px !important;
+    padding: 12px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+.chartjs-scale-x, .chartjs-scale-y {
+    color: #94a3b8;
+}
+#mainPerformanceChart {
+    cursor: pointer;
+}
+
+/* Metadata items in table */
+.metadata-items {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.metadata-item {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    line-height: 1.2;
+}
+
+.metadata-key {
+    color: #94a3b8;
+    font-size: 0.8em;
+    font-weight: 500;
+    min-width: 60px;
+    text-align: right;
+}
+
+.metadata-value {
+    color: #e2e8f0;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.85em;
+    word-break: break-word;
+    flex: 1;
+}
+
+/* Chart controls */
+.chart-controls {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 1.5rem;
+}
+
+.chart-controls .form-label {
+    color: #94a3b8;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.chart-container.horizontal-scroll {
+    height: auto;
+    min-height: 400px;
+    max-height: 800px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.chart-container.horizontal-scroll canvas {
+    min-height: 400px;
+    height: auto !important;
+}
+
+h6 {
+    color: #e2e8f0;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.table-sm td, .table-sm th {
+    padding: 0.75rem;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(99, 102, 241, 0.1);
+}
+
+.badge {
+    padding: 0.35em 0.65em;
+    font-size: 0.75em;
+    font-weight: 600;
+}
+
+.bg-time {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%) !important;
+}
+
+.bg-memory {
+    background: linear-gradient(135deg, var(--info) 0%, #0ea5e9 100%) !important;
+}
+
+.bg-ops {
+    background: linear-gradient(135deg, var(--success) 0%, #34d399 100%) !important;
+}</style>
+</head>
+
+<body>
+    <div class="container-fluid px-4 py-3">
+        <!-- Header -->
+        <div class="header-section mb-4">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <div>
+                    <h1 class="display-6 fw-bold mb-1">
+                        <i class="bi bi-speedometer2 me-2"></i>CUDA Benchmark Report
+                    </h1>
+                    <p class="text-muted mb-0">
+                        <i class="bi bi-cpu me-1"></i> NVIDIA RTX A2000 12GB
+                        <span class="mx-2">•</span>
+                        <i class="bi bi-clock me-1"></i> 2026-10-02 21:41:08
+                    </p>
+                    <p class="text-muted small mb-0 mt-2">PHP 8.5.11 ZTS | Linux x86_64 | CUDA 12.6 | driver 13.0</p>
+                </div>
+                <div class="badge bg-primary bg-opacity-25 text-primary px-3 py-2">
+                    <i class="bi bi-code me-2"></i>CUDA Benchmark System
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="nav-tabs-section mb-4">
+            <div class="nav nav-pills nav-fill" id="nav-tab" role="tablist">
+                <button class="nav-link active" id="nav-summary-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-summary" type="button" role="tab">
+                    <i class="bi bi-bar-chart me-2"></i>Summary
+                </button>
+                <button class="nav-link" id="nav-comparison-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-comparison" type="button" role="tab">
+                    <i class="bi bi-grid-3x3-gap me-2"></i>Comparison
+                </button>
+                <button class="nav-link" id="nav-charts-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-charts" type="button" role="tab">
+                    <i class="bi bi-graph-up me-2"></i>Charts
+                </button>
+            </div>
+        </nav>
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-summary" role="tabpanel">
+                <div class="card glass-card"><div class="card-header"><h5 class="card-title mb-0"><i class="fas fa-chart-bar me-2"></i>Performance Summary</h5></div><div class="card-body"><div class="table-responsive"><table class="table table-hover table-sm"><thead><tr><th>Benchmark</th><th>Tests</th><th>Avg Time</th><th>Avg Memory</th><th>Ops/Sec</th><th>Status</th></tr></thead><tbody><tr class="benchmark-row" data-benchmark="CudaArray Memory Copy Benchmark"><td><strong>CudaArray Memory Copy Benchmark</strong></td><td>20</td><td><span class="badge bg-time">606.58 μs</span></td><td><span class="badge bg-memory">0.00 B</span></td><td><span class="badge bg-ops">7.75 K op/s</span></td><td><span class="status-badge status-success"><i class="fas fa-check"></i></span></td></tr></tbody></table></div><div class="row mt-4 g-3"><div class="col-md-3"><div class="stat-card"><div class="stat-icon"><i class="fas fa-vial"></i></div><div class="stat-content"><div class="stat-value">20</div><div class="stat-label">Total Tests</div></div></div></div><div class="col-md-3"><div class="stat-card"><div class="stat-icon"><i class="fas fa-clock"></i></div><div class="stat-content"><div class="stat-value">606.58 μs</div><div class="stat-label">Avg Time</div></div></div></div><div class="col-md-3"><div class="stat-card"><div class="stat-icon"><i class="fas fa-memory"></i></div><div class="stat-content"><div class="stat-value">0.00 B</div><div class="stat-label">Avg PHP Heap Delta</div></div></div></div><div class="col-md-3"><div class="stat-card"><div class="stat-icon"><i class="fas fa-tachometer-alt"></i></div><div class="stat-content"><div class="stat-value">7.75 K op/s</div><div class="stat-label">Avg Ops/Sec</div></div></div></div></div></div></div>
+            </div>
+            <div class="tab-pane fade" id="nav-comparison" role="tabpanel">
+                <div class="card glass-card"><div class="card-header"><h5 class="card-title mb-0"><i class="fas fa-balance-scale me-2"></i>Test Comparison</h5></div><div class="card-body"><div class="row mb-4"><div class="col-md-6"><div class="input-group"><span class="input-group-text"><i class="fas fa-search"></i></span><input type="text" class="form-control search-input" placeholder="Search tests..."></div></div><div class="col-md-6"><select class="form-select benchmark-filter"><option value="">All Benchmarks</option><option value="CudaArray Memory Copy Benchmark">CudaArray Memory Copy Benchmark</option></select></div></div><div class="row" id="comparison-grid"><div class="col-md-6 col-lg-4 mb-4"
+                    data-benchmark="CudaArray Memory Copy Benchmark"
+                    data-test="CudaArray import [PHP Array -&gt; GPU]"><div class="test-card"><div class="test-card-header"><h6>CudaArray import [PHP Array -&gt; GPU]</h6><small class="text-muted">CudaArray Memory Copy Benchmark</small></div><div class="test-card-body"><div class="metrics-grid"><div class="metric"><div class="metric-label"><i class="bi bi-clock"></i> Best Time</div><div class="metric-value">129.37 μs</div></div><div class="metric"><div class="metric-label"><i class="bi bi-speedometer2"></i> Ops/Sec</div><div class="metric-value">7.73 K op/s</div></div><div class="metric"><div class="metric-label"><i class="bi bi-memory"></i> PHP Heap Delta</div><div class="metric-value">0.00 B</div></div><div class="metric"><div class="metric-label"><i class="bi bi-layers"></i> Configs</div><div class="metric-value">4</div></div></div><div class="performance-bar mt-3"><div class="bar-labels"><span>129.37 μs</span><span>3709.4% range</span><span>4.928 ms</span></div><div class="bar-track"><div class="bar-fill" style="width: 100%"></div></div></div></div><div class="test-card-footer"><button class="btn view-details-btn"
+                    data-handler="CudaArray Memory Copy Benchmark"
+                    data-test="CudaArray import [PHP Array -&gt; GPU]"><i class="fas fa-chart-bar me-1"></i> View Results</button></div></div></div><div class="col-md-6 col-lg-4 mb-4"
+                    data-benchmark="CudaArray Memory Copy Benchmark"
+                    data-test="CudaArray::fromBuffer() [packed bytes -&gt; GPU]"><div class="test-card"><div class="test-card-header"><h6>CudaArray::fromBuffer() [packed bytes -&gt; GPU]</h6><small class="text-muted">CudaArray Memory Copy Benchmark</small></div><div class="test-card-body"><div class="metrics-grid"><div class="metric"><div class="metric-label"><i class="bi bi-clock"></i> Best Time</div><div class="metric-value">74.54 μs</div></div><div class="metric"><div class="metric-label"><i class="bi bi-speedometer2"></i> Ops/Sec</div><div class="metric-value">13.42 K op/s</div></div><div class="metric"><div class="metric-label"><i class="bi bi-memory"></i> PHP Heap Delta</div><div class="metric-value">0.00 B</div></div><div class="metric"><div class="metric-label"><i class="bi bi-layers"></i> Configs</div><div class="metric-value">4</div></div></div><div class="performance-bar mt-3"><div class="bar-labels"><span>74.54 μs</span><span>306% range</span><span>302.62 μs</span></div><div class="bar-track"><div class="bar-fill" style="width: 100%"></div></div></div></div><div class="test-card-footer"><button class="btn view-details-btn"
+                    data-handler="CudaArray Memory Copy Benchmark"
+                    data-test="CudaArray::fromBuffer() [packed bytes -&gt; GPU]"><i class="fas fa-chart-bar me-1"></i> View Results</button></div></div></div><div class="col-md-6 col-lg-4 mb-4"
+                    data-benchmark="CudaArray Memory Copy Benchmark"
+                    data-test="HostArray::toGpu() [reused host storage -&gt; GPU]"><div class="test-card"><div class="test-card-header"><h6>HostArray::toGpu() [reused host storage -&gt; GPU]</h6><small class="text-muted">CudaArray Memory Copy Benchmark</small></div><div class="test-card-body"><div class="metrics-grid"><div class="metric"><div class="metric-label"><i class="bi bi-clock"></i> Best Time</div><div class="metric-value">50.31 μs</div></div><div class="metric"><div class="metric-label"><i class="bi bi-speedometer2"></i> Ops/Sec</div><div class="metric-value">19.88 K op/s</div></div><div class="metric"><div class="metric-label"><i class="bi bi-memory"></i> PHP Heap Delta</div><div class="metric-value">0.00 B</div></div><div class="metric"><div class="metric-label"><i class="bi bi-layers"></i> Configs</div><div class="metric-value">4</div></div></div><div class="performance-bar mt-3"><div class="bar-labels"><span>50.31 μs</span><span>513% range</span><span>308.43 μs</span></div><div class="bar-track"><div class="bar-fill" style="width: 100%"></div></div></div></div><div class="test-card-footer"><button class="btn view-details-btn"
+                    data-handler="CudaArray Memory Copy Benchmark"
+                    data-test="HostArray::toGpu() [reused host storage -&gt; GPU]"><i class="fas fa-chart-bar me-1"></i> View Results</button></div></div></div><div class="col-md-6 col-lg-4 mb-4"
+                    data-benchmark="CudaArray Memory Copy Benchmark"
+                    data-test="HostArray::toGpu() [pinned host storage -&gt; GPU]"><div class="test-card"><div class="test-card-header"><h6>HostArray::toGpu() [pinned host storage -&gt; GPU]</h6><small class="text-muted">CudaArray Memory Copy Benchmark</small></div><div class="test-card-body"><div class="metrics-grid"><div class="metric"><div class="metric-label"><i class="bi bi-clock"></i> Best Time</div><div class="metric-value">66.02 μs</div></div><div class="metric"><div class="metric-label"><i class="bi bi-speedometer2"></i> Ops/Sec</div><div class="metric-value">15.15 K op/s</div></div><div class="metric"><div class="metric-label"><i class="bi bi-memory"></i> PHP Heap Delta</div><div class="metric-value">0.00 B</div></div><div class="metric"><div class="metric-label"><i class="bi bi-layers"></i> Configs</div><div class="metric-value">4</div></div></div><div class="performance-bar mt-3"><div class="bar-labels"><span>66.02 μs</span><span>281.3% range</span><span>251.73 μs</span></div><div class="bar-track"><div class="bar-fill" style="width: 100%"></div></div></div></div><div class="test-card-footer"><button class="btn view-details-btn"
+                    data-handler="CudaArray Memory Copy Benchmark"
+                    data-test="HostArray::toGpu() [pinned host storage -&gt; GPU]"><i class="fas fa-chart-bar me-1"></i> View Results</button></div></div></div><div class="col-md-6 col-lg-4 mb-4"
+                    data-benchmark="CudaArray Memory Copy Benchmark"
+                    data-test="CudaArray::fromFile() [raw file -&gt; GPU]"><div class="test-card"><div class="test-card-header"><h6>CudaArray::fromFile() [raw file -&gt; GPU]</h6><small class="text-muted">CudaArray Memory Copy Benchmark</small></div><div class="test-card-body"><div class="metrics-grid"><div class="metric"><div class="metric-label"><i class="bi bi-clock"></i> Best Time</div><div class="metric-value">70.20 μs</div></div><div class="metric"><div class="metric-label"><i class="bi bi-speedometer2"></i> Ops/Sec</div><div class="metric-value">14.25 K op/s</div></div><div class="metric"><div class="metric-label"><i class="bi bi-memory"></i> PHP Heap Delta</div><div class="metric-value">0.00 B</div></div><div class="metric"><div class="metric-label"><i class="bi bi-layers"></i> Configs</div><div class="metric-value">4</div></div></div><div class="performance-bar mt-3"><div class="bar-labels"><span>70.20 μs</span><span>2860% range</span><span>2.078 ms</span></div><div class="bar-track"><div class="bar-fill" style="width: 100%"></div></div></div></div><div class="test-card-footer"><button class="btn view-details-btn"
+                    data-handler="CudaArray Memory Copy Benchmark"
+                    data-test="CudaArray::fromFile() [raw file -&gt; GPU]"><i class="fas fa-chart-bar me-1"></i> View Results</button></div></div></div></div></div></div>
+            </div>
+            <div class="tab-pane fade" id="nav-charts" role="tabpanel">
+                <div class="card glass-card"><div class="card-header"><h5 class="card-title mb-0"><i class="bi bi-graph-up me-2"></i>Performance Charts</h5></div><div class="card-body"><div class="chart-controls mb-4"><div class="row g-3"><div class="col-md-4"><label class="form-label">Metric</label><select class="form-select metric-select"><option value="time">Time (ms)</option><option value="memory">PHP Heap Delta (MB)</option><option value="ops">Operations/sec (K)</option></select></div><div class="col-md-4"><label class="form-label">Sort By</label><select class="form-select sort-select"><option value="name">Name</option><option value="time">Time</option><option value="memory">Memory</option><option value="ops">Operations</option></select></div><div class="col-md-4"><label class="form-label">Limit Results</label><input type="number" class="form-control chart-limit" value="100" min="1" max="500"></div></div></div><div class="row mb-4"><div class="col-md-12"><div class="chart-container horizontal-scroll"><canvas id="mainPerformanceChart" data-chart-data="{&quot;labels&quot;:[&quot;CudaArray import [PHP Array -\u003E GPU]&quot;,&quot;CudaArray::fromBuffer() [packed bytes -\u003E GPU]&quot;,&quot;HostArray::toGpu() [reused host storage -\u003E GPU]&quot;,&quot;HostArray::toGpu() [pinned host storage -\u003E GPU]&quot;,&quot;CudaArray::fromFile() [raw file -\u003E GPU]&quot;],&quot;time&quot;:[1.7599549749999999,0.15155612499999999,0.14820160000000002,0.1274765,0.845727475],&quot;memory&quot;:[0,0,0,0,0],&quot;ops&quot;:[3.325604777386559,8.761734104301249,10.243330795133257,10.223633354597508,6.194915893548103],&quot;testGroups&quot;:{&quot;CudaArray import [PHP Array -\u003E GPU]&quot;:{&quot;count&quot;:4,&quot;total_time&quot;:7.0398198999999995,&quot;total_memory&quot;:0,&quot;total_ops&quot;:13302.419109546236,&quot;handlers&quot;:[&quot;CudaArray Memory Copy Benchmark&quot;],&quot;test&quot;:&quot;CudaArray import [PHP Array -\u003E GPU]&quot;},&quot;CudaArray::fromBuffer() [packed bytes -\u003E GPU]&quot;:{&quot;count&quot;:4,&quot;total_time&quot;:0.6062244999999999,&quot;total_memory&quot;:0,&quot;total_ops&quot;:35046.936417205,&quot;handlers&quot;:[&quot;CudaArray Memory Copy Benchmark&quot;],&quot;test&quot;:&quot;CudaArray::fromBuffer() [packed bytes -\u003E GPU]&quot;},&quot;HostArray::toGpu() [reused host storage -\u003E GPU]&quot;:{&quot;count&quot;:4,&quot;total_time&quot;:0.5928064000000001,&quot;total_memory&quot;:0,&quot;total_ops&quot;:40973.32318053303,&quot;handlers&quot;:[&quot;CudaArray Memory Copy Benchmark&quot;],&quot;test&quot;:&quot;HostArray::toGpu() [reused host storage -\u003E GPU]&quot;},&quot;HostArray::toGpu() [pinned host storage -\u003E GPU]&quot;:{&quot;count&quot;:4,&quot;total_time&quot;:0.509906,&quot;total_memory&quot;:0,&quot;total_ops&quot;:40894.533418390034,&quot;handlers&quot;:[&quot;CudaArray Memory Copy Benchmark&quot;],&quot;test&quot;:&quot;HostArray::toGpu() [pinned host storage -\u003E GPU]&quot;},&quot;CudaArray::fromFile() [raw file -\u003E GPU]&quot;:{&quot;count&quot;:4,&quot;total_time&quot;:3.3829099,&quot;total_memory&quot;:0,&quot;total_ops&quot;:24779.66357419241,&quot;handlers&quot;:[&quot;CudaArray Memory Copy Benchmark&quot;],&quot;test&quot;:&quot;CudaArray::fromFile() [raw file -\u003E GPU]&quot;}}}"></canvas></div></div></div><div class="row"><div class="col-md-6"><h6 class="mb-3">Top 10 Slowest Tests</h6><div class="chart-container" style="height: 300px;"><canvas id="slowestTestsChart"></canvas></div></div><div class="col-md-6"><h6 class="mb-3">Top 10 Fastest Tests</h6><div class="chart-container" style="height: 300px;"><canvas id="fastestTestsChart"></canvas></div></div></div></div></div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-5 pt-4 border-top">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="text-muted">
+                        <i class="bi bi-info-circle me-2"></i>
+                        Generated with PHP CUDA Benchmark System
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="text-muted">
+                        Report ID: <code class="ms-2">cuda-benchmark-20261002-214108-94091665671403</code>
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Details Modal -->
+    <div class="modal fade" id="detailsModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable">
+            <div class="modal-content glass-card">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="bi bi-bar-chart me-2"></i>Test Results
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="modalBody">
+                    <div class="text-center py-5">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p class="mt-3 text-muted">Loading test details...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Benchmark Data -->
+    <script>
+        window.benchmarkData = [{"handler_name":"CudaArray Memory Copy Benchmark","handler_description":"CudaArray memory copy methods Benchmark","results":[{"name":"CudaArray import [PHP Array -\u003E GPU]","type":"TRANSFER","iterations":10,"runs":10,"times":[0.095722,0.10813,0.108199,0.108257,0.115659,0.110508,0.109254,0.313655,0.10795,0.116361],"memory_usage":[0,0,0,0,0,0,0,0,0,0],"metadata":{"shape":"4096","dtype":"float32"},"stats":{"time":{"min":0.095722,"max":0.313655,"avg":0.12936949999999997,"median":0.1087555,"p95":0.313655,"total":1.2936949999999998,"std_dev":0.06499121926887937},"memory":{"min":0,"max":0,"avg":0,"total":0},"ops":{"per_second":7729.797208770229,"formatted":"7.73 K op\/s"}}},{"name":"CudaArray import [PHP Array -\u003E GPU]","type":"TRANSFER","iterations":10,"runs":10,"times":[0.206745,0.210416,0.204984,0.214352,0.210947,0.20579,0.206041,0.205604,0.208305,0.207514],"memory_usage":[0,0,0,0,0,0,0,0,0,0],"metadata":{"shape":"65536","dtype":"float32"},"stats":{"time":{"min":0.204984,"max":0.214352,"avg":0.2080698,"median":0.20712950000000002,"p95":0.214352,"total":2.080698,"std_dev":0.0029867140546835764},"memory":{"min":0,"max":0,"avg":0,"total":0},"ops":{"per_second":4806.079498322198,"formatted":"4.81 K op\/s"}}},{"name":"CudaArray import [PHP Array -\u003E GPU]","type":"TRANSFER","iterations":10,"runs":10,"times":[1.609693,1.821833,2.087295,1.676217,1.618352,1.599018,1.843268,1.824381,1.763207,1.898973],"memory_usage":[0,0,0,0,0,0,0,0,0,0],"metadata":{"shape":"262144","dtype":"float32"},"stats":{"time":{"min":1.599018,"max":2.087295,"avg":1.7742236999999998,"median":1.7925200000000001,"p95":2.087295,"total":17.742237,"std_dev":0.1545299678329597},"memory":{"min":0,"max":0,"avg":0,"total":0},"ops":{"per_second":563.6267850553456,"formatted":"563.63 op\/s"}}},{"name":"CudaArray import [PHP Array -\u003E GPU]","type":"TRANSFER","iterations":10,"runs":10,"times":[4.869533,4.832516,5.2436,4.796815,5.181185,4.959484,4.725651,5.035042,4.914772,4.722971],"memory_usage":[0,0,0,0,0,0,0,0,0,0],"metadata":{"shape":"1048576","dtype":"float32"},"stats":{"time":{"min":4.722971,"max":5.2436,"avg":4.928156899999999,"median":4.8921525,"p95":5.2436,"total":49.281569,"std_dev":0.1792134256084689},"memory":{"min":0,"max":0,"avg":0,"total":0},"ops":{"per_second":202.91561739846395,"formatted":"202.92 op\/s"}}},{"name":"CudaArray::fromBuffer() [packed bytes -\u003E GPU]","type":"TRANSFER","iterations":10,"runs":10,"times":[0.067951,0.083394,0.089828,0.286005,0.069593,0.063674,0.063457,0.060119,0.057124,0.055435],"memory_usage":[0,0,0,0,0,0,0,0,0,0],"metadata":{"shape":"4096","dtype":"float32"},"stats":{"time":{"min":0.055435,"max":0.286005,"avg":0.089658,"median":0.0658125,"p95":0.286005,"total":0.89658,"std_dev":0.0698642311455265},"memory":{"min":0,"max":0,"avg":0,"total":0},"ops":{"per_second":11153.494389792322,"formatted":"11.15 K op\/s"}}},{"name":"CudaArray::fromBuffer() [packed bytes -\u003E GPU]","type":"TRANSFER","iterations":10,"runs":10,"times":[0.06198,0.07202,0.090856,0.071951,0.072244,0.072773,0.072525,0.076308,0.086049,0.068682],"memory_usage":[0,0,0,0,0,0,0,0,0,0],"metadata":{"shape":"65536","dtype":"float32"},"stats":{"time":{"min":0.06198,"max":0.090856,"avg":0.0745388,"median":0.0723845,"p95":0.090856,"total":0.745388,"std_dev":0.008295728228699662},"memory":{"min":0,"max":0,"avg":0,"total":0},"ops":{"per_second":13415.83175473713,"formatted":"13.42 K op\/s"}}},{"name":"CudaArray::fromBuffer() [packed bytes -\u003E GPU]","type":"TRANSFER","iterations":10,"runs":10,"times":[0.113715,0.120895,0.119506,0.120355,0.120458,0.133547,0.119176,0.119947,0.121422,0.305073],"memory_usage":[0,0,0,0,0,0,0,0,0,0],"metadata":{"shape":"262144","dtype":"float32"},"stats":{"time":{"min":0.113715,"max":0.305073,"avg":0.13940939999999996,"median":0.1204065,"p95":0.305073,"total":1.3940939999999997,"std_dev":0.058416012263001235},"memory":{"min":0,"max":0,"avg":0,"total":0},"ops":{"per_second":7173.117451190525,"formatted":"7.17 K op\/s"}}},{"name":"CudaArray::fromBuffer() [packed bytes -\u003E GPU]","type":"TRANSFER","iterations":10,"runs":10,"times":[0.286494,0.294792,0.305191,0.302324,0.304509,0.307074,0.305387,0.316044,0.30123,0.303138],"memory_usage":[0,0,0,0,0,0,0,0,0,0],"metadata":{"shape":"1048576","dtype":"float32"},"stats":{"time":{"min":0.286494,"max":0.316044,"avg":0.30261829999999995,"median":0.3038235,"p95":0.316044,"total":3.0261829999999996,"std_dev":0.0077566459969642875},"memory":{"min":0,"max":0,"avg":0,"total":0},"ops":{"per_second":3304.49282148502,"formatted":"3.30 K op\/s"}}},{"name":"HostArray::toGpu() [reused host storage -\u003E GPU]","type":"TRANSFER","iterations":10,"runs":10,"times":[0.051226,0.048836,0.049762,0.050429,0.050619,0.051012,0.050423,0.050615,0.049948,0.050246],"memory_usage":[0,0,0,0,0,0,0,0,0,0],"metadata":{"shape":"4096","dtype":"float32"},"stats":{"time":{"min":0.048836,"max":0.051226,"avg":0.0503116,"median":0.050426,"p95":0.051226,"total":0.503116,"std_dev":0.0006794924903517665},"memory":{"min":0,"max":0,"avg":0,"total":0},"ops":{"per_second":19876.131945714307,"formatted":"19.88 K op\/s"}}},{"name":"HostArray::toGpu() [reused host storage -\u003E GPU]","type":"TRANSFER","iterations":10,"runs":10,"times":[0.102833,0.086517,0.08212,0.084187,0.081815,0.085628,0.085776,0.139213,0.075339,0.104521],"memory_usage":[0,0,0,0,0,0,0,0,0,0],"metadata":{"shape":"65536","dtype":"float32"},"stats":{"time":{"min":0.075339,"max":0.139213,"avg":0.0927949,"median":0.085702,"p95":0.139213,"total":0.927949,"std_dev":0.018697184585742672},"memory":{"min":0,"max":0,"avg":0,"total":0},"ops":{"per_second":10776.454309450195,"formatted":"10.78 K op\/s"}}},{"name":"HostArray::toGpu() [reused host storage -\u003E GPU]","type":"TRANSFER","iterations":10,"runs":10,"times":[0.113182,0.118302,0.122039,0.355849,0.106623,0.120558,0.119072,0.119253,0.119227,0.118629],"memory_usage":[0,0,0,0,0,0,0,0,0,0],"metadata":{"shape":"262144","dtype":"float32"},"stats":{"time":{"min":0.106623,"max":0.355849,"avg":0.14127340000000005,"median":0.11914949999999999,"p95":0.355849,"total":1.4127340000000004,"std_dev":0.07552472224407347},"memory":{"min":0,"max":0,"avg":0,"total":0},"ops":{"per_second":7078.473371491021,"formatted":"7.08 K op\/s"}}},{"name":"HostArray::toGpu() [reused host storage -\u003E GPU]","type":"TRANSFER","iterations":10,"runs":10,"times":[0.295136,0.444873,0.29957,0.295814,0.287683,0.284978,0.297151,0.282984,0.3037,0.292376],"memory_usage":[0,0,0,0,0,0,0,0,0,0],"metadata":{"shape":"1048576","dtype":"float32"},"stats":{"time":{"min":0.282984,"max":0.444873,"avg":0.30842650000000005,"median":0.29547500000000004,"p95":0.444873,"total":3.0842650000000003,"std_dev":0.048380825522905006},"memory":{"min":0,"max":0,"avg":0,"total":0},"ops":{"per_second":3242.2635538775035,"formatted":"3.24 K op\/s"}}},{"name":"HostArray::toGpu() [pinned host storage -\u003E GPU]","type":"TRANSFER","iterations":10,"runs":10,"times":[0.067925,0.064474,0.063501,0.064744,0.070446,0.066649,0.064806,0.06606,0.066032,0.065603],"memory_usage":[0,0,0,0,0,0,0,0,0,0],"metadata":{"shape":"4096","dtype":"float32"},"stats":{"time":{"min":0.063501,"max":0.070446,"avg":0.066024,"median":0.0658175,"p95":0.070446,"total":0.6602399999999999,"std_dev":0.0019896136978485696},"memory":{"min":0,"max":0,"avg":0,"total":0},"ops":{"per_second":15146.007512419725,"formatted":"15.15 K op\/s"}}},{"name":"HostArray::toGpu() [pinned host storage -\u003E GPU]","type":"TRANSFER","iterations":10,"runs":10,"times":[0.073528,0.075382,0.076035,0.075057,0.076777,0.075405,0.076588,0.076757,0.075149,0.078432],"memory_usage":[0,0,0,0,0,0,0,0,0,0],"metadata":{"shape":"65536","dtype":"float32"},"stats":{"time":{"min":0.073528,"max":0.078432,"avg":0.07591099999999999,"median":0.07572000000000001,"p95":0.078432,"total":0.75911,"std_dev":0.001325784631412242},"memory":{"min":0,"max":0,"avg":0,"total":0},"ops":{"per_second":13173.32138952194,"formatted":"13.17 K op\/s"}}},{"name":"HostArray::toGpu() [pinned host storage -\u003E GPU]","type":"TRANSFER","iterations":10,"runs":10,"times":[0.115457,0.11375,0.116906,0.11921,0.119674,0.115765,0.119013,0.115634,0.113911,0.113111],"memory_usage":[0,0,0,0,0,0,0,0,0,0],"metadata":{"shape":"262144","dtype":"float32"},"stats":{"time":{"min":0.113111,"max":0.119674,"avg":0.1162431,"median":0.11569950000000001,"p95":0.119674,"total":1.162431,"std_dev":0.0023890299495820454},"memory":{"min":0,"max":0,"avg":0,"total":0},"ops":{"per_second":8602.661147199275,"formatted":"8.60 K op\/s"}}},{"name":"HostArray::toGpu() [pinned host storage -\u003E GPU]","type":"TRANSFER","iterations":10,"runs":10,"times":[0.254603,0.251014,0.25152,0.250071,0.250609,0.249811,0.252242,0.252623,0.251898,0.252888],"memory_usage":[0,0,0,0,0,0,0,0,0,0],"metadata":{"shape":"1048576","dtype":"float32"},"stats":{"time":{"min":0.249811,"max":0.254603,"avg":0.2517279,"median":0.251709,"p95":0.254603,"total":2.5172790000000003,"std_dev":0.001450329652182568},"memory":{"min":0,"max":0,"avg":0,"total":0},"ops":{"per_second":3972.543369249098,"formatted":"3.97 K op\/s"}}},{"name":"CudaArray::fromFile() [raw file -\u003E GPU]","type":"TRANSFER","iterations":10,"runs":10,"times":[0.04957,0.055093,0.056394,0.055879,0.068762,0.082312,0.077118,0.085393,0.085379,0.086092],"memory_usage":[0,0,0,0,0,0,0,0,0,0],"metadata":{"shape":"4096","dtype":"float32"},"stats":{"time":{"min":0.04957,"max":0.086092,"avg":0.07019919999999999,"median":0.07294,"p95":0.086092,"total":0.701992,"std_dev":0.01475702125016352},"memory":{"min":0,"max":0,"avg":0,"total":0},"ops":{"per_second":14245.17658320893,"formatted":"14.25 K op\/s"}}},{"name":"CudaArray::fromFile() [raw file -\u003E GPU]","type":"TRANSFER","iterations":10,"runs":10,"times":[0.084882,0.093208,0.081776,0.075275,0.089846,0.074108,0.098256,0.091606,0.098878,0.303287],"memory_usage":[0,0,0,0,0,0,0,0,0,0],"metadata":{"shape":"65536","dtype":"float32"},"stats":{"time":{"min":0.074108,"max":0.303287,"avg":0.10911219999999999,"median":0.090726,"p95":0.303287,"total":1.091122,"std_dev":0.06876826343727008},"memory":{"min":0,"max":0,"avg":0,"total":0},"ops":{"per_second":9164.877987979346,"formatted":"9.16 K op\/s"}}},{"name":"CudaArray::fromFile() [raw file -\u003E GPU]","type":"TRANSFER","iterations":10,"runs":10,"times":[1.035147,1.02872,1.208948,1.07473,1.632438,1.061213,1.01838,1.002445,0.957865,1.236802],"memory_usage":[0,0,0,0,0,0,0,0,0,0],"metadata":{"shape":"262144","dtype":"float32"},"stats":{"time":{"min":0.957865,"max":1.632438,"avg":1.1256688000000001,"median":1.04818,"p95":1.632438,"total":11.256688,"std_dev":0.19868923802024777},"memory":{"min":0,"max":0,"avg":0,"total":0},"ops":{"per_second":888.3607682828199,"formatted":"888.36 op\/s"}}},{"name":"CudaArray::fromFile() [raw file -\u003E GPU]","type":"TRANSFER","iterations":10,"runs":10,"times":[1.972275,2.20098,2.463958,2.038177,2.06211,2.067623,1.945255,1.878825,1.950608,2.199486],"memory_usage":[0,0,0,0,0,0,0,0,0,0],"metadata":{"shape":"1048576","dtype":"float32"},"stats":{"time":{"min":1.878825,"max":2.463958,"avg":2.0779297,"median":2.0501435,"p95":2.463958,"total":20.779297,"std_dev":0.17175270188271013},"memory":{"min":0,"max":0,"avg":0,"total":0},"ops":{"per_second":481.248234721319,"formatted":"481.25 op\/s"}}}]}];
+    </script>
+
+    <!-- Main Script -->
+    <script>class BenchmarkReport {
+    constructor() {
+        this.benchmarkData = window.benchmarkData || [];
+        this.charts = {};
+        this.currentChartData = null;
+        this.init();
+    }
+
+    init() {
+        this.initTabs();
+        this.initSearchFilter();
+
+        if (document.querySelector('#nav-charts-tab').classList.contains('active')) {
+            setTimeout(() => this.initCharts(), 100);
+        }
+
+        this.initClickHandlers();
+        this.initModal();
+        this.initChartControls();
+        this.initChartClickHandlers();
+    }
+
+    initTabs() {
+        const tabTriggers = document.querySelectorAll('[data-bs-toggle="tab"]');
+        tabTriggers.forEach(trigger => {
+            trigger.addEventListener('shown.bs.tab', (event) => {
+                const target = event.target.getAttribute('data-bs-target');
+                if (target === '#nav-charts') {
+                    setTimeout(() => this.initCharts(), 100);
+                }
+            });
+        });
+    }
+
+    initSearchFilter() {
+        const searchInput = document.querySelector('.search-input');
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                const term = e.target.value.toLowerCase();
+                const cards = document.querySelectorAll('#comparison-grid > div');
+
+                cards.forEach(card => {
+                    const testName = card.querySelector('.test-card-header h6').textContent.toLowerCase();
+                    const benchmark = card.getAttribute('data-benchmark').toLowerCase();
+
+                    if (testName.includes(term) || benchmark.includes(term)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        }
+
+        const filterSelect = document.querySelector('.benchmark-filter');
+        if (filterSelect) {
+            filterSelect.addEventListener('change', (e) => {
+                const selected = e.target.value;
+                const cards = document.querySelectorAll('#comparison-grid > div');
+
+                cards.forEach(card => {
+                    const benchmark = card.getAttribute('data-benchmark');
+
+                    if (!selected || benchmark === selected) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        }
+    }
+
+    initClickHandlers() {
+        document.querySelectorAll('.benchmark-row').forEach(row => {
+            row.addEventListener('click', (e) => {
+                const benchmark = row.getAttribute('data-benchmark');
+                const filterSelect = document.querySelector('.benchmark-filter');
+
+                if (filterSelect) {
+                    filterSelect.value = benchmark;
+                    filterSelect.dispatchEvent(new Event('change'));
+
+                    const comparisonTab = document.querySelector('#nav-comparison-tab');
+                    if (comparisonTab) {
+                        bootstrap.Tab.getOrCreateInstance(comparisonTab).show();
+                    }
+                }
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.view-details-btn')) {
+                const button = e.target.closest('.view-details-btn');
+                const handler = button.getAttribute('data-handler');
+                const test = button.getAttribute('data-test');
+
+                this.showTestDetails(handler, test);
+            }
+        });
+    }
+
+    initChartClickHandlers() {
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('#mainPerformanceChart')) {
+                const canvas = e.target.closest('#mainPerformanceChart');
+                const chart = this.charts.main;
+
+                if (!chart) return;
+
+                const activePoints = chart.getElementsAtEventForMode(
+                    e.nativeEvent,
+                    'nearest',
+                    { intersect: true },
+                    true
+                );
+
+                if (activePoints.length > 0) {
+                    const firstPoint = activePoints[0];
+                    const label = chart.data.labels[firstPoint.index];
+                    const testName = label;
+
+                    const handlers = this.findHandlersForTest(testName);
+                    if (handlers.length > 0) {
+                        this.showTestDetails(handlers[0], testName);
+                    }
+                }
+            }
+        });
+    }
+
+    findHandlersForTest(testName) {
+        const handlers = [];
+        this.benchmarkData.forEach(benchmark => {
+            const hasTest = benchmark.results.some(result => result.name === testName);
+            if (hasTest) {
+                handlers.push(benchmark.handler_name);
+            }
+        });
+        return handlers;
+    }
+
+    initModal() {
+        const modal = document.getElementById('detailsModal');
+        if (modal) {
+            modal.addEventListener('hidden.bs.modal', () => {
+                document.getElementById('modalBody').innerHTML = `
+                    <div class="text-center py-5">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                        <p class="mt-3 text-muted">Loading test details...</p>
+                    </div>
+                `;
+
+                if (this.charts.detail) {
+                    this.charts.detail.destroy();
+                    delete this.charts.detail;
+                }
+            });
+        }
+    }
+
+    showTestDetails(handlerName, testName) {
+        const testData = this.findTestData(handlerName, testName);
+
+        if (!testData || testData.length === 0) {
+            this.showError('No data found for this test');
+            return;
+        }
+
+        const modalBody = document.getElementById('modalBody');
+        if (!modalBody) return;
+
+        const detailsHtml = this.generateTestDetailsHTML(testData, handlerName, testName);
+        modalBody.innerHTML = detailsHtml;
+
+        const modal = new bootstrap.Modal(document.getElementById('detailsModal'));
+        modal.show();
+
+        setTimeout(() => this.initTestDetailChart(testData, handlerName, testName), 100);
+    }
+
+    findTestData(handlerName, testName) {
+        if (!this.benchmarkData || this.benchmarkData.length === 0) {
+            console.warn('No benchmark data available');
+            return [];
+        }
+
+        const benchmark = this.benchmarkData.find(b => b.handler_name === handlerName);
+        if (!benchmark) {
+            console.warn(`Benchmark ${handlerName} not found`);
+            return [];
+        }
+
+        const results = benchmark.results.filter(r => r.name === testName);
+        console.log(`Found ${results.length} results for ${handlerName} - ${testName}`, results);
+        return results;
+    }
+
+    generateTestDetailsHTML(testData, handlerName, testName) {
+        const sortedData = [...testData].sort((a, b) => a.stats.time.avg - b.stats.time.avg);
+
+        let html = `
+            <div class="test-details">
+                <div class="row mb-4">
+                    <div class="col-md-8">
+                        <h4 class="fw-bold mb-1">${this.escapeHtml(testName)}</h4>
+                        <p class="text-muted mb-0">
+                            <i class="bi bi-cpu me-1"></i> ${this.escapeHtml(handlerName)}
+                            <span class="mx-2">•</span>
+                            <i class="bi bi-layer-group me-1"></i> ${sortedData.length} configurations
+                        </p>
+                    </div>
+                    <div class="col-md-4 text-end">
+                        <button class="btn btn-sm btn-outline-primary" id="exportChartBtn">
+                            <i class="bi bi-download me-1"></i> Export Chart
+                        </button>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-12">
+                        <div class="chart-container" style="height: 400px;">
+                            <canvas id="detailChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-sm">
+                                <thead>
+                                    <tr>
+                                        <th width="50">#</th>
+                                        <th>Configuration</th>
+                                        <th width="120">Avg Time</th>
+                                        <th width="120">Median</th>
+                                        <th width="120">P95</th>
+                                        <th width="120">Memory</th>
+                                        <th width="120">Ops/Sec</th>
+                                        <th width="100">Iterations</th>
+                                        <th width="100">Std Dev</th>
+                                    </tr>
+                                </thead>
+                                <tbody>`;
+
+        sortedData.forEach((result, index) => {
+            const metadata = result.metadata || {};
+            let configLabel = '';
+
+            if (Object.keys(metadata).length === 0) {
+                configLabel = '<span class="text-muted">Default configuration</span>';
+            } else {
+                const metadataItems = Object.entries(metadata).map(([k, v]) =>
+                    `<span class="metadata-item"><span class="metadata-key">${k}:</span> <span class="metadata-value">${this.formatValue(v)}</span></span>`
+                ).join('');
+                configLabel = `<div class="metadata-items">${metadataItems}</div>`;
+            }
+
+            html += `
+                <tr>
+                    <td class="text-center">${index + 1}</td>
+                    <td>
+                        <div class="metadata-preview small">
+                            ${configLabel}
+                        </div>
+                    </td>
+                    <td class="text-nowrap"><span class="badge bg-time">${this.formatTime(result.stats.time.avg)}</span></td>
+                    <td class="text-nowrap">${this.formatTime(result.stats.time.median)}</td>
+                    <td class="text-nowrap">${this.formatTime(result.stats.time.p95)}</td>
+                    <td class="text-nowrap"><span class="badge bg-memory">${this.formatBytes(result.stats.memory.avg)}</span></td>
+                    <td class="text-nowrap"><span class="badge bg-ops">${result.stats.ops.formatted}</span></td>
+                    <td class="text-center">${result.iterations}</td>
+                    <td class="text-center">${result.stats.time.std_dev.toFixed(3)} ms</td>
+                </tr>`;
+        });
+
+        html += `
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+
+        return html;
+    }
+
+    initCharts() {
+        Object.values(this.charts).forEach(chart => {
+            if (chart && typeof chart.destroy === 'function') {
+                chart.destroy();
+            }
+        });
+        this.charts = {};
+
+        const canvas = document.getElementById('mainPerformanceChart');
+        if (!canvas) return;
+
+        const chartDataStr = canvas.getAttribute('data-chart-data');
+        if (!chartDataStr) return;
+
+        try {
+            const chartData = JSON.parse(chartDataStr);
+            this.currentChartData = chartData;
+            this.createHorizontalChart(chartData);
+            this.createComparisonCharts(chartData);
+        } catch (error) {
+            console.error('Error parsing chart data:', error);
+        }
+    }
+
+    createHorizontalChart(chartData) {
+        const ctx = document.getElementById('mainPerformanceChart');
+        if (!ctx) return;
+
+        const chartLimit = document.querySelector('.chart-limit');
+        const limit = chartLimit ? parseInt(chartLimit.value) : 100;
+
+        const metricSelect = document.querySelector('.metric-select');
+        const metric = metricSelect ? metricSelect.value : 'time';
+
+        const sortSelect = document.querySelector('.sort-select');
+        const sortBy = sortSelect ? sortSelect.value : 'name';
+
+        const indexedData = chartData.labels.map((label, index) => ({
+            label,
+            time: chartData.time[index],
+            memory: chartData.memory[index],
+            ops: chartData.ops[index],
+            index
+        }));
+
+        switch (sortBy) {
+            case 'name':
+                indexedData.sort((a, b) => a.label.localeCompare(b.label));
+                break;
+            case 'time':
+                indexedData.sort((a, b) => b.time - a.time); // Maior primeiro
+                break;
+            case 'memory':
+                indexedData.sort((a, b) => b.memory - a.memory);
+                break;
+            case 'ops':
+                indexedData.sort((a, b) => b.ops - a.ops);
+                break;
+        }
+
+        const limitedData = indexedData.slice(0, limit);
+        const labels = limitedData.map(d => d.label);
+        let data = [];
+        let label = '';
+        let backgroundColor = '';
+        let borderColor = '';
+
+        switch (metric) {
+            case 'time':
+                data = limitedData.map(d => d.time);
+                label = 'Average Time (ms)';
+                backgroundColor = 'rgba(99, 102, 241, 0.7)';
+                borderColor = 'rgba(99, 102, 241, 1)';
+                break;
+            case 'memory':
+                data = limitedData.map(d => d.memory);
+                label = 'Average Memory (MB)';
+                backgroundColor = 'rgba(139, 92, 246, 0.7)';
+                borderColor = 'rgba(139, 92, 246, 1)';
+                break;
+            case 'ops':
+                data = limitedData.map(d => d.ops);
+                label = 'Average Operations/Second (K)';
+                backgroundColor = 'rgba(16, 185, 129, 0.7)';
+                borderColor = 'rgba(16, 185, 129, 1)';
+                break;
+        }
+
+        const chartHeight = Math.max(400, labels.length * 25);
+        ctx.parentNode.style.height = `${chartHeight}px`;
+        ctx.height = chartHeight;
+
+        this.charts.main = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: label,
+                    data: data,
+                    backgroundColor: backgroundColor,
+                    borderColor: borderColor,
+                    borderWidth: 1,
+                    borderRadius: 4,
+                    barPercentage: 0.8,
+                    categoryPercentage: 0.9
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: (context) => {
+                                let value = context.parsed.x;
+
+                                if (metric === 'time') {
+                                    return `${this.formatTime(value)}`;
+                                } else if (metric === 'memory') {
+                                    return `${value.toFixed(2)} MB`;
+                                } else {
+                                    return `${(value * 1000).toLocaleString()} ops/s`;
+                                }
+                            },
+                            title: (tooltipItems) => {
+                                return tooltipItems[0].label;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: label,
+                            color: '#94a3b8',
+                            font: {
+                                size: 12,
+                                weight: 'bold'
+                            }
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        },
+                        ticks: {
+                            color: '#94a3b8',
+                            callback: (value) => {
+                                if (metric === 'time') {
+                                    if (value < 1) return value.toFixed(2);
+                                    if (value < 1000) return value.toFixed(0);
+                                    return (value / 1000).toFixed(1) + 'K';
+                                } else if (metric === 'memory') {
+                                    return value.toFixed(0) + ' MB';
+                                } else {
+                                    return (value * 1000).toLocaleString();
+                                }
+                            }
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            color: '#e2e8f0',
+                            font: {
+                                size: 10
+                            },
+                            callback: (value, index) => {
+                                const label = labels[index];
+                                if (label.length > 60) {
+                                    return label.substring(0, 57) + '...';
+                                }
+                                return label;
+                            }
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.05)'
+                        }
+                    }
+                },
+                interaction: {
+                    intersect: false,
+                    mode: 'index'
+                },
+                animation: {
+                    duration: 1000,
+                    easing: 'easeOutQuart'
+                }
+            }
+        });
+    }
+
+    createComparisonCharts(chartData) {
+        const slowestCtx = document.getElementById('slowestTestsChart');
+        if (slowestCtx) {
+            const indexedData = chartData.labels.map((label, index) => ({
+                label,
+                time: chartData.time[index]
+            }));
+
+            const slowest = [...indexedData].sort((a, b) => b.time - a.time).slice(0, 10);
+            const slowestLabels = slowest.map(d => {
+                if (d.label.length > 30) {
+                    return d.label.substring(0, 27) + '...';
+                }
+                return d.label;
+            });
+            const slowestTimes = slowest.map(d => d.time);
+
+            this.charts.slowest = new Chart(slowestCtx, {
+                type: 'bar',
+                data: {
+                    labels: slowestLabels,
+                    datasets: [{
+                        label: 'Time (ms)',
+                        data: slowestTimes,
+                        backgroundColor: 'rgba(239, 68, 68, 0.7)',
+                        borderColor: 'rgba(239, 68, 68, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Time (ms)',
+                                color: '#94a3b8'
+                            },
+                            ticks: {
+                                color: '#94a3b8'
+                            }
+                        },
+                        y: {
+                            ticks: {
+                                color: '#e2e8f0',
+                                font: {
+                                    size: 9
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        const fastestCtx = document.getElementById('fastestTestsChart');
+        if (fastestCtx) {
+            const indexedData = chartData.labels.map((label, index) => ({
+                label,
+                time: chartData.time[index]
+            }));
+
+            const fastest = [...indexedData].sort((a, b) => a.time - b.time).slice(0, 10);
+            const fastestLabels = fastest.map(d => {
+                if (d.label.length > 30) {
+                    return d.label.substring(0, 27) + '...';
+                }
+                return d.label;
+            });
+            const fastestTimes = fastest.map(d => d.time);
+
+            this.charts.fastest = new Chart(fastestCtx, {
+                type: 'bar',
+                data: {
+                    labels: fastestLabels,
+                    datasets: [{
+                        label: 'Time (ms)',
+                        data: fastestTimes,
+                        backgroundColor: 'rgba(16, 185, 129, 0.7)',
+                        borderColor: 'rgba(16, 185, 129, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Time (ms)',
+                                color: '#94a3b8'
+                            },
+                            ticks: {
+                                color: '#94a3b8'
+                            }
+                        },
+                        y: {
+                            ticks: {
+                                color: '#e2e8f0',
+                                font: {
+                                    size: 9
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    }
+
+    initChartControls() {
+        const metricSelect = document.querySelector('.metric-select');
+        const sortSelect = document.querySelector('.sort-select');
+        const chartLimit = document.querySelector('.chart-limit');
+
+        const updateChart = () => {
+            if (this.currentChartData && this.charts.main) {
+                this.charts.main.destroy();
+                this.createHorizontalChart(this.currentChartData);
+            }
+        };
+
+        if (metricSelect) {
+            metricSelect.addEventListener('change', updateChart);
+        }
+        if (sortSelect) {
+            sortSelect.addEventListener('change', updateChart);
+        }
+        if (chartLimit) {
+            chartLimit.addEventListener('change', updateChart);
+        }
+    }
+
+    initTestDetailChart(testData, handlerName, testName) {
+        const ctx = document.getElementById('detailChart');
+        if (!ctx) return;
+
+        if (this.charts.detail) {
+            this.charts.detail.destroy();
+        }
+
+        const labels = testData.map((result, index) => {
+            const metadata = result.metadata || {};
+            if (Object.keys(metadata).length === 0) {
+                return `Config ${index + 1}`;
+            }
+
+            const keys = Object.keys(metadata);
+            if (keys.length === 1) {
+                const key = keys[0];
+                const value = metadata[key];
+                return `${key}: ${this.truncateValue(value, 20)}`;
+            } else {
+                const firstKey = keys[0];
+                const firstValue = metadata[firstKey];
+                return `${firstKey}: ${this.truncateValue(firstValue, 15)}...`;
+            }
+        });
+
+        const times = testData.map(r => r.stats.time.avg);
+        const memory = testData.map(r => r.stats.memory.avg / (1024 * 1024));
+        const ops = testData.map(r => r.stats.ops.per_second / 1000);
+
+        const chartHeight = Math.max(300, testData.length * 25);
+        ctx.parentNode.style.height = `${chartHeight}px`;
+        ctx.height = chartHeight;
+
+        this.charts.detail = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Time (ms)',
+                        data: times,
+                        backgroundColor: 'rgba(99, 102, 241, 0.7)',
+                        borderColor: 'rgba(99, 102, 241, 1)',
+                        borderWidth: 1,
+                        yAxisID: 'y'
+                    },
+                    {
+                        label: 'Ops/Sec (K)',
+                        data: ops,
+                        backgroundColor: 'rgba(16, 185, 129, 0.7)',
+                        borderColor: 'rgba(16, 185, 129, 1)',
+                        borderWidth: 1,
+                        yAxisID: 'y1'
+                    }
+                ]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Time (ms) / Ops/Sec (K)',
+                            color: '#94a3b8'
+                        },
+                        ticks: {
+                            color: '#94a3b8'
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            color: '#e2e8f0',
+                            font: {
+                                size: 11
+                            }
+                        }
+                    },
+                    y1: {
+                        display: false
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: (context) => {
+                                if (context.dataset.label === 'Time (ms)') {
+                                    return `${this.formatTime(context.parsed.x)} ms`;
+                                } else {
+                                    return `${(context.parsed.x * 1000).toLocaleString()} ops/sec`;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        const exportBtn = document.getElementById('exportChartBtn');
+        if (exportBtn) {
+            exportBtn.addEventListener('click', () => {
+                this.exportChartAsImage(ctx);
+            });
+        }
+    }
+
+    exportChartAsImage(canvas) {
+        const link = document.createElement('a');
+        link.download = `benchmark-chart-${Date.now()}.png`;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+    }
+
+    showError(message) {
+        const modal = new bootstrap.Modal(document.getElementById('detailsModal'));
+        const modalBody = document.getElementById('modalBody');
+
+        modalBody.innerHTML = `
+            <div class="text-center py-5">
+                <div class="alert alert-danger" role="alert">
+                    <i class="bi bi-exclamation-triangle me-2"></i>
+                    ${message}
+                </div>
+                <button class="btn btn-primary mt-3" data-bs-dismiss="modal">
+                    <i class="bi bi-x-circle me-1"></i> Close
+                </button>
+            </div>
+        `;
+
+        modal.show();
+    }
+
+    escapeHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+    }
+
+    formatValue(value) {
+        if (Array.isArray(value)) {
+            return JSON.stringify(value);
+        }
+        if (typeof value === 'object' && value !== null) {
+            return JSON.stringify(value);
+        }
+        return String(value);
+    }
+
+    truncateValue(value, maxLength) {
+        const str = String(value);
+        if (str.length > maxLength) {
+            return str.substring(0, maxLength - 3) + '...';
+        }
+        return str;
+    }
+
+    formatTime(ms) {
+        if (ms <= 0) return '0 ms';
+        if (ms < 0.001) {
+            return (ms * 1000).toFixed(2) + ' μs';
+        }
+        if (ms < 1000) return ms.toFixed(3) + ' ms';
+        return (ms / 1000).toFixed(3) + ' s';
+    }
+
+    formatBytes(bytes) {
+        if (bytes === 0) return '0 B';
+        const k = 1024;
+        const sizes = ['B', 'KB', 'MB', 'GB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    window.benchmarkReport = new BenchmarkReport();
+});</script>
+</body>
+
+</html>

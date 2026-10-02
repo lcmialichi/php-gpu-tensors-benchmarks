@@ -64,3 +64,9 @@ HTML/JSON pairs cases by benchmark and metadata, uses median latency, and
 reports percentage change and speedup. Unmatched cases are listed separately.
 Set `BENCHMARK_REVISION` to the benchmark repository commit when generating
 reports so each result records its source revision.
+
+## Published comparison
+
+The [PHP 8.5 NTS vs ZTS report](published-reports/php85-nts-vs-zts/README.md)
+includes raw JSON/HTML runs and a matched comparison for matrix multiplication
+and data transfers on an RTX A2000.

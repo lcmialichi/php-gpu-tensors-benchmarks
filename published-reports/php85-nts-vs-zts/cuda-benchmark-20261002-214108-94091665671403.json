@@ -1,0 +1,559 @@
+{
+    "schema_version": 2,
+    "report_id": "20261002-214108-94091665671403",
+    "generated_at": "2026-10-02T21:41:08+00:00",
+    "device": "NVIDIA RTX A2000 12GB",
+    "environment": {
+        "php": {
+            "version": "8.5.11",
+            "version_id": 80511,
+            "sapi": "cli",
+            "thread_safety": "ZTS",
+            "integer_bits": 64,
+            "benchmark_revision": "0cfc076"
+        },
+        "host": {
+            "os": "Linux",
+            "release": "5.15.167.4-microsoft-standard-WSL2",
+            "architecture": "x86_64"
+        },
+        "cuda": {
+            "driver_version": "13.0",
+            "runtime_version": "12.6"
+        },
+        "gpu": {
+            "name": "NVIDIA RTX A2000 12GB",
+            "compute_capability": "8.6",
+            "memory_bytes": 12878086144
+        }
+    },
+    "benchmarks": [
+        {
+            "class": "Benchmarks\\Support\\BenchmarkClassResult",
+            "name": "CudaArray Memory Copy Benchmark",
+            "description": "CudaArray memory copy methods Benchmark",
+            "results": [
+                {
+                    "name": "CudaArray import [PHP Array -> GPU]",
+                    "type": "TRANSFER",
+                    "iterations": 10,
+                    "metadata": {
+                        "shape": "4096",
+                        "dtype": "float32"
+                    },
+                    "time": {
+                        "format": "MS",
+                        "min": 0.095722,
+                        "max": 0.313655,
+                        "avg": 0.12936949999999997,
+                        "median": 0.1087555,
+                        "p95": 0.313655,
+                        "total": 1.2936949999999998
+                    },
+                    "memory": {
+                        "format": "B",
+                        "scope": "PHP heap delta; excludes GPU VRAM",
+                        "min": 0,
+                        "max": 0,
+                        "avg": 0,
+                        "total": 0
+                    }
+                },
+                {
+                    "name": "CudaArray import [PHP Array -> GPU]",
+                    "type": "TRANSFER",
+                    "iterations": 10,
+                    "metadata": {
+                        "shape": "65536",
+                        "dtype": "float32"
+                    },
+                    "time": {
+                        "format": "MS",
+                        "min": 0.204984,
+                        "max": 0.214352,
+                        "avg": 0.2080698,
+                        "median": 0.20712950000000002,
+                        "p95": 0.214352,
+                        "total": 2.080698
+                    },
+                    "memory": {
+                        "format": "B",
+                        "scope": "PHP heap delta; excludes GPU VRAM",
+                        "min": 0,
+                        "max": 0,
+                        "avg": 0,
+                        "total": 0
+                    }
+                },
+                {
+                    "name": "CudaArray import [PHP Array -> GPU]",
+                    "type": "TRANSFER",
+                    "iterations": 10,
+                    "metadata": {
+                        "shape": "262144",
+                        "dtype": "float32"
+                    },
+                    "time": {
+                        "format": "MS",
+                        "min": 1.599018,
+                        "max": 2.087295,
+                        "avg": 1.7742236999999998,
+                        "median": 1.7925200000000001,
+                        "p95": 2.087295,
+                        "total": 17.742237
+                    },
+                    "memory": {
+                        "format": "B",
+                        "scope": "PHP heap delta; excludes GPU VRAM",
+                        "min": 0,
+                        "max": 0,
+                        "avg": 0,
+                        "total": 0
+                    }
+                },
+                {
+                    "name": "CudaArray import [PHP Array -> GPU]",
+                    "type": "TRANSFER",
+                    "iterations": 10,
+                    "metadata": {
+                        "shape": "1048576",
+                        "dtype": "float32"
+                    },
+                    "time": {
+                        "format": "MS",
+                        "min": 4.722971,
+                        "max": 5.2436,
+                        "avg": 4.928156899999999,
+                        "median": 4.8921525,
+                        "p95": 5.2436,
+                        "total": 49.281569
+                    },
+                    "memory": {
+                        "format": "B",
+                        "scope": "PHP heap delta; excludes GPU VRAM",
+                        "min": 0,
+                        "max": 0,
+                        "avg": 0,
+                        "total": 0
+                    }
+                },
+                {
+                    "name": "CudaArray::fromBuffer() [packed bytes -> GPU]",
+                    "type": "TRANSFER",
+                    "iterations": 10,
+                    "metadata": {
+                        "shape": "4096",
+                        "dtype": "float32"
+                    },
+                    "time": {
+                        "format": "MS",
+                        "min": 0.055435,
+                        "max": 0.286005,
+                        "avg": 0.089658,
+                        "median": 0.0658125,
+                        "p95": 0.286005,
+                        "total": 0.89658
+                    },
+                    "memory": {
+                        "format": "B",
+                        "scope": "PHP heap delta; excludes GPU VRAM",
+                        "min": 0,
+                        "max": 0,
+                        "avg": 0,
+                        "total": 0
+                    }
+                },
+                {
+                    "name": "CudaArray::fromBuffer() [packed bytes -> GPU]",
+                    "type": "TRANSFER",
+                    "iterations": 10,
+                    "metadata": {
+                        "shape": "65536",
+                        "dtype": "float32"
+                    },
+                    "time": {
+                        "format": "MS",
+                        "min": 0.06198,
+                        "max": 0.090856,
+                        "avg": 0.0745388,
+                        "median": 0.0723845,
+                        "p95": 0.090856,
+                        "total": 0.745388
+                    },
+                    "memory": {
+                        "format": "B",
+                        "scope": "PHP heap delta; excludes GPU VRAM",
+                        "min": 0,
+                        "max": 0,
+                        "avg": 0,
+                        "total": 0
+                    }
+                },
+                {
+                    "name": "CudaArray::fromBuffer() [packed bytes -> GPU]",
+                    "type": "TRANSFER",
+                    "iterations": 10,
+                    "metadata": {
+                        "shape": "262144",
+                        "dtype": "float32"
+                    },
+                    "time": {
+                        "format": "MS",
+                        "min": 0.113715,
+                        "max": 0.305073,
+                        "avg": 0.13940939999999996,
+                        "median": 0.1204065,
+                        "p95": 0.305073,
+                        "total": 1.3940939999999997
+                    },
+                    "memory": {
+                        "format": "B",
+                        "scope": "PHP heap delta; excludes GPU VRAM",
+                        "min": 0,
+                        "max": 0,
+                        "avg": 0,
+                        "total": 0
+                    }
+                },
+                {
+                    "name": "CudaArray::fromBuffer() [packed bytes -> GPU]",
+                    "type": "TRANSFER",
+                    "iterations": 10,
+                    "metadata": {
+                        "shape": "1048576",
+                        "dtype": "float32"
+                    },
+                    "time": {
+                        "format": "MS",
+                        "min": 0.286494,
+                        "max": 0.316044,
+                        "avg": 0.30261829999999995,
+                        "median": 0.3038235,
+                        "p95": 0.316044,
+                        "total": 3.0261829999999996
+                    },
+                    "memory": {
+                        "format": "B",
+                        "scope": "PHP heap delta; excludes GPU VRAM",
+                        "min": 0,
+                        "max": 0,
+                        "avg": 0,
+                        "total": 0
+                    }
+                },
+                {
+                    "name": "HostArray::toGpu() [reused host storage -> GPU]",
+                    "type": "TRANSFER",
+                    "iterations": 10,
+                    "metadata": {
+                        "shape": "4096",
+                        "dtype": "float32"
+                    },
+                    "time": {
+                        "format": "MS",
+                        "min": 0.048836,
+                        "max": 0.051226,
+                        "avg": 0.0503116,
+                        "median": 0.050426,
+                        "p95": 0.051226,
+                        "total": 0.503116
+                    },
+                    "memory": {
+                        "format": "B",
+                        "scope": "PHP heap delta; excludes GPU VRAM",
+                        "min": 0,
+                        "max": 0,
+                        "avg": 0,
+                        "total": 0
+                    }
+                },
+                {
+                    "name": "HostArray::toGpu() [reused host storage -> GPU]",
+                    "type": "TRANSFER",
+                    "iterations": 10,
+                    "metadata": {
+                        "shape": "65536",
+                        "dtype": "float32"
+                    },
+                    "time": {
+                        "format": "MS",
+                        "min": 0.075339,
+                        "max": 0.139213,
+                        "avg": 0.0927949,
+                        "median": 0.085702,
+                        "p95": 0.139213,
+                        "total": 0.927949
+                    },
+                    "memory": {
+                        "format": "B",
+                        "scope": "PHP heap delta; excludes GPU VRAM",
+                        "min": 0,
+                        "max": 0,
+                        "avg": 0,
+                        "total": 0
+                    }
+                },
+                {
+                    "name": "HostArray::toGpu() [reused host storage -> GPU]",
+                    "type": "TRANSFER",
+                    "iterations": 10,
+                    "metadata": {
+                        "shape": "262144",
+                        "dtype": "float32"
+                    },
+                    "time": {
+                        "format": "MS",
+                        "min": 0.106623,
+                        "max": 0.355849,
+                        "avg": 0.14127340000000005,
+                        "median": 0.11914949999999999,
+                        "p95": 0.355849,
+                        "total": 1.4127340000000004
+                    },
+                    "memory": {
+                        "format": "B",
+                        "scope": "PHP heap delta; excludes GPU VRAM",
+                        "min": 0,
+                        "max": 0,
+                        "avg": 0,
+                        "total": 0
+                    }
+                },
+                {
+                    "name": "HostArray::toGpu() [reused host storage -> GPU]",
+                    "type": "TRANSFER",
+                    "iterations": 10,
+                    "metadata": {
+                        "shape": "1048576",
+                        "dtype": "float32"
+                    },
+                    "time": {
+                        "format": "MS",
+                        "min": 0.282984,
+                        "max": 0.444873,
+                        "avg": 0.30842650000000005,
+                        "median": 0.29547500000000004,
+                        "p95": 0.444873,
+                        "total": 3.0842650000000003
+                    },
+                    "memory": {
+                        "format": "B",
+                        "scope": "PHP heap delta; excludes GPU VRAM",
+                        "min": 0,
+                        "max": 0,
+                        "avg": 0,
+                        "total": 0
+                    }
+                },
+                {
+                    "name": "HostArray::toGpu() [pinned host storage -> GPU]",
+                    "type": "TRANSFER",
+                    "iterations": 10,
+                    "metadata": {
+                        "shape": "4096",
+                        "dtype": "float32"
+                    },
+                    "time": {
+                        "format": "MS",
+                        "min": 0.063501,
+                        "max": 0.070446,
+                        "avg": 0.066024,
+                        "median": 0.0658175,
+                        "p95": 0.070446,
+                        "total": 0.6602399999999999
+                    },
+                    "memory": {
+                        "format": "B",
+                        "scope": "PHP heap delta; excludes GPU VRAM",
+                        "min": 0,
+                        "max": 0,
+                        "avg": 0,
+                        "total": 0
+                    }
+                },
+                {
+                    "name": "HostArray::toGpu() [pinned host storage -> GPU]",
+                    "type": "TRANSFER",
+                    "iterations": 10,
+                    "metadata": {
+                        "shape": "65536",
+                        "dtype": "float32"
+                    },
+                    "time": {
+                        "format": "MS",
+                        "min": 0.073528,
+                        "max": 0.078432,
+                        "avg": 0.07591099999999999,
+                        "median": 0.07572000000000001,
+                        "p95": 0.078432,
+                        "total": 0.75911
+                    },
+                    "memory": {
+                        "format": "B",
+                        "scope": "PHP heap delta; excludes GPU VRAM",
+                        "min": 0,
+                        "max": 0,
+                        "avg": 0,
+                        "total": 0
+                    }
+                },
+                {
+                    "name": "HostArray::toGpu() [pinned host storage -> GPU]",
+                    "type": "TRANSFER",
+                    "iterations": 10,
+                    "metadata": {
+                        "shape": "262144",
+                        "dtype": "float32"
+                    },
+                    "time": {
+                        "format": "MS",
+                        "min": 0.113111,
+                        "max": 0.119674,
+                        "avg": 0.1162431,
+                        "median": 0.11569950000000001,
+                        "p95": 0.119674,
+                        "total": 1.162431
+                    },
+                    "memory": {
+                        "format": "B",
+                        "scope": "PHP heap delta; excludes GPU VRAM",
+                        "min": 0,
+                        "max": 0,
+                        "avg": 0,
+                        "total": 0
+                    }
+                },
+                {
+                    "name": "HostArray::toGpu() [pinned host storage -> GPU]",
+                    "type": "TRANSFER",
+                    "iterations": 10,
+                    "metadata": {
+                        "shape": "1048576",
+                        "dtype": "float32"
+                    },
+                    "time": {
+                        "format": "MS",
+                        "min": 0.249811,
+                        "max": 0.254603,
+                        "avg": 0.2517279,
+                        "median": 0.251709,
+                        "p95": 0.254603,
+                        "total": 2.5172790000000003
+                    },
+                    "memory": {
+                        "format": "B",
+                        "scope": "PHP heap delta; excludes GPU VRAM",
+                        "min": 0,
+                        "max": 0,
+                        "avg": 0,
+                        "total": 0
+                    }
+                },
+                {
+                    "name": "CudaArray::fromFile() [raw file -> GPU]",
+                    "type": "TRANSFER",
+                    "iterations": 10,
+                    "metadata": {
+                        "shape": "4096",
+                        "dtype": "float32"
+                    },
+                    "time": {
+                        "format": "MS",
+                        "min": 0.04957,
+                        "max": 0.086092,
+                        "avg": 0.07019919999999999,
+                        "median": 0.07294,
+                        "p95": 0.086092,
+                        "total": 0.701992
+                    },
+                    "memory": {
+                        "format": "B",
+                        "scope": "PHP heap delta; excludes GPU VRAM",
+                        "min": 0,
+                        "max": 0,
+                        "avg": 0,
+                        "total": 0
+                    }
+                },
+                {
+                    "name": "CudaArray::fromFile() [raw file -> GPU]",
+                    "type": "TRANSFER",
+                    "iterations": 10,
+                    "metadata": {
+                        "shape": "65536",
+                        "dtype": "float32"
+                    },
+                    "time": {
+                        "format": "MS",
+                        "min": 0.074108,
+                        "max": 0.303287,
+                        "avg": 0.10911219999999999,
+                        "median": 0.090726,
+                        "p95": 0.303287,
+                        "total": 1.091122
+                    },
+                    "memory": {
+                        "format": "B",
+                        "scope": "PHP heap delta; excludes GPU VRAM",
+                        "min": 0,
+                        "max": 0,
+                        "avg": 0,
+                        "total": 0
+                    }
+                },
+                {
+                    "name": "CudaArray::fromFile() [raw file -> GPU]",
+                    "type": "TRANSFER",
+                    "iterations": 10,
+                    "metadata": {
+                        "shape": "262144",
+                        "dtype": "float32"
+                    },
+                    "time": {
+                        "format": "MS",
+                        "min": 0.957865,
+                        "max": 1.632438,
+                        "avg": 1.1256688000000001,
+                        "median": 1.04818,
+                        "p95": 1.632438,
+                        "total": 11.256688
+                    },
+                    "memory": {
+                        "format": "B",
+                        "scope": "PHP heap delta; excludes GPU VRAM",
+                        "min": 0,
+                        "max": 0,
+                        "avg": 0,
+                        "total": 0
+                    }
+                },
+                {
+                    "name": "CudaArray::fromFile() [raw file -> GPU]",
+                    "type": "TRANSFER",
+                    "iterations": 10,
+                    "metadata": {
+                        "shape": "1048576",
+                        "dtype": "float32"
+                    },
+                    "time": {
+                        "format": "MS",
+                        "min": 1.878825,
+                        "max": 2.463958,
+                        "avg": 2.0779297,
+                        "median": 2.0501435,
+                        "p95": 2.463958,
+                        "total": 20.779297
+                    },
+                    "memory": {
+                        "format": "B",
+                        "scope": "PHP heap delta; excludes GPU VRAM",
+                        "min": 0,
+                        "max": 0,
+                        "avg": 0,
+                        "total": 0
+                    }
+                }
+            ]
+        }
+    ]
+}

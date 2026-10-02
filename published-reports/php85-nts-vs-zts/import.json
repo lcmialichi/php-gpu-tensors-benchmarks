@@ -1,0 +1,330 @@
+{
+    "schema_version": 1,
+    "generated_at": "2026-10-02T21:41:39+00:00",
+    "baseline": {
+        "label": "8.5.11 NTS / NVIDIA RTX A2000 12GB",
+        "source": "cuda-benchmark-20261002-214031-94054783996945.json",
+        "generated_at": "2026-10-02T21:40:31+00:00",
+        "environment": {
+            "php": {
+                "version": "8.5.11",
+                "version_id": 80511,
+                "sapi": "cli",
+                "thread_safety": "NTS",
+                "integer_bits": 64,
+                "benchmark_revision": "0cfc076"
+            },
+            "host": {
+                "os": "Linux",
+                "release": "5.15.167.4-microsoft-standard-WSL2",
+                "architecture": "x86_64"
+            },
+            "cuda": {
+                "driver_version": "13.0",
+                "runtime_version": "12.6"
+            },
+            "gpu": {
+                "name": "NVIDIA RTX A2000 12GB",
+                "compute_capability": "8.6",
+                "memory_bytes": 12878086144
+            }
+        }
+    },
+    "candidate": {
+        "label": "8.5.11 ZTS / NVIDIA RTX A2000 12GB",
+        "source": "cuda-benchmark-20261002-214108-94091665671403.json",
+        "generated_at": "2026-10-02T21:41:08+00:00",
+        "environment": {
+            "php": {
+                "version": "8.5.11",
+                "version_id": 80511,
+                "sapi": "cli",
+                "thread_safety": "ZTS",
+                "integer_bits": 64,
+                "benchmark_revision": "0cfc076"
+            },
+            "host": {
+                "os": "Linux",
+                "release": "5.15.167.4-microsoft-standard-WSL2",
+                "architecture": "x86_64"
+            },
+            "cuda": {
+                "driver_version": "13.0",
+                "runtime_version": "12.6"
+            },
+            "gpu": {
+                "name": "NVIDIA RTX A2000 12GB",
+                "compute_capability": "8.6",
+                "memory_bytes": 12878086144
+            }
+        }
+    },
+    "summary": {
+        "matched_cases": 20,
+        "faster": 6,
+        "slower": 13,
+        "similar_or_unavailable": 1
+    },
+    "comparisons": [
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray import [PHP Array -> GPU]",
+            "metadata": {
+                "dtype": "float32",
+                "shape": "1048576"
+            },
+            "status": "faster",
+            "baseline_median_ms": 4.9472695,
+            "candidate_median_ms": 4.8921525,
+            "change_percent": -1.1140892971365333,
+            "speedup": 1.0112664108488032
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray import [PHP Array -> GPU]",
+            "metadata": {
+                "dtype": "float32",
+                "shape": "262144"
+            },
+            "status": "slower",
+            "baseline_median_ms": 1.7217295,
+            "candidate_median_ms": 1.7925200000000001,
+            "change_percent": 4.111592442366829,
+            "speedup": 0.9605078325485907
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray import [PHP Array -> GPU]",
+            "metadata": {
+                "dtype": "float32",
+                "shape": "4096"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.054032,
+            "candidate_median_ms": 0.1087555,
+            "change_percent": 101.27979715724018,
+            "speedup": 0.49682085043974783
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray import [PHP Array -> GPU]",
+            "metadata": {
+                "dtype": "float32",
+                "shape": "65536"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.2093735,
+            "candidate_median_ms": 0.20712950000000002,
+            "change_percent": -1.071768872373996,
+            "speedup": 1.0108338020417178
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::fromBuffer() [packed bytes -> GPU]",
+            "metadata": {
+                "dtype": "float32",
+                "shape": "1048576"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.286992,
+            "candidate_median_ms": 0.3038235,
+            "change_percent": 5.8647976250209055,
+            "speedup": 0.9446010594967144
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::fromBuffer() [packed bytes -> GPU]",
+            "metadata": {
+                "dtype": "float32",
+                "shape": "262144"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.11774899999999999,
+            "candidate_median_ms": 0.1204065,
+            "change_percent": 2.2569193793577926,
+            "speedup": 0.977928932408134
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::fromBuffer() [packed bytes -> GPU]",
+            "metadata": {
+                "dtype": "float32",
+                "shape": "4096"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.051622,
+            "candidate_median_ms": 0.0658125,
+            "change_percent": 27.489248769904297,
+            "speedup": 0.7843798670465337
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::fromBuffer() [packed bytes -> GPU]",
+            "metadata": {
+                "dtype": "float32",
+                "shape": "65536"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.0692965,
+            "candidate_median_ms": 0.0723845,
+            "change_percent": 4.456213517277218,
+            "speedup": 0.957338933058873
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::fromFile() [raw file -> GPU]",
+            "metadata": {
+                "dtype": "float32",
+                "shape": "1048576"
+            },
+            "status": "faster",
+            "baseline_median_ms": 2.180948,
+            "candidate_median_ms": 2.0501435,
+            "change_percent": -5.99759829211884,
+            "speedup": 1.0638026069882425
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::fromFile() [raw file -> GPU]",
+            "metadata": {
+                "dtype": "float32",
+                "shape": "262144"
+            },
+            "status": "slower",
+            "baseline_median_ms": 1.024227,
+            "candidate_median_ms": 1.04818,
+            "change_percent": 2.3386417268827993,
+            "speedup": 0.9771480089297641
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::fromFile() [raw file -> GPU]",
+            "metadata": {
+                "dtype": "float32",
+                "shape": "4096"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.0531605,
+            "candidate_median_ms": 0.07294,
+            "change_percent": 37.2071368779451,
+            "speedup": 0.7288250616945434
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::fromFile() [raw file -> GPU]",
+            "metadata": {
+                "dtype": "float32",
+                "shape": "65536"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.07764399999999999,
+            "candidate_median_ms": 0.090726,
+            "change_percent": 16.848694039462174,
+            "speedup": 0.8558075964993496
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "HostArray::toGpu() [pinned host storage -> GPU]",
+            "metadata": {
+                "dtype": "float32",
+                "shape": "1048576"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.318777,
+            "candidate_median_ms": 0.251709,
+            "change_percent": -21.039159035940475,
+            "speedup": 1.2664505440806644
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "HostArray::toGpu() [pinned host storage -> GPU]",
+            "metadata": {
+                "dtype": "float32",
+                "shape": "262144"
+            },
+            "status": "similar",
+            "baseline_median_ms": 0.115885,
+            "candidate_median_ms": 0.11569950000000001,
+            "change_percent": -0.16007248565387341,
+            "speedup": 1.0016032912847506
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "HostArray::toGpu() [pinned host storage -> GPU]",
+            "metadata": {
+                "dtype": "float32",
+                "shape": "4096"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.063212,
+            "candidate_median_ms": 0.0658175,
+            "change_percent": 4.121843953679676,
+            "speedup": 0.9604132639495575
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "HostArray::toGpu() [pinned host storage -> GPU]",
+            "metadata": {
+                "dtype": "float32",
+                "shape": "65536"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.076455,
+            "candidate_median_ms": 0.07572000000000001,
+            "change_percent": -0.9613498136158338,
+            "speedup": 1.0097068145800314
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "HostArray::toGpu() [reused host storage -> GPU]",
+            "metadata": {
+                "dtype": "float32",
+                "shape": "1048576"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.28567750000000003,
+            "candidate_median_ms": 0.29547500000000004,
+            "change_percent": 3.4295665566941786,
+            "speedup": 0.9668415263558676
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "HostArray::toGpu() [reused host storage -> GPU]",
+            "metadata": {
+                "dtype": "float32",
+                "shape": "262144"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.11831900000000001,
+            "candidate_median_ms": 0.11914949999999999,
+            "change_percent": 0.7019160067275619,
+            "speedup": 0.9930297651270045
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "HostArray::toGpu() [reused host storage -> GPU]",
+            "metadata": {
+                "dtype": "float32",
+                "shape": "4096"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.114177,
+            "candidate_median_ms": 0.050426,
+            "change_percent": -55.835238270404716,
+            "speedup": 2.2642486019117123
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "HostArray::toGpu() [reused host storage -> GPU]",
+            "metadata": {
+                "dtype": "float32",
+                "shape": "65536"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.068223,
+            "candidate_median_ms": 0.085702,
+            "change_percent": 25.6203919499289,
+            "speedup": 0.7960491003710533
+        }
+    ]
+}
