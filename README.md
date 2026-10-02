@@ -70,4 +70,5 @@ reports so each result records its source revision.
 
 The [PHP 8.5 NTS vs ZTS report](published-reports/php85-nts-vs-zts/README.md)
 includes raw JSON/HTML runs and a matched comparison for matrix multiplication
-and data transfers on an RTX A2000.
+and data transfers on an RTX A2000. The [full-suite comparison](published-reports/php85-nts-vs-zts-full/README.md)
+adds 368 matched cases across all benchmark groups, including the raw reports.

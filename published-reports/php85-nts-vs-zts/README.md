@@ -83,3 +83,6 @@ uniform ZTS penalty or benefit and should not be generalized beyond this host.
 
 The HTML files can be opened after cloning or downloaded from GitHub. The JSON
 files include the full environment, raw timings, and comparison metadata.
+
+For broader coverage, see the [full-suite PHP 8.5 NTS vs ZTS comparison](../php85-nts-vs-zts-full/README.md),
+which includes 368 matched cases across all benchmark groups.

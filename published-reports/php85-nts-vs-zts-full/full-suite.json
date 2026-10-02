@@ -1,0 +1,5103 @@
+{
+    "schema_version": 1,
+    "generated_at": "2026-10-02T21:58:16+00:00",
+    "baseline": {
+        "label": "8.5.11 NTS / NVIDIA RTX A2000 12GB",
+        "source": "cuda-benchmark-20261002-215609-94993097276218.json",
+        "generated_at": "2026-10-02T21:56:09+00:00",
+        "environment": {
+            "php": {
+                "version": "8.5.11",
+                "version_id": 80511,
+                "sapi": "cli",
+                "thread_safety": "NTS",
+                "integer_bits": 64,
+                "memory_limit": "-1",
+                "benchmark_revision": "1ff536d"
+            },
+            "host": {
+                "os": "Linux",
+                "release": "5.15.167.4-microsoft-standard-WSL2",
+                "architecture": "x86_64"
+            },
+            "cuda": {
+                "driver_version": "13.0",
+                "runtime_version": "12.6"
+            },
+            "gpu": {
+                "name": "NVIDIA RTX A2000 12GB",
+                "compute_capability": "8.6",
+                "memory_bytes": 12878086144
+            }
+        }
+    },
+    "candidate": {
+        "label": "8.5.11 ZTS / NVIDIA RTX A2000 12GB",
+        "source": "cuda-benchmark-20261002-215755-95098836822498.json",
+        "generated_at": "2026-10-02T21:57:55+00:00",
+        "environment": {
+            "php": {
+                "version": "8.5.11",
+                "version_id": 80511,
+                "sapi": "cli",
+                "thread_safety": "ZTS",
+                "integer_bits": 64,
+                "memory_limit": "-1",
+                "benchmark_revision": "1ff536d"
+            },
+            "host": {
+                "os": "Linux",
+                "release": "5.15.167.4-microsoft-standard-WSL2",
+                "architecture": "x86_64"
+            },
+            "cuda": {
+                "driver_version": "13.0",
+                "runtime_version": "12.6"
+            },
+            "gpu": {
+                "name": "NVIDIA RTX A2000 12GB",
+                "compute_capability": "8.6",
+                "memory_bytes": 12878086144
+            }
+        }
+    },
+    "summary": {
+        "matched_cases": 368,
+        "faster": 166,
+        "slower": 164,
+        "similar_or_unavailable": 38
+    },
+    "comparisons": [
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::add()",
+            "metadata": {
+                "category": "broadcast",
+                "shape": "1024x1024 + 1024x1",
+                "type": "2D + 1D (broadcast dim1)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.09433,
+            "candidate_median_ms": 0.0962395,
+            "change_percent": 2.0242764762005816,
+            "speedup": 0.9801588744746179
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::add()",
+            "metadata": {
+                "category": "broadcast",
+                "shape": "1024x1024 + 1x1024",
+                "type": "2D + 1D (broadcast dim0)"
+            },
+            "status": "similar",
+            "baseline_median_ms": 0.09360199999999999,
+            "candidate_median_ms": 0.093499,
+            "change_percent": -0.11004038375247538,
+            "speedup": 1.0011016160600648
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::add()",
+            "metadata": {
+                "category": "broadcast",
+                "shape": "1024x1024 + scalar",
+                "type": "2D + scalar"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.07736,
+            "candidate_median_ms": 0.076777,
+            "change_percent": -0.753619441571872,
+            "speedup": 1.0075934199043985
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::add()",
+            "metadata": {
+                "category": "broadcast",
+                "shape": "1024x3x512 + 1x3x512",
+                "type": "3D + 3D (broadcast)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.1242905,
+            "candidate_median_ms": 0.11646799999999999,
+            "change_percent": -6.293723172728415,
+            "speedup": 1.067164371329464
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::add()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "1024x1024",
+                "type": "2D + 2D (medium square)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.0937405,
+            "candidate_median_ms": 0.0930745,
+            "change_percent": -0.7104719944954421,
+            "speedup": 1.0071555581818865
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::add()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "128x128x128",
+                "type": "3D + 3D (medium cube)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.14618599999999998,
+            "candidate_median_ms": 0.140779,
+            "change_percent": -3.6987125990176866,
+            "speedup": 1.038407717060073
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::add()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "16777216",
+                "type": "1D + 1D (medium)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.8318555000000001,
+            "candidate_median_ms": 0.825672,
+            "change_percent": -0.7433382360277859,
+            "speedup": 1.0074890513424217
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::add()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "16x16",
+                "type": "2D + 2D (tiny square)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.0458135,
+            "candidate_median_ms": 0.044105000000000005,
+            "change_percent": -3.7292501118665777,
+            "speedup": 1.0387371046366625
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::add()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "256",
+                "type": "1D + 1D (tiny)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.052281999999999995,
+            "candidate_median_ms": 0.0491205,
+            "change_percent": -6.047014268773188,
+            "speedup": 1.0643621298643133
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::add()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "256x256",
+                "type": "2D + 2D (small square)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.051822,
+            "candidate_median_ms": 0.045932,
+            "change_percent": -11.365829184516226,
+            "speedup": 1.1282330401463032
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::add()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "32768x32",
+                "type": "2D + 2D (tall)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.0933145,
+            "candidate_median_ms": 0.09504,
+            "change_percent": 1.849123126630915,
+            "speedup": 0.9818444865319865
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::add()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "32x256x256x3",
+                "type": "4D + 4D (medium batch)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.3357875,
+            "candidate_median_ms": 0.3384315,
+            "change_percent": 0.7874027472731949,
+            "speedup": 0.9921874884577825
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::add()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "32x32768",
+                "type": "2D + 2D (wide)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.093274,
+            "candidate_median_ms": 0.094911,
+            "change_percent": 1.755044278148251,
+            "speedup": 0.9827522626460579
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::add()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "32x32x32",
+                "type": "3D + 3D (small cube)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.0449455,
+            "candidate_median_ms": 0.0435515,
+            "change_percent": -3.1015340801637525,
+            "speedup": 1.032008082385222
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::add()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "3x512x512",
+                "type": "3D + 3D (CHW image)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.0795565,
+            "candidate_median_ms": 0.080121,
+            "change_percent": 0.7095586155750888,
+            "speedup": 0.9929544064602289
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::add()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "4096x4096",
+                "type": "2D + 2D (large square)"
+            },
+            "status": "similar",
+            "baseline_median_ms": 0.8270995000000001,
+            "candidate_median_ms": 0.8272395,
+            "change_percent": 0.016926621283160966,
+            "speedup": 0.9998307624333703
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::add()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "512x512x3",
+                "type": "3D + 3D (HWC image)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.0792875,
+            "candidate_median_ms": 0.0786345,
+            "change_percent": -0.823585054390668,
+            "speedup": 1.0083042430485347
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::add()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "65536",
+                "type": "1D + 1D (small)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.054088,
+            "candidate_median_ms": 0.05132,
+            "change_percent": -5.117586155894098,
+            "speedup": 1.0539360872954013
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::add()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "67108864",
+                "type": "1D + 1D (large)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 3.2761104999999997,
+            "candidate_median_ms": 3.2334635,
+            "change_percent": -1.3017570683284236,
+            "speedup": 1.0131892628446246
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::add()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "8x64x64x3",
+                "type": "4D + 4D (small batch)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.045215500000000006,
+            "candidate_median_ms": 0.043049500000000004,
+            "change_percent": -4.790392675078238,
+            "speedup": 1.0503141732192012
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::ceil()",
+            "metadata": {
+                "category": "unary",
+                "shape": "1024x1024",
+                "type": "2D (medium)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.14306000000000002,
+            "candidate_median_ms": 0.139789,
+            "change_percent": -2.286453236404322,
+            "speedup": 1.0233995521822177
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::ceil()",
+            "metadata": {
+                "category": "unary",
+                "shape": "16777216",
+                "type": "1D (medium)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.6435495,
+            "candidate_median_ms": 0.655241,
+            "change_percent": 1.8167211690786746,
+            "speedup": 0.9821569468333026
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::ceil()",
+            "metadata": {
+                "category": "unary",
+                "shape": "256",
+                "type": "1D (tiny)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.103289,
+            "candidate_median_ms": 0.115108,
+            "change_percent": 11.44265120196729,
+            "speedup": 0.8973225145081142
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::ceil()",
+            "metadata": {
+                "category": "unary",
+                "shape": "3x512x512",
+                "type": "3D (CHW)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.1389735,
+            "candidate_median_ms": 0.140922,
+            "change_percent": 1.4020658614771822,
+            "speedup": 0.98617320219696
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::ceil()",
+            "metadata": {
+                "category": "unary",
+                "shape": "4096x4096",
+                "type": "2D (large)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.6823165,
+            "candidate_median_ms": 0.6906675,
+            "change_percent": 1.2239188118710302,
+            "speedup": 0.9879087983725888
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::ceil()",
+            "metadata": {
+                "category": "unary",
+                "shape": "512x512x3",
+                "type": "3D (HWC)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.144685,
+            "candidate_median_ms": 0.14588,
+            "change_percent": 0.8259321975325717,
+            "speedup": 0.9918083356183164
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::ceil()",
+            "metadata": {
+                "category": "unary",
+                "shape": "65536",
+                "type": "1D (small)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.10538449999999999,
+            "candidate_median_ms": 0.10727249999999999,
+            "change_percent": 1.7915348082497908,
+            "speedup": 0.9823999627117854
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::divide()",
+            "metadata": {
+                "category": "broadcast",
+                "shape": "1024x1024 / 1024x1",
+                "type": "2D / 1D (broadcast dim1)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.09321099999999999,
+            "candidate_median_ms": 0.09257750000000001,
+            "change_percent": -0.6796408149252571,
+            "speedup": 1.0068429153952092
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::divide()",
+            "metadata": {
+                "category": "broadcast",
+                "shape": "1024x1024 / 1x1024",
+                "type": "2D / 1D (broadcast dim0)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.1110835,
+            "candidate_median_ms": 0.09436549999999999,
+            "change_percent": -15.04993991006766,
+            "speedup": 1.177162204407331
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::divide()",
+            "metadata": {
+                "category": "broadcast",
+                "shape": "1024x1024 / scalar",
+                "type": "2D / scalar"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.077056,
+            "candidate_median_ms": 0.0775545,
+            "change_percent": 0.6469321013289022,
+            "speedup": 0.9935722620866616
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::divide()",
+            "metadata": {
+                "category": "broadcast",
+                "shape": "1024x3x512 / 1x3x512",
+                "type": "3D / 3D (broadcast)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.117523,
+            "candidate_median_ms": 0.115702,
+            "change_percent": -1.5494839308050365,
+            "speedup": 1.015738708060362
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::divide()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "1024x1024",
+                "type": "2D / 2D (medium square)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.094938,
+            "candidate_median_ms": 0.095446,
+            "change_percent": 0.5350860561629784,
+            "speedup": 0.9946776187582507
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::divide()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "128x128x128",
+                "type": "3D / 3D (medium cube)"
+            },
+            "status": "similar",
+            "baseline_median_ms": 0.1433335,
+            "candidate_median_ms": 0.14355800000000002,
+            "change_percent": 0.15662772485149412,
+            "speedup": 0.9984361721394835
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::divide()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "16777216",
+                "type": "1D / 1D (medium)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.8256745,
+            "candidate_median_ms": 0.8378589999999999,
+            "change_percent": 1.475702592244272,
+            "speedup": 0.985457576990878
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::divide()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "16x16",
+                "type": "2D / 2D (tiny square)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.045048,
+            "candidate_median_ms": 0.042800000000000005,
+            "change_percent": -4.9902326407387525,
+            "speedup": 1.052523364485981
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::divide()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "256",
+                "type": "1D / 1D (tiny)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.0448215,
+            "candidate_median_ms": 0.041724,
+            "change_percent": -6.91074595897059,
+            "speedup": 1.0742378487201611
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::divide()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "256x256",
+                "type": "2D / 2D (small square)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.045954,
+            "candidate_median_ms": 0.0455415,
+            "change_percent": -0.8976367672019915,
+            "speedup": 1.0090576726721783
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::divide()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "32768x32",
+                "type": "2D / 2D (tall)"
+            },
+            "status": "similar",
+            "baseline_median_ms": 0.094613,
+            "candidate_median_ms": 0.0944275,
+            "change_percent": -0.19606185196538012,
+            "speedup": 1.0019644700961055
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::divide()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "32x256x256x3",
+                "type": "4D / 4D (medium batch)"
+            },
+            "status": "similar",
+            "baseline_median_ms": 0.336541,
+            "candidate_median_ms": 0.3360825,
+            "change_percent": -0.13623897236888607,
+            "speedup": 1.0013642483616374
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::divide()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "32x32768",
+                "type": "2D / 2D (wide)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.0959405,
+            "candidate_median_ms": 0.10612450000000001,
+            "change_percent": 10.614912367561157,
+            "speedup": 0.9040372392802792
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::divide()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "32x32x32",
+                "type": "3D / 3D (small cube)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.044619,
+            "candidate_median_ms": 0.044158,
+            "change_percent": -1.0331921378784736,
+            "speedup": 1.0104397844105257
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::divide()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "3x512x512",
+                "type": "3D / 3D (CHW image)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.0799475,
+            "candidate_median_ms": 0.078909,
+            "change_percent": -1.2989774539541545,
+            "speedup": 1.0131607294478449
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::divide()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "4096x4096",
+                "type": "2D / 2D (large square)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.8272895,
+            "candidate_median_ms": 0.833512,
+            "change_percent": 0.7521550799327225,
+            "speedup": 0.9925346005816352
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::divide()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "512x512x3",
+                "type": "3D / 3D (HWC image)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.081393,
+            "candidate_median_ms": 0.07794699999999999,
+            "change_percent": -4.233779317631743,
+            "speedup": 1.0442095269862857
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::divide()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "65536",
+                "type": "1D / 1D (small)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.043827000000000005,
+            "candidate_median_ms": 0.0413315,
+            "change_percent": -5.693978597668114,
+            "speedup": 1.0603776780421714
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::divide()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "67108864",
+                "type": "1D / 1D (large)"
+            },
+            "status": "similar",
+            "baseline_median_ms": 3.225734,
+            "candidate_median_ms": 3.2193769999999997,
+            "change_percent": -0.1970714262242451,
+            "speedup": 1.0019746056457508
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::divide()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "8x64x64x3",
+                "type": "4D / 4D (small batch)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.0442165,
+            "candidate_median_ms": 0.0433085,
+            "change_percent": -2.053532052514331,
+            "speedup": 1.0209658612050752
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::eq()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "1024x1024 == 1024x1",
+                "type": "2D == 1D (broadcast)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.0949215,
+            "candidate_median_ms": 0.09593950000000001,
+            "change_percent": 1.072465142249127,
+            "speedup": 0.9893891462848983
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::eq()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "1024x1024 == 1024x1024",
+                "type": "2D == 2D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.09520999999999999,
+            "candidate_median_ms": 0.0928735,
+            "change_percent": -2.4540489444386004,
+            "speedup": 1.0251578760356828
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::eq()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "1024x1024 == 1x1024",
+                "type": "2D == 1D (broadcast)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.102102,
+            "candidate_median_ms": 0.0954465,
+            "change_percent": -6.518481518481513,
+            "speedup": 1.0697301629708789
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::eq()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "1024x1024 == scalar",
+                "type": "2D == scalar"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.078371,
+            "candidate_median_ms": 0.07587050000000001,
+            "change_percent": -3.190593459315294,
+            "speedup": 1.0329574735898668
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::eq()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "16777216 == 16777216",
+                "type": "1D == 1D (medium)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.837819,
+            "candidate_median_ms": 0.8263780000000001,
+            "change_percent": -1.3655694129638887,
+            "speedup": 1.0138447538535633
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::eq()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "32x32x32 == 32x32x32",
+                "type": "3D == 3D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.045186000000000004,
+            "candidate_median_ms": 0.042312,
+            "change_percent": -6.360377107953793,
+            "speedup": 1.0679239931934204
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::eq()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "3x512x512 == 3x512x512",
+                "type": "3D == 3D (CHW)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.08959,
+            "candidate_median_ms": 0.07867550000000001,
+            "change_percent": -12.18272128585779,
+            "speedup": 1.1387280665518489
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::eq()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "4096x4096 == 4096x4096",
+                "type": "2D == 2D (large)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.8276064999999999,
+            "candidate_median_ms": 0.8417650000000001,
+            "change_percent": 1.7107768003272312,
+            "speedup": 0.9831799849126536
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::eq()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "512x512x3 == 512x512x3",
+                "type": "3D == 3D (HWC)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.0810825,
+            "candidate_median_ms": 0.079074,
+            "change_percent": -2.4771066506336097,
+            "speedup": 1.02540025798619
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::eq()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "65536 == 65536",
+                "type": "1D == 1D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.0450295,
+            "candidate_median_ms": 0.0433345,
+            "change_percent": -3.764199025083561,
+            "speedup": 1.039114331537228
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::floor()",
+            "metadata": {
+                "category": "unary",
+                "shape": "1024x1024",
+                "type": "2D (medium)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.1500485,
+            "candidate_median_ms": 0.1448335,
+            "change_percent": -3.475542907793145,
+            "speedup": 1.036006863053092
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::floor()",
+            "metadata": {
+                "category": "unary",
+                "shape": "16777216",
+                "type": "1D (medium)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.643821,
+            "candidate_median_ms": 0.6485274999999999,
+            "change_percent": 0.7310261703175179,
+            "speedup": 0.9927427903982484
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::floor()",
+            "metadata": {
+                "category": "unary",
+                "shape": "256",
+                "type": "1D (tiny)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.1066325,
+            "candidate_median_ms": 0.105915,
+            "change_percent": -0.6728717792417975,
+            "speedup": 1.0067743001463438
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::floor()",
+            "metadata": {
+                "category": "unary",
+                "shape": "3x512x512",
+                "type": "3D (CHW)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.141984,
+            "candidate_median_ms": 0.14640599999999998,
+            "change_percent": 3.1144354293441383,
+            "speedup": 0.9697963198229582
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::floor()",
+            "metadata": {
+                "category": "unary",
+                "shape": "4096x4096",
+                "type": "2D (large)"
+            },
+            "status": "similar",
+            "baseline_median_ms": 0.686404,
+            "candidate_median_ms": 0.687593,
+            "change_percent": 0.1732216012727192,
+            "speedup": 0.998270779370936
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::floor()",
+            "metadata": {
+                "category": "unary",
+                "shape": "512x512x3",
+                "type": "3D (HWC)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.14656750000000002,
+            "candidate_median_ms": 0.144075,
+            "change_percent": -1.700581643270171,
+            "speedup": 1.0173000173520736
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::floor()",
+            "metadata": {
+                "category": "unary",
+                "shape": "65536",
+                "type": "1D (small)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.114781,
+            "candidate_median_ms": 0.107365,
+            "change_percent": -6.460999642798017,
+            "speedup": 1.0690727890839657
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::ge()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "1024x1024 >= 1024x1",
+                "type": "2D >= 1D (broadcast)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.092708,
+            "candidate_median_ms": 0.0939535,
+            "change_percent": 1.3434655045950692,
+            "speedup": 0.9867434422347225
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::ge()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "1024x1024 >= 1024x1024",
+                "type": "2D >= 2D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.0947795,
+            "candidate_median_ms": 0.09582850000000001,
+            "change_percent": 1.1067794196002387,
+            "speedup": 0.9890533609521175
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::ge()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "1024x1024 >= 1x1024",
+                "type": "2D >= 1D (broadcast)"
+            },
+            "status": "similar",
+            "baseline_median_ms": 0.09359,
+            "candidate_median_ms": 0.0933755,
+            "change_percent": -0.22919115290095773,
+            "speedup": 1.0022971764542092
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::ge()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "1024x1024 >= scalar",
+                "type": "2D >= scalar"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.077639,
+            "candidate_median_ms": 0.078954,
+            "change_percent": 1.693736395368303,
+            "speedup": 0.9833447323758138
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::ge()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "16777216 >= 16777216",
+                "type": "1D >= 1D (medium)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.834254,
+            "candidate_median_ms": 0.826803,
+            "change_percent": -0.8931332663673288,
+            "speedup": 1.0090118202280352
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::ge()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "32x32x32 >= 32x32x32",
+                "type": "3D >= 3D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.0452585,
+            "candidate_median_ms": 0.044247499999999995,
+            "change_percent": -2.2338345283206578,
+            "speedup": 1.0228487485168656
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::ge()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "3x512x512 >= 3x512x512",
+                "type": "3D >= 3D (CHW)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.0807495,
+            "candidate_median_ms": 0.08476349999999999,
+            "change_percent": 4.970928612561056,
+            "speedup": 0.9526447114618911
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::ge()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "4096x4096 >= 4096x4096",
+                "type": "2D >= 2D (large)"
+            },
+            "status": "similar",
+            "baseline_median_ms": 0.8267690000000001,
+            "candidate_median_ms": 0.8288584999999999,
+            "change_percent": 0.25273081114553825,
+            "speedup": 0.997479063072889
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::ge()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "512x512x3 >= 512x512x3",
+                "type": "3D >= 3D (HWC)"
+            },
+            "status": "similar",
+            "baseline_median_ms": 0.079899,
+            "candidate_median_ms": 0.079913,
+            "change_percent": 0.017522121678619412,
+            "speedup": 0.9998248094803098
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::ge()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "65536 >= 65536",
+                "type": "1D >= 1D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.043781,
+            "candidate_median_ms": 0.04485,
+            "change_percent": 2.441698453667117,
+            "speedup": 0.976164994425864
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::gt()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "1024x1024 > 1024x1",
+                "type": "2D > 1D (broadcast)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.0934925,
+            "candidate_median_ms": 0.0903405,
+            "change_percent": -3.371393427280265,
+            "speedup": 1.034890220886535
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::gt()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "1024x1024 > 1024x1024",
+                "type": "2D > 2D"
+            },
+            "status": "similar",
+            "baseline_median_ms": 0.0935005,
+            "candidate_median_ms": 0.0933465,
+            "change_percent": -0.16470500157753312,
+            "speedup": 1.0016497672649751
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::gt()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "1024x1024 > 1x1024",
+                "type": "2D > 1D (broadcast)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.093673,
+            "candidate_median_ms": 0.09093899999999999,
+            "change_percent": -2.918663862585819,
+            "speedup": 1.0300641089081695
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::gt()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "1024x1024 > scalar",
+                "type": "2D > scalar"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.076571,
+            "candidate_median_ms": 0.08291799999999999,
+            "change_percent": 8.289038931188037,
+            "speedup": 0.9234544972141152
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::gt()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "16777216 > 16777216",
+                "type": "1D > 1D (medium)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.8245975,
+            "candidate_median_ms": 0.838052,
+            "change_percent": 1.6316445296038415,
+            "speedup": 0.9839455069613818
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::gt()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "32x32x32 > 32x32x32",
+                "type": "3D > 3D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.0446215,
+            "candidate_median_ms": 0.0438065,
+            "change_percent": -1.8264737850587793,
+            "speedup": 1.018604544987616
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::gt()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "3x512x512 > 3x512x512",
+                "type": "3D > 3D (CHW)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.080157,
+            "candidate_median_ms": 0.07726649999999999,
+            "change_percent": -3.60604813054383,
+            "speedup": 1.0374094853526434
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::gt()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "4096x4096 > 4096x4096",
+                "type": "2D > 2D (large)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.8247645,
+            "candidate_median_ms": 0.8360365000000001,
+            "change_percent": 1.3666931590775377,
+            "speedup": 0.9865173350685047
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::gt()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "512x512x3 > 512x512x3",
+                "type": "3D > 3D (HWC)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.0803765,
+            "candidate_median_ms": 0.078762,
+            "change_percent": -2.0086716888642884,
+            "speedup": 1.0204984637261625
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::gt()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "65536 > 65536",
+                "type": "1D > 1D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.0441395,
+            "candidate_median_ms": 0.0408345,
+            "change_percent": -7.487624463349145,
+            "speedup": 1.0809364630398315
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::le()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "1024x1024 <= 1024x1",
+                "type": "2D <= 1D (broadcast)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.091687,
+            "candidate_median_ms": 0.0944415,
+            "change_percent": 3.0042426952566808,
+            "speedup": 0.97083379658307
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::le()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "1024x1024 <= 1024x1024",
+                "type": "2D <= 2D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.095656,
+            "candidate_median_ms": 0.094775,
+            "change_percent": -0.9210086142008935,
+            "speedup": 1.0092957003429175
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::le()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "1024x1024 <= 1x1024",
+                "type": "2D <= 1D (broadcast)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.0906575,
+            "candidate_median_ms": 0.0965105,
+            "change_percent": 6.456167443399605,
+            "speedup": 0.939353749073935
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::le()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "1024x1024 <= scalar",
+                "type": "2D <= scalar"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.0793865,
+            "candidate_median_ms": 0.078479,
+            "change_percent": -1.1431414661183017,
+            "speedup": 1.0115636030020771
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::le()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "16777216 <= 16777216",
+                "type": "1D <= 1D (medium)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.8266804999999999,
+            "candidate_median_ms": 0.8367519999999999,
+            "change_percent": 1.2183062259240434,
+            "speedup": 0.9879635782167236
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::le()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "32x32x32 <= 32x32x32",
+                "type": "3D <= 3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.0448795,
+            "candidate_median_ms": 0.0458915,
+            "change_percent": 2.2549270825209704,
+            "speedup": 0.9779479860104813
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::le()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "3x512x512 <= 3x512x512",
+                "type": "3D <= 3D (CHW)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.0800685,
+            "candidate_median_ms": 0.08148949999999999,
+            "change_percent": 1.7747303871060298,
+            "speedup": 0.9825621705863946
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::le()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "4096x4096 <= 4096x4096",
+                "type": "2D <= 2D (large)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.825652,
+            "candidate_median_ms": 0.8344755,
+            "change_percent": 1.0686705779190244,
+            "speedup": 0.9894262923237411
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::le()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "512x512x3 <= 512x512x3",
+                "type": "3D <= 3D (HWC)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.0818245,
+            "candidate_median_ms": 0.08101349999999999,
+            "change_percent": -0.9911456837499846,
+            "speedup": 1.010010677232807
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::le()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "65536 <= 65536",
+                "type": "1D <= 1D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.0438935,
+            "candidate_median_ms": 0.044911,
+            "change_percent": 2.3181108820212506,
+            "speedup": 0.9773440805147959
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::lt()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "1024x1024 < 1024x1",
+                "type": "2D < 1D (broadcast)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.093368,
+            "candidate_median_ms": 0.0918225,
+            "change_percent": -1.6552780395853024,
+            "speedup": 1.0168313866427074
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::lt()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "1024x1024 < 1024x1024",
+                "type": "2D < 2D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.0949475,
+            "candidate_median_ms": 0.0965125,
+            "change_percent": 1.6482793122515043,
+            "speedup": 0.9837844838751457
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::lt()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "1024x1024 < 1x1024",
+                "type": "2D < 1D (broadcast)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.0932495,
+            "candidate_median_ms": 0.093886,
+            "change_percent": 0.6825773864739202,
+            "speedup": 0.9932205014592165
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::lt()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "1024x1024 < scalar",
+                "type": "2D < scalar"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.077794,
+            "candidate_median_ms": 0.07956150000000001,
+            "change_percent": 2.272026120266351,
+            "speedup": 0.9777844811875089
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::lt()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "16777216 < 16777216",
+                "type": "1D < 1D (medium)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.8252515,
+            "candidate_median_ms": 0.8326385000000001,
+            "change_percent": 0.8951210630941031,
+            "speedup": 0.9911282026954074
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::lt()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "32x32x32 < 32x32x32",
+                "type": "3D < 3D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.0451285,
+            "candidate_median_ms": 0.04432,
+            "change_percent": -1.791550793844253,
+            "speedup": 1.0182423285198556
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::lt()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "3x512x512 < 3x512x512",
+                "type": "3D < 3D (CHW)"
+            },
+            "status": "similar",
+            "baseline_median_ms": 0.07971500000000001,
+            "candidate_median_ms": 0.0797825,
+            "change_percent": 0.08467666060339725,
+            "speedup": 0.9991539498010216
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::lt()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "4096x4096 < 4096x4096",
+                "type": "2D < 2D (large)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.8233170000000001,
+            "candidate_median_ms": 0.837321,
+            "change_percent": 1.7009244312943743,
+            "speedup": 0.9832752313628824
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::lt()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "512x512x3 < 512x512x3",
+                "type": "3D < 3D (HWC)"
+            },
+            "status": "similar",
+            "baseline_median_ms": 0.080143,
+            "candidate_median_ms": 0.0799875,
+            "change_percent": -0.19402817463783842,
+            "speedup": 1.0019440537583997
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::lt()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "65536 < 65536",
+                "type": "1D < 1D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.0438415,
+            "candidate_median_ms": 0.042000499999999996,
+            "change_percent": -4.199217636257889,
+            "speedup": 1.0438328115141486
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::multiply()",
+            "metadata": {
+                "category": "broadcast",
+                "shape": "1024x1024 * 1024x1",
+                "type": "2D * 1D (broadcast dim1)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.104041,
+            "candidate_median_ms": 0.0916125,
+            "change_percent": -11.945771378591129,
+            "speedup": 1.1356638013371536
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::multiply()",
+            "metadata": {
+                "category": "broadcast",
+                "shape": "1024x1024 * 1x1024",
+                "type": "2D * 1D (broadcast dim0)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.097595,
+            "candidate_median_ms": 0.0921295,
+            "change_percent": -5.600184435678055,
+            "speedup": 1.059324103571603
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::multiply()",
+            "metadata": {
+                "category": "broadcast",
+                "shape": "1024x1024 * scalar",
+                "type": "2D * scalar"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.079581,
+            "candidate_median_ms": 0.0753405,
+            "change_percent": -5.328533192596216,
+            "speedup": 1.056284468512951
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::multiply()",
+            "metadata": {
+                "category": "broadcast",
+                "shape": "1024x3x512 * 1x3x512",
+                "type": "3D * 3D (broadcast)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.123246,
+            "candidate_median_ms": 0.1158935,
+            "change_percent": -5.965710854713336,
+            "speedup": 1.0634418668864085
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::multiply()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "1024x1024",
+                "type": "2D * 2D (medium square)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.094933,
+            "candidate_median_ms": 0.0941475,
+            "change_percent": -0.8274256580957184,
+            "speedup": 1.0083432911123504
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::multiply()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "128x128x128",
+                "type": "3D * 3D (medium cube)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.1440455,
+            "candidate_median_ms": 0.14188099999999998,
+            "change_percent": -1.5026502042757417,
+            "speedup": 1.0152557424884234
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::multiply()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "16777216",
+                "type": "1D * 1D (medium)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.827998,
+            "candidate_median_ms": 0.8399179999999999,
+            "change_percent": 1.439617003905798,
+            "speedup": 0.9858081384135119
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::multiply()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "16x16",
+                "type": "2D * 2D (tiny square)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.045338500000000004,
+            "candidate_median_ms": 0.0434795,
+            "change_percent": -4.100267984163584,
+            "speedup": 1.0427557814602286
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::multiply()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "256",
+                "type": "1D * 1D (tiny)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.0429135,
+            "candidate_median_ms": 0.0442725,
+            "change_percent": 3.1668356111713076,
+            "speedup": 0.9693037438590547
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::multiply()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "256x256",
+                "type": "2D * 2D (small square)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.0468865,
+            "candidate_median_ms": 0.044396,
+            "change_percent": -5.311763514017894,
+            "speedup": 1.0560973961618163
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::multiply()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "32768x32",
+                "type": "2D * 2D (tall)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.096857,
+            "candidate_median_ms": 0.093901,
+            "change_percent": -3.051921905489537,
+            "speedup": 1.0314799629396918
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::multiply()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "32x256x256x3",
+                "type": "4D * 4D (medium batch)"
+            },
+            "status": "similar",
+            "baseline_median_ms": 0.3373965,
+            "candidate_median_ms": 0.336393,
+            "change_percent": -0.2974245435266787,
+            "speedup": 1.0029831179602429
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::multiply()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "32x32768",
+                "type": "2D * 2D (wide)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.09524099999999999,
+            "candidate_median_ms": 0.09460350000000001,
+            "change_percent": -0.6693545846851517,
+            "speedup": 1.0067386513183971
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::multiply()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "32x32x32",
+                "type": "3D * 3D (small cube)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.0446895,
+            "candidate_median_ms": 0.0438655,
+            "change_percent": -1.843833562693694,
+            "speedup": 1.0187846941218042
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::multiply()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "3x512x512",
+                "type": "3D * 3D (CHW image)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.085153,
+            "candidate_median_ms": 0.0794485,
+            "change_percent": -6.699118058083686,
+            "speedup": 1.0718012297274335
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::multiply()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "4096x4096",
+                "type": "2D * 2D (large square)"
+            },
+            "status": "similar",
+            "baseline_median_ms": 0.826274,
+            "candidate_median_ms": 0.8277415,
+            "change_percent": 0.17760452343896407,
+            "speedup": 0.9982271035099726
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::multiply()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "512x512x3",
+                "type": "3D * 3D (HWC image)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.0804105,
+            "candidate_median_ms": 0.081422,
+            "change_percent": 1.257920296478692,
+            "speedup": 0.9875770676230011
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::multiply()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "65536",
+                "type": "1D * 1D (small)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.0438225,
+            "candidate_median_ms": 0.0450125,
+            "change_percent": 2.7155000285241524,
+            "speedup": 0.9735628991946682
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::multiply()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "67108864",
+                "type": "1D * 1D (large)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 3.339113,
+            "candidate_median_ms": 3.2241555,
+            "change_percent": -3.442755606054663,
+            "speedup": 1.035655073088131
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::multiply()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "8x64x64x3",
+                "type": "4D * 4D (small batch)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.045248,
+            "candidate_median_ms": 0.044187500000000005,
+            "change_percent": -2.3437499999999827,
+            "speedup": 1.0239999999999998
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::ne()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "1024x1024 != 1024x1",
+                "type": "2D != 1D (broadcast)"
+            },
+            "status": "similar",
+            "baseline_median_ms": 0.092939,
+            "candidate_median_ms": 0.09261849999999999,
+            "change_percent": -0.34484984774960065,
+            "speedup": 1.0034604317711904
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::ne()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "1024x1024 != 1024x1024",
+                "type": "2D != 2D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.095528,
+            "candidate_median_ms": 0.0930295,
+            "change_percent": -2.6154635290176707,
+            "speedup": 1.0268570722190273
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::ne()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "1024x1024 != 1x1024",
+                "type": "2D != 1D (broadcast)"
+            },
+            "status": "similar",
+            "baseline_median_ms": 0.0925135,
+            "candidate_median_ms": 0.09273100000000001,
+            "change_percent": 0.23510082312312186,
+            "speedup": 0.9976545060443648
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::ne()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "1024x1024 != scalar",
+                "type": "2D != scalar"
+            },
+            "status": "similar",
+            "baseline_median_ms": 0.07779900000000001,
+            "candidate_median_ms": 0.078126,
+            "change_percent": 0.4203138857825858,
+            "speedup": 0.9958144535749943
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::ne()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "16777216 != 16777216",
+                "type": "1D != 1D (medium)"
+            },
+            "status": "similar",
+            "baseline_median_ms": 0.830668,
+            "candidate_median_ms": 0.829412,
+            "change_percent": -0.15120360962501553,
+            "speedup": 1.0015143258115387
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::ne()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "32x32x32 != 32x32x32",
+                "type": "3D != 3D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.0449845,
+            "candidate_median_ms": 0.0440275,
+            "change_percent": -2.1273994375840557,
+            "speedup": 1.021736414740787
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::ne()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "3x512x512 != 3x512x512",
+                "type": "3D != 3D (CHW)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.080303,
+            "candidate_median_ms": 0.07918649999999999,
+            "change_percent": -1.390359015229825,
+            "speedup": 1.0140996255674894
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::ne()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "4096x4096 != 4096x4096",
+                "type": "2D != 2D (large)"
+            },
+            "status": "similar",
+            "baseline_median_ms": 0.8316445,
+            "candidate_median_ms": 0.832309,
+            "change_percent": 0.07990192924981249,
+            "speedup": 0.9992016186296195
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::ne()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "512x512x3 != 512x512x3",
+                "type": "3D != 3D (HWC)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.081844,
+            "candidate_median_ms": 0.078668,
+            "change_percent": -3.880553247641853,
+            "speedup": 1.0403721970814053
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::ne()",
+            "metadata": {
+                "category": "comparison",
+                "shape": "65536 != 65536",
+                "type": "1D != 1D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.04431,
+            "candidate_median_ms": 0.042053,
+            "change_percent": -5.0936583164071365,
+            "speedup": 1.053670368344708
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::neg()",
+            "metadata": {
+                "category": "unary",
+                "shape": "1024x1024",
+                "type": "2D (medium)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.0793585,
+            "candidate_median_ms": 0.0778215,
+            "change_percent": -1.9367805591083458,
+            "speedup": 1.0197503260667038
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::neg()",
+            "metadata": {
+                "category": "unary",
+                "shape": "16777216",
+                "type": "1D (medium)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.5863575,
+            "candidate_median_ms": 0.5790185,
+            "change_percent": -1.2516255015071835,
+            "speedup": 1.0126748972614865
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::neg()",
+            "metadata": {
+                "category": "unary",
+                "shape": "256",
+                "type": "1D (tiny)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.051971500000000004,
+            "candidate_median_ms": 0.043719499999999994,
+            "change_percent": -15.87793309794793,
+            "speedup": 1.188748727684443
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::neg()",
+            "metadata": {
+                "category": "unary",
+                "shape": "3x512x512",
+                "type": "3D (CHW)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.07142899999999999,
+            "candidate_median_ms": 0.073188,
+            "change_percent": 2.462585224488668,
+            "speedup": 0.9759660053560691
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::neg()",
+            "metadata": {
+                "category": "unary",
+                "shape": "4096x4096",
+                "type": "2D (large)"
+            },
+            "status": "similar",
+            "baseline_median_ms": 0.58728,
+            "candidate_median_ms": 0.5849964999999999,
+            "change_percent": -0.3888264541615762,
+            "speedup": 1.0039034421573465
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::neg()",
+            "metadata": {
+                "category": "unary",
+                "shape": "512x512x3",
+                "type": "3D (HWC)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.0724505,
+            "candidate_median_ms": 0.0712865,
+            "change_percent": -1.606614171054718,
+            "speedup": 1.016328477341432
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::neg()",
+            "metadata": {
+                "category": "unary",
+                "shape": "65536",
+                "type": "1D (small)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.0462775,
+            "candidate_median_ms": 0.044759999999999994,
+            "change_percent": -3.2791313273189022,
+            "speedup": 1.0339030384271672
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::power()",
+            "metadata": {
+                "category": "broadcast",
+                "shape": "1024x1024 ** 1024x1",
+                "type": "2D ** 1D (broadcast dim1)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.094115,
+            "candidate_median_ms": 0.09512999999999999,
+            "change_percent": 1.0784678319077599,
+            "speedup": 0.9893303899926418
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::power()",
+            "metadata": {
+                "category": "broadcast",
+                "shape": "1024x1024 ** 1x1024",
+                "type": "2D ** 1D (broadcast dim0)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.094587,
+            "candidate_median_ms": 0.0950715,
+            "change_percent": 0.5122268387833411,
+            "speedup": 0.9949038355343084
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::power()",
+            "metadata": {
+                "category": "broadcast",
+                "shape": "1024x1024 ** scalar",
+                "type": "2D ** scalar"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.07831550000000001,
+            "candidate_median_ms": 0.079487,
+            "change_percent": 1.495872464582352,
+            "speedup": 0.9852617409136086
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::power()",
+            "metadata": {
+                "category": "broadcast",
+                "shape": "1024x3x512 ** 1x3x512",
+                "type": "3D ** 3D (broadcast)"
+            },
+            "status": "similar",
+            "baseline_median_ms": 0.1182595,
+            "candidate_median_ms": 0.118565,
+            "change_percent": 0.2583301975739794,
+            "speedup": 0.997423354278244
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::power()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "1024x1024",
+                "type": "2D ** 2D (medium square)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.0947695,
+            "candidate_median_ms": 0.0935565,
+            "change_percent": -1.2799476624863544,
+            "speedup": 1.0129654273086317
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::power()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "128x128x128",
+                "type": "3D ** 3D (medium cube)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.150449,
+            "candidate_median_ms": 0.14093299999999997,
+            "change_percent": -6.3250669662144805,
+            "speedup": 1.067521446361037
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::power()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "16777216",
+                "type": "1D ** 1D (medium)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.8268145,
+            "candidate_median_ms": 0.8365615,
+            "change_percent": 1.178861764035337,
+            "speedup": 0.9883487346716291
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::power()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "16x16",
+                "type": "2D ** 2D (tiny square)"
+            },
+            "status": "similar",
+            "baseline_median_ms": 0.044153,
+            "candidate_median_ms": 0.044036,
+            "change_percent": -0.26498765655787615,
+            "speedup": 1.0026569170678536
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::power()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "256",
+                "type": "1D ** 1D (tiny)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.0427855,
+            "candidate_median_ms": 0.0424745,
+            "change_percent": -0.7268817706933396,
+            "speedup": 1.0073220402829932
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::power()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "256x256",
+                "type": "2D ** 2D (small square)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.0455335,
+            "candidate_median_ms": 0.04511,
+            "change_percent": -0.9300844433219504,
+            "speedup": 1.0093881622700067
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::power()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "32768x32",
+                "type": "2D ** 2D (tall)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.102831,
+            "candidate_median_ms": 0.0936515,
+            "change_percent": -8.92678277951202,
+            "speedup": 1.0980176505448391
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::power()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "32x256x256x3",
+                "type": "4D ** 4D (medium batch)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.33575,
+            "candidate_median_ms": 0.3404295,
+            "change_percent": 1.3937453462397627,
+            "speedup": 0.9862541289753092
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::power()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "32x32768",
+                "type": "2D ** 2D (wide)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.095394,
+            "candidate_median_ms": 0.093377,
+            "change_percent": -2.1143887456234194,
+            "speedup": 1.0216006082868372
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::power()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "32x32x32",
+                "type": "3D ** 3D (small cube)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.045019500000000004,
+            "candidate_median_ms": 0.04284,
+            "change_percent": -4.841235464631994,
+            "speedup": 1.050875350140056
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::power()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "3x512x512",
+                "type": "3D ** 3D (CHW image)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.07878450000000001,
+            "candidate_median_ms": 0.0772015,
+            "change_percent": -2.0092784748269024,
+            "speedup": 1.0205047829381553
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::power()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "4096x4096",
+                "type": "2D ** 2D (large square)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.8491345,
+            "candidate_median_ms": 0.8347765,
+            "change_percent": -1.6908982028171018,
+            "speedup": 1.0171998133632176
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::power()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "512x512x3",
+                "type": "3D ** 3D (HWC image)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.0791675,
+            "candidate_median_ms": 0.07803199999999999,
+            "change_percent": -1.4343006915716823,
+            "speedup": 1.0145517223703098
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::power()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "65536",
+                "type": "1D ** 1D (small)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.043503,
+            "candidate_median_ms": 0.044279,
+            "change_percent": 1.7837850263200214,
+            "speedup": 0.9824747623026717
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::power()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "67108864",
+                "type": "1D ** 1D (large)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 3.1959365,
+            "candidate_median_ms": 3.2399325,
+            "change_percent": 1.376623096234857,
+            "speedup": 0.9864207047523367
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::power()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "8x64x64x3",
+                "type": "4D ** 4D (small batch)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.045388,
+            "candidate_median_ms": 0.042391,
+            "change_percent": -6.603066889926852,
+            "speedup": 1.070698969120804
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::round()",
+            "metadata": {
+                "category": "unary",
+                "shape": "1024x1024",
+                "type": "2D (medium)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.149316,
+            "candidate_median_ms": 0.141351,
+            "change_percent": -5.334324519810335,
+            "speedup": 1.0563490884394167
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::round()",
+            "metadata": {
+                "category": "unary",
+                "shape": "16777216",
+                "type": "1D (medium)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.6650715,
+            "candidate_median_ms": 0.649796,
+            "change_percent": -2.29682071777245,
+            "speedup": 1.0235081471723433
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::round()",
+            "metadata": {
+                "category": "unary",
+                "shape": "256",
+                "type": "1D (tiny)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.1038905,
+            "candidate_median_ms": 0.108669,
+            "change_percent": 4.599554338462135,
+            "speedup": 0.9560270178247706
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::round()",
+            "metadata": {
+                "category": "unary",
+                "shape": "3x512x512",
+                "type": "3D (CHW)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.1470215,
+            "candidate_median_ms": 0.1438955,
+            "change_percent": -2.12621963454324,
+            "speedup": 1.021724098390846
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::round()",
+            "metadata": {
+                "category": "unary",
+                "shape": "4096x4096",
+                "type": "2D (large)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.7019885,
+            "candidate_median_ms": 0.6980459999999999,
+            "change_percent": -0.5616188869190978,
+            "speedup": 1.0056479085905514
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::round()",
+            "metadata": {
+                "category": "unary",
+                "shape": "512x512x3",
+                "type": "3D (HWC)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.153234,
+            "candidate_median_ms": 0.147031,
+            "change_percent": -4.048057219677104,
+            "speedup": 1.0421883820418825
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::round()",
+            "metadata": {
+                "category": "unary",
+                "shape": "65536",
+                "type": "1D (small)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.10348099999999999,
+            "candidate_median_ms": 0.108573,
+            "change_percent": 4.92071008204406,
+            "speedup": 0.9531006788059645
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::subtract()",
+            "metadata": {
+                "category": "broadcast",
+                "shape": "1024x1024 - 1024x1",
+                "type": "2D - 1D (broadcast dim1)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.092724,
+            "candidate_median_ms": 0.0939515,
+            "change_percent": 1.3238212329062513,
+            "speedup": 0.9869347482477662
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::subtract()",
+            "metadata": {
+                "category": "broadcast",
+                "shape": "1024x1024 - 1x1024",
+                "type": "2D - 1D (broadcast dim0)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.09327450000000001,
+            "candidate_median_ms": 0.09571299999999999,
+            "change_percent": 2.6143265308310224,
+            "speedup": 0.9745227920972075
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::subtract()",
+            "metadata": {
+                "category": "broadcast",
+                "shape": "1024x1024 - scalar",
+                "type": "2D - scalar"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.07729,
+            "candidate_median_ms": 0.0789895,
+            "change_percent": 2.1988614309742616,
+            "speedup": 0.9784844821147114
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::subtract()",
+            "metadata": {
+                "category": "broadcast",
+                "shape": "1024x3x512 - 1x3x512",
+                "type": "3D - 3D (broadcast)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.1164405,
+            "candidate_median_ms": 0.1190075,
+            "change_percent": 2.2045594101708597,
+            "speedup": 0.9784299308867088
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::subtract()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "1024x1024",
+                "type": "2D - 2D (medium square)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.09443599999999999,
+            "candidate_median_ms": 0.09386900000000001,
+            "change_percent": -0.6004066245922998,
+            "speedup": 1.0060403328042269
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::subtract()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "128x128x128",
+                "type": "3D - 3D (medium cube)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.14193299999999998,
+            "candidate_median_ms": 0.138727,
+            "change_percent": -2.258812256487207,
+            "speedup": 1.0231101371758922
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::subtract()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "16777216",
+                "type": "1D - 1D (medium)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.8435485,
+            "candidate_median_ms": 0.8336509999999999,
+            "change_percent": -1.1733172425770555,
+            "speedup": 1.0118724742128302
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::subtract()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "16x16",
+                "type": "2D - 2D (tiny square)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.0445245,
+            "candidate_median_ms": 0.0440145,
+            "change_percent": -1.1454367819964366,
+            "speedup": 1.0115870906178646
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::subtract()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "256",
+                "type": "1D - 1D (tiny)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.043395500000000004,
+            "candidate_median_ms": 0.042473,
+            "change_percent": -2.1257964535493463,
+            "speedup": 1.0217196807383515
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::subtract()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "256x256",
+                "type": "2D - 2D (small square)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.04594,
+            "candidate_median_ms": 0.0443145,
+            "change_percent": -3.5383108402263863,
+            "speedup": 1.036680996062237
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::subtract()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "32768x32",
+                "type": "2D - 2D (tall)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.0945115,
+            "candidate_median_ms": 0.09153649999999999,
+            "change_percent": -3.147765086788386,
+            "speedup": 1.0325006964434953
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::subtract()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "32x256x256x3",
+                "type": "4D - 4D (medium batch)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.335043,
+            "candidate_median_ms": 0.338558,
+            "change_percent": 1.0491190682987097,
+            "speedup": 0.9896177316737456
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::subtract()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "32x32768",
+                "type": "2D - 2D (wide)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.0946295,
+            "candidate_median_ms": 0.0928875,
+            "change_percent": -1.840863578482405,
+            "speedup": 1.018753868927466
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::subtract()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "32x32x32",
+                "type": "3D - 3D (small cube)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.044761,
+            "candidate_median_ms": 0.041156,
+            "change_percent": -8.053886195572046,
+            "speedup": 1.0875935465059774
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::subtract()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "3x512x512",
+                "type": "3D - 3D (CHW image)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.07948849999999999,
+            "candidate_median_ms": 0.079062,
+            "change_percent": -0.53655560238273,
+            "speedup": 1.0053945005185803
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::subtract()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "4096x4096",
+                "type": "2D - 2D (large square)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.8298220000000001,
+            "candidate_median_ms": 0.824566,
+            "change_percent": -0.6333888472467636,
+            "speedup": 1.0063742623392185
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::subtract()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "512x512x3",
+                "type": "3D - 3D (HWC image)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.0793875,
+            "candidate_median_ms": 0.07705999999999999,
+            "change_percent": -2.931821760352713,
+            "speedup": 1.0302037373475215
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::subtract()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "65536",
+                "type": "1D - 1D (small)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.044356,
+            "candidate_median_ms": 0.0404095,
+            "change_percent": -8.897330688069255,
+            "speedup": 1.0976626783305905
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::subtract()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "67108864",
+                "type": "1D - 1D (large)"
+            },
+            "status": "slower",
+            "baseline_median_ms": 3.2125105,
+            "candidate_median_ms": 3.2901805,
+            "change_percent": 2.4177352883360195,
+            "speedup": 0.9763933923989885
+        },
+        {
+            "benchmark": "CudaArray Basic Operations Benchmark",
+            "name": "CudaArray::subtract()",
+            "metadata": {
+                "category": "elementwise",
+                "shape": "8x64x64x3",
+                "type": "4D - 4D (small batch)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.044593,
+            "candidate_median_ms": 0.0424845,
+            "change_percent": -4.72832058843316,
+            "speedup": 1.0496298650095917
+        },
+        {
+            "benchmark": "CudaArray Linear Algebra & Multi-Tensor Operations Benchmark",
+            "name": "CudaArray::matmul()",
+            "metadata": {
+                "shape": " 1024x768 x 768x512",
+                "type": " 2D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.237728,
+            "candidate_median_ms": 0.229023,
+            "change_percent": -3.6617478799300005,
+            "speedup": 1.03800928291045
+        },
+        {
+            "benchmark": "CudaArray Linear Algebra & Multi-Tensor Operations Benchmark",
+            "name": "CudaArray::matmul()",
+            "metadata": {
+                "shape": " 128x128 x 128x128",
+                "type": " 2D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.054081000000000004,
+            "candidate_median_ms": 0.06423000000000001,
+            "change_percent": 18.76629500194154,
+            "speedup": 0.8419897244278374
+        },
+        {
+            "benchmark": "CudaArray Linear Algebra & Multi-Tensor Operations Benchmark",
+            "name": "CudaArray::matmul()",
+            "metadata": {
+                "shape": " 1x1000000 x 1000000x1",
+                "type": " 2D (extreme)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.0816485,
+            "candidate_median_ms": 0.0758885,
+            "change_percent": -7.054630519850336,
+            "speedup": 1.0759008281887243
+        },
+        {
+            "benchmark": "CudaArray Linear Algebra & Multi-Tensor Operations Benchmark",
+            "name": "CudaArray::matmul()",
+            "metadata": {
+                "shape": " 1x512x512 x 64x512x512",
+                "type": " 3D (broadcast)"
+            },
+            "status": "faster",
+            "baseline_median_ms": 3.7557660000000004,
+            "candidate_median_ms": 3.5764905000000002,
+            "change_percent": -4.773340511629322,
+            "speedup": 1.0501260942815311
+        },
+        {
+            "benchmark": "CudaArray Linear Algebra & Multi-Tensor Operations Benchmark",
+            "name": "CudaArray::matmul()",
+            "metadata": {
+                "shape": " 32x256x256 x 32x256x256",
+                "type": " 3D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 1.299328,
+            "candidate_median_ms": 1.1987575000000001,
+            "change_percent": -7.740193392276614,
+            "speedup": 1.0838956169200191
+        },
+        {
+            "benchmark": "CudaArray Linear Algebra & Multi-Tensor Operations Benchmark",
+            "name": "CudaArray::matmul()",
+            "metadata": {
+                "shape": " 64x1024x512 x 64x512x256",
+                "type": " 3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 3.6973255,
+            "candidate_median_ms": 3.796733,
+            "change_percent": 2.688632634589525,
+            "speedup": 0.9738176216236432
+        },
+        {
+            "benchmark": "CudaArray Linear Algebra & Multi-Tensor Operations Benchmark",
+            "name": "CudaArray::matmul()",
+            "metadata": {
+                "shape": " 8x64x256x256 x 8x64x256x256",
+                "type": " 4D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 3.953952,
+            "candidate_median_ms": 4.0786985,
+            "change_percent": 3.154982660386359,
+            "speedup": 0.9694151210245132
+        },
+        {
+            "benchmark": "CudaArray Linear Algebra & Multi-Tensor Operations Benchmark",
+            "name": "CudaArray::matmul()",
+            "metadata": {
+                "shape": "16x16 x 16x16",
+                "type": " 2D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.040293499999999996,
+            "candidate_median_ms": 0.054441500000000004,
+            "change_percent": 35.112363036221744,
+            "speedup": 0.7401247210308312
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray import [PHP Array -> GPU]",
+            "metadata": {
+                "dtype": "float32",
+                "shape": "1048576"
+            },
+            "status": "faster",
+            "baseline_median_ms": 5.9334050000000005,
+            "candidate_median_ms": 5.826351,
+            "change_percent": -1.8042591058591253,
+            "speedup": 1.0183741075674981
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray import [PHP Array -> GPU]",
+            "metadata": {
+                "dtype": "float32",
+                "shape": "262144"
+            },
+            "status": "faster",
+            "baseline_median_ms": 2.474452,
+            "candidate_median_ms": 2.3145439999999997,
+            "change_percent": -6.462360150853611,
+            "speedup": 1.069088338782931
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray import [PHP Array -> GPU]",
+            "metadata": {
+                "dtype": "float32",
+                "shape": "4096"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.067556,
+            "candidate_median_ms": 0.07035849999999999,
+            "change_percent": 4.148410207827558,
+            "speedup": 0.9601682810179298
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray import [PHP Array -> GPU]",
+            "metadata": {
+                "dtype": "float32",
+                "shape": "65536"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.2480005,
+            "candidate_median_ms": 0.369517,
+            "change_percent": 48.99848992239934,
+            "speedup": 0.671147741511216
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::concat()",
+            "metadata": {
+                "axis": "0",
+                "shape": "16x16"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.044143,
+            "candidate_median_ms": 0.0417295,
+            "change_percent": -5.467458034116392,
+            "speedup": 1.057836782132544
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::concat()",
+            "metadata": {
+                "axis": "0",
+                "shape": "512x512"
+            },
+            "status": "similar",
+            "baseline_median_ms": 0.0601335,
+            "candidate_median_ms": 0.060220499999999996,
+            "change_percent": 0.14467809124697018,
+            "speedup": 0.9985553092385484
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::concat()",
+            "metadata": {
+                "axis": "0",
+                "shape": "64x64"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.044311500000000004,
+            "candidate_median_ms": 0.041938,
+            "change_percent": -5.356397323493902,
+            "speedup": 1.0565954504268205
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::concat()",
+            "metadata": {
+                "axis": "1",
+                "shape": "16x16"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.046248,
+            "candidate_median_ms": 0.0419755,
+            "change_percent": -9.2382373291818,
+            "speedup": 1.1017855653893343
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::concat()",
+            "metadata": {
+                "axis": "1",
+                "shape": "512x512"
+            },
+            "status": "similar",
+            "baseline_median_ms": 0.060156,
+            "candidate_median_ms": 0.0603415,
+            "change_percent": 0.30836491788017517,
+            "speedup": 0.9969258304815094
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::concat()",
+            "metadata": {
+                "axis": "1",
+                "shape": "64x64"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.044276499999999996,
+            "candidate_median_ms": 0.042652999999999996,
+            "change_percent": -3.6667306584757156,
+            "speedup": 1.038062973296134
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::fromBuffer() [packed bytes -> GPU]",
+            "metadata": {
+                "dtype": "float32",
+                "shape": "1048576"
+            },
+            "status": "faster",
+            "baseline_median_ms": 1.029669,
+            "candidate_median_ms": 1.019843,
+            "change_percent": -0.9542872515342203,
+            "speedup": 1.0096348163393776
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::fromBuffer() [packed bytes -> GPU]",
+            "metadata": {
+                "dtype": "float32",
+                "shape": "262144"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.566771,
+            "candidate_median_ms": 0.554696,
+            "change_percent": -2.1304900921183436,
+            "speedup": 1.0217686805024735
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::fromBuffer() [packed bytes -> GPU]",
+            "metadata": {
+                "dtype": "float32",
+                "shape": "4096"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.0711155,
+            "candidate_median_ms": 0.069544,
+            "change_percent": -2.2097854898018063,
+            "speedup": 1.0225972046474174
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::fromBuffer() [packed bytes -> GPU]",
+            "metadata": {
+                "dtype": "float32",
+                "shape": "65536"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.114156,
+            "candidate_median_ms": 0.1313115,
+            "change_percent": 15.02811941553664,
+            "speedup": 0.869352646188643
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::fromFile() [raw file -> GPU]",
+            "metadata": {
+                "dtype": "float32",
+                "shape": "1048576"
+            },
+            "status": "faster",
+            "baseline_median_ms": 3.7325945000000003,
+            "candidate_median_ms": 3.218017,
+            "change_percent": -13.786054177596846,
+            "speedup": 1.1599051527695472
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::fromFile() [raw file -> GPU]",
+            "metadata": {
+                "dtype": "float32",
+                "shape": "262144"
+            },
+            "status": "faster",
+            "baseline_median_ms": 1.6408185,
+            "candidate_median_ms": 1.5325555,
+            "change_percent": -6.598109419170981,
+            "speedup": 1.0706421398768267
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::fromFile() [raw file -> GPU]",
+            "metadata": {
+                "dtype": "float32",
+                "shape": "4096"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.069991,
+            "candidate_median_ms": 0.0556245,
+            "change_percent": -20.52621051278021,
+            "speedup": 1.2582764788896978
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::fromFile() [raw file -> GPU]",
+            "metadata": {
+                "dtype": "float32",
+                "shape": "65536"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.1137235,
+            "candidate_median_ms": 0.106957,
+            "change_percent": -5.949957572533389,
+            "speedup": 1.063263741503595
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::full()",
+            "metadata": {
+                "shape": "1024x128x64"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.170012,
+            "candidate_median_ms": 0.163579,
+            "change_percent": -3.7838505517257572,
+            "speedup": 1.0393265639232419
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::full()",
+            "metadata": {
+                "shape": "128x128x128"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.064746,
+            "candidate_median_ms": 0.066831,
+            "change_percent": 3.220276156055978,
+            "speedup": 0.9688019033083449
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::full()",
+            "metadata": {
+                "shape": "16x16x16"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.033058000000000004,
+            "candidate_median_ms": 0.0340395,
+            "change_percent": 2.969024139391361,
+            "speedup": 0.9711658514373009
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::full()",
+            "metadata": {
+                "shape": "256x256x256"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.2904765,
+            "candidate_median_ms": 0.2864465,
+            "change_percent": -1.3873755708293212,
+            "speedup": 1.014068944811684
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::full()",
+            "metadata": {
+                "shape": "512x256x128"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.29322550000000003,
+            "candidate_median_ms": 0.291344,
+            "change_percent": -0.6416563361645,
+            "speedup": 1.0064580015377012
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::full()",
+            "metadata": {
+                "shape": "64x64x64"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.037181,
+            "candidate_median_ms": 0.04043,
+            "change_percent": 8.738334095371297,
+            "speedup": 0.9196388820183032
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::ones()",
+            "metadata": {
+                "shape": "1024x128x64"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.158413,
+            "candidate_median_ms": 0.1634245,
+            "change_percent": 3.1635661214673054,
+            "speedup": 0.9693344633148641
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::ones()",
+            "metadata": {
+                "shape": "128x128x128"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.0654295,
+            "candidate_median_ms": 0.068399,
+            "change_percent": 4.538472707265071,
+            "speedup": 0.9565856225968216
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::ones()",
+            "metadata": {
+                "shape": "16x16x16"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.033382499999999996,
+            "candidate_median_ms": 0.033929,
+            "change_percent": 1.6370852991837201,
+            "speedup": 0.9838928350378731
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::ones()",
+            "metadata": {
+                "shape": "256x256x256"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.2873175,
+            "candidate_median_ms": 0.29943699999999995,
+            "change_percent": 4.218155872858405,
+            "speedup": 0.9595257099156085
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::ones()",
+            "metadata": {
+                "shape": "512x256x128"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.286837,
+            "candidate_median_ms": 0.2901995,
+            "change_percent": 1.172268570651621,
+            "speedup": 0.9884131433720595
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::ones()",
+            "metadata": {
+                "shape": "64x64x64"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.033704,
+            "candidate_median_ms": 0.038371,
+            "change_percent": 13.847021125089023,
+            "speedup": 0.8783716869510827
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::rand()",
+            "metadata": {
+                "shape": "128x128x128"
+            },
+            "status": "similar",
+            "baseline_median_ms": 0.7448985,
+            "candidate_median_ms": 0.744266,
+            "change_percent": -0.08491089725647666,
+            "speedup": 1.000849830571328
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::rand()",
+            "metadata": {
+                "shape": "16x16x16"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.6038275,
+            "candidate_median_ms": 0.546109,
+            "change_percent": -9.558772993942808,
+            "speedup": 1.1056904390881674
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::rand()",
+            "metadata": {
+                "shape": "64x64x64"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.561591,
+            "candidate_median_ms": 0.567123,
+            "change_percent": 0.9850585212370021,
+            "speedup": 0.990245502298443
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::toArray() [GPU -> PHP Array]",
+            "metadata": {
+                "shape": "1024x512",
+                "type": "2D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 3.198512,
+            "candidate_median_ms": 3.39833,
+            "change_percent": 6.247217456117096,
+            "speedup": 0.9412011193733393
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::toArray() [GPU -> PHP Array]",
+            "metadata": {
+                "shape": "16x16x16",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.049452499999999996,
+            "candidate_median_ms": 0.067333,
+            "change_percent": 36.156918254891075,
+            "speedup": 0.7344467051817087
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::toArray() [GPU -> PHP Array]",
+            "metadata": {
+                "shape": "180000",
+                "type": "1D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 1.172159,
+            "candidate_median_ms": 1.2367344999999998,
+            "change_percent": 5.509107552814925,
+            "speedup": 0.9477854786132351
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::toArray() [GPU -> PHP Array]",
+            "metadata": {
+                "shape": "1x180000",
+                "type": "2D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 1.2290524999999999,
+            "candidate_median_ms": 1.2023545,
+            "change_percent": -2.172242438789221,
+            "speedup": 1.0222047657325688
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::toArray() [GPU -> PHP Array]",
+            "metadata": {
+                "shape": "255x255x64",
+                "type": "3D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 317.204576,
+            "candidate_median_ms": 312.218299,
+            "change_percent": -1.5719435901202048,
+            "speedup": 1.0159704828831957
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::toArray() [GPU -> PHP Array]",
+            "metadata": {
+                "shape": "512x512",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 1.5139855,
+            "candidate_median_ms": 1.568501,
+            "change_percent": 3.6007940630871262,
+            "speedup": 0.9652435669470406
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::toArray() [GPU -> PHP Array]",
+            "metadata": {
+                "shape": "64x64x64",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 1.7433230000000002,
+            "candidate_median_ms": 1.790603,
+            "change_percent": 2.712061964420808,
+            "speedup": 0.9735954871068574
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::toHost() [GPU -> ContiguousArray]",
+            "metadata": {
+                "shape": "1024x512",
+                "type": "2D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.37912250000000003,
+            "candidate_median_ms": 0.392353,
+            "change_percent": 3.4897691379435347,
+            "speedup": 0.9662790905128801
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::toHost() [GPU -> ContiguousArray]",
+            "metadata": {
+                "shape": "16x16x16",
+                "type": "3D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.0245325,
+            "candidate_median_ms": 0.023710000000000002,
+            "change_percent": -3.3526954040558317,
+            "speedup": 1.0346900042176295
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::toHost() [GPU -> ContiguousArray]",
+            "metadata": {
+                "shape": "180000",
+                "type": "1D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.131682,
+            "candidate_median_ms": 0.13892949999999998,
+            "change_percent": 5.503789432116759,
+            "speedup": 0.9478332535566601
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::toHost() [GPU -> ContiguousArray]",
+            "metadata": {
+                "shape": "1x180000",
+                "type": "2D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.1348295,
+            "candidate_median_ms": 0.144658,
+            "change_percent": 7.289576835929836,
+            "speedup": 0.932056989589238
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::toHost() [GPU -> ContiguousArray]",
+            "metadata": {
+                "shape": "255x255x64",
+                "type": "3D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 23.6689045,
+            "candidate_median_ms": 23.501735,
+            "change_percent": -0.706283216445442,
+            "speedup": 1.0071130705881928
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::toHost() [GPU -> ContiguousArray]",
+            "metadata": {
+                "shape": "512x512",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.196071,
+            "candidate_median_ms": 0.21665099999999998,
+            "change_percent": 10.496197805896838,
+            "speedup": 0.9050085160003878
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::toHost() [GPU -> ContiguousArray]",
+            "metadata": {
+                "shape": "64x64x64",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.1887105,
+            "candidate_median_ms": 0.200785,
+            "change_percent": 6.398425100882033,
+            "speedup": 0.939863535622681
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::zeros()",
+            "metadata": {
+                "shape": "1024x128x64"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.161103,
+            "candidate_median_ms": 0.16442299999999999,
+            "change_percent": 2.060793405461096,
+            "speedup": 0.9798081776880364
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::zeros()",
+            "metadata": {
+                "shape": "128x128x128"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.06444050000000001,
+            "candidate_median_ms": 0.06656999999999999,
+            "change_percent": 3.3045988159619775,
+            "speedup": 0.968011116118372
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::zeros()",
+            "metadata": {
+                "shape": "16x16x16"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.032350500000000004,
+            "candidate_median_ms": 0.034159999999999996,
+            "change_percent": 5.593422049118225,
+            "speedup": 0.9470286885245904
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::zeros()",
+            "metadata": {
+                "shape": "256x256x256"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.2888115,
+            "candidate_median_ms": 0.2915195,
+            "change_percent": 0.9376357935885477,
+            "speedup": 0.9907107414769852
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::zeros()",
+            "metadata": {
+                "shape": "512x256x128"
+            },
+            "status": "similar",
+            "baseline_median_ms": 0.28997649999999997,
+            "candidate_median_ms": 0.2910105,
+            "change_percent": 0.3565806194640031,
+            "speedup": 0.9964468636011414
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "CudaArray::zeros()",
+            "metadata": {
+                "shape": "64x64x64"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.036921499999999996,
+            "candidate_median_ms": 0.038724999999999996,
+            "change_percent": 4.8846877835407545,
+            "speedup": 0.9534280180761782
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "HostArray::toGpu() [pinned host storage -> GPU]",
+            "metadata": {
+                "dtype": "float32",
+                "shape": "1048576"
+            },
+            "status": "slower",
+            "baseline_median_ms": 1.0169895000000002,
+            "candidate_median_ms": 1.030202,
+            "change_percent": 1.2991776217945068,
+            "speedup": 0.9871748453215973
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "HostArray::toGpu() [pinned host storage -> GPU]",
+            "metadata": {
+                "dtype": "float32",
+                "shape": "262144"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.27361199999999997,
+            "candidate_median_ms": 0.288265,
+            "change_percent": 5.355393769279136,
+            "speedup": 0.9491683000017345
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "HostArray::toGpu() [pinned host storage -> GPU]",
+            "metadata": {
+                "dtype": "float32",
+                "shape": "4096"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.091913,
+            "candidate_median_ms": 0.0874655,
+            "change_percent": -4.838814966326845,
+            "speedup": 1.050848620313152
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "HostArray::toGpu() [pinned host storage -> GPU]",
+            "metadata": {
+                "dtype": "float32",
+                "shape": "65536"
+            },
+            "status": "similar",
+            "baseline_median_ms": 0.1232225,
+            "candidate_median_ms": 0.12304899999999999,
+            "change_percent": -0.14080220738907828,
+            "speedup": 1.001410007395428
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "HostArray::toGpu() [reused host storage -> GPU]",
+            "metadata": {
+                "dtype": "float32",
+                "shape": "1048576"
+            },
+            "status": "slower",
+            "baseline_median_ms": 1.0136655,
+            "candidate_median_ms": 1.0316825,
+            "change_percent": 1.7774107928108382,
+            "speedup": 0.9825362938694803
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "HostArray::toGpu() [reused host storage -> GPU]",
+            "metadata": {
+                "dtype": "float32",
+                "shape": "262144"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.29069900000000004,
+            "candidate_median_ms": 0.2502705,
+            "change_percent": -13.907340582526952,
+            "speedup": 1.1615392145698356
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "HostArray::toGpu() [reused host storage -> GPU]",
+            "metadata": {
+                "dtype": "float32",
+                "shape": "4096"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.075404,
+            "candidate_median_ms": 0.0706885,
+            "change_percent": -6.253647021378173,
+            "speedup": 1.0667081632797413
+        },
+        {
+            "benchmark": "CudaArray Memory Copy Benchmark",
+            "name": "HostArray::toGpu() [reused host storage -> GPU]",
+            "metadata": {
+                "dtype": "float32",
+                "shape": "65536"
+            },
+            "status": "similar",
+            "baseline_median_ms": 0.1147965,
+            "candidate_median_ms": 0.1145405,
+            "change_percent": -0.22300331456097736,
+            "speedup": 1.0022350173082883
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::argMax()",
+            "metadata": {
+                "axis": "-1",
+                "shape": "1024x512x512",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 92.84151700000001,
+            "candidate_median_ms": 93.339436,
+            "change_percent": 0.5363107110798243,
+            "speedup": 0.9946655023713664
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::argMax()",
+            "metadata": {
+                "axis": "-1",
+                "shape": "16x16x16",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.0691055,
+            "candidate_median_ms": 0.07173299999999999,
+            "change_percent": 3.802157570670918,
+            "speedup": 0.9633711123192953
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::argMax()",
+            "metadata": {
+                "axis": "-1",
+                "shape": "512x512x64",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 11.858129,
+            "candidate_median_ms": 11.978628,
+            "change_percent": 1.01617211281814,
+            "speedup": 0.9899405006984104
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::argMax()",
+            "metadata": {
+                "axis": "-1",
+                "shape": "64x64x64",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.1624985,
+            "candidate_median_ms": 0.1668855,
+            "change_percent": 2.6997172281590305,
+            "speedup": 0.9737125154671916
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::argMax()",
+            "metadata": {
+                "axis": "0",
+                "shape": "1024x512x512",
+                "type": "3D"
+            },
+            "status": "similar",
+            "baseline_median_ms": 23.6904375,
+            "candidate_median_ms": 23.728164,
+            "change_percent": 0.15924779776649545,
+            "speedup": 0.9984100539763634
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::argMax()",
+            "metadata": {
+                "axis": "0",
+                "shape": "16x16x16",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.079866,
+            "candidate_median_ms": 0.082705,
+            "change_percent": 3.554704129416766,
+            "speedup": 0.9656731757451182
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::argMax()",
+            "metadata": {
+                "axis": "0",
+                "shape": "512x512x64",
+                "type": "3D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 1.595969,
+            "candidate_median_ms": 1.584281,
+            "change_percent": -0.7323450518149113,
+            "speedup": 1.0073774791214436
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::argMax()",
+            "metadata": {
+                "axis": "0",
+                "shape": "64x64x64",
+                "type": "3D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.198288,
+            "candidate_median_ms": 0.19099149999999998,
+            "change_percent": -3.679748648430572,
+            "speedup": 1.0382032708261886
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::argMax()",
+            "metadata": {
+                "axis": "1",
+                "shape": "1024x512x512",
+                "type": "3D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 11.895358,
+            "candidate_median_ms": 11.832009500000002,
+            "change_percent": -0.532548074635486,
+            "speedup": 1.0053539933347753
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::argMax()",
+            "metadata": {
+                "axis": "1",
+                "shape": "16x16x16",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.0722435,
+            "candidate_median_ms": 0.0740075,
+            "change_percent": 2.441742163654864,
+            "speedup": 0.9761645779144006
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::argMax()",
+            "metadata": {
+                "axis": "1",
+                "shape": "512x512x64",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 1.34429,
+            "candidate_median_ms": 1.376158,
+            "change_percent": 2.3706194347945764,
+            "speedup": 0.9768427753208571
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::argMax()",
+            "metadata": {
+                "axis": "1",
+                "shape": "64x64x64",
+                "type": "3D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.16981449999999998,
+            "candidate_median_ms": 0.15544249999999998,
+            "change_percent": -8.463352658341895,
+            "speedup": 1.0924586261800988
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::argMax()",
+            "metadata": {
+                "axis": "2",
+                "shape": "1024x512x512",
+                "type": "3D"
+            },
+            "status": "similar",
+            "baseline_median_ms": 8.662178,
+            "candidate_median_ms": 8.6461965,
+            "change_percent": -0.1844974785787193,
+            "speedup": 1.0018483850095241
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::argMax()",
+            "metadata": {
+                "axis": "2",
+                "shape": "16x16x16",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.074033,
+            "candidate_median_ms": 0.12305050000000001,
+            "change_percent": 66.21033863277188,
+            "speedup": 0.6016472911528193
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::argMax()",
+            "metadata": {
+                "axis": "2",
+                "shape": "512x512x64",
+                "type": "3D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 6.7664495,
+            "candidate_median_ms": 6.656185,
+            "change_percent": -1.6295769295256015,
+            "speedup": 1.0165657204539837
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::argMax()",
+            "metadata": {
+                "axis": "2",
+                "shape": "64x64x64",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.1568365,
+            "candidate_median_ms": 0.208544,
+            "change_percent": 32.96904738374041,
+            "speedup": 0.7520547222648457
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::argMin()",
+            "metadata": {
+                "axis": "-1",
+                "shape": "1024x512x512",
+                "type": "3D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 94.021476,
+            "candidate_median_ms": 93.4467855,
+            "change_percent": -0.6112332250559463,
+            "speedup": 1.0061499226209338
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::argMin()",
+            "metadata": {
+                "axis": "-1",
+                "shape": "16x16x16",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.071764,
+            "candidate_median_ms": 0.08143349999999999,
+            "change_percent": 13.474025974025972,
+            "speedup": 0.8812589413447782
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::argMin()",
+            "metadata": {
+                "axis": "-1",
+                "shape": "512x512x64",
+                "type": "3D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 12.188358000000001,
+            "candidate_median_ms": 11.8632265,
+            "change_percent": -2.6675578449533663,
+            "speedup": 1.02740666714911
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::argMin()",
+            "metadata": {
+                "axis": "-1",
+                "shape": "64x64x64",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.1677715,
+            "candidate_median_ms": 0.17152699999999999,
+            "change_percent": 2.238461240437139,
+            "speedup": 0.9781054877657746
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::argMin()",
+            "metadata": {
+                "axis": "0",
+                "shape": "1024x512x512",
+                "type": "3D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 23.923417,
+            "candidate_median_ms": 23.607250999999998,
+            "change_percent": -1.3215754254503134,
+            "speedup": 1.0133927495412323
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::argMin()",
+            "metadata": {
+                "axis": "0",
+                "shape": "16x16x16",
+                "type": "3D"
+            },
+            "status": "similar",
+            "baseline_median_ms": 0.0820085,
+            "candidate_median_ms": 0.0823555,
+            "change_percent": 0.42312687099507984,
+            "speedup": 0.9957865594890445
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::argMin()",
+            "metadata": {
+                "axis": "0",
+                "shape": "512x512x64",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 1.6056715000000001,
+            "candidate_median_ms": 1.624717,
+            "change_percent": 1.1861392570024332,
+            "speedup": 0.988277650815496
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::argMin()",
+            "metadata": {
+                "axis": "0",
+                "shape": "64x64x64",
+                "type": "3D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.1988455,
+            "candidate_median_ms": 0.195347,
+            "change_percent": -1.7594061721286203,
+            "speedup": 1.0179091565265912
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::argMin()",
+            "metadata": {
+                "axis": "1",
+                "shape": "1024x512x512",
+                "type": "3D"
+            },
+            "status": "similar",
+            "baseline_median_ms": 11.9010995,
+            "candidate_median_ms": 11.908059,
+            "change_percent": 0.058477790224330924,
+            "speedup": 0.9994155638630948
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::argMin()",
+            "metadata": {
+                "axis": "1",
+                "shape": "16x16x16",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.075539,
+            "candidate_median_ms": 0.07615849999999999,
+            "change_percent": 0.8201061703226082,
+            "speedup": 0.991865648614403
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::argMin()",
+            "metadata": {
+                "axis": "1",
+                "shape": "512x512x64",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 1.3068935000000002,
+            "candidate_median_ms": 1.3257569999999999,
+            "change_percent": 1.4433846369271635,
+            "speedup": 0.9857715252493483
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::argMin()",
+            "metadata": {
+                "axis": "1",
+                "shape": "64x64x64",
+                "type": "3D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.199017,
+            "candidate_median_ms": 0.17427150000000002,
+            "change_percent": -12.433862433862423,
+            "speedup": 1.1419939577039273
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::argMin()",
+            "metadata": {
+                "axis": "2",
+                "shape": "1024x512x512",
+                "type": "3D"
+            },
+            "status": "similar",
+            "baseline_median_ms": 8.6857315,
+            "candidate_median_ms": 8.681883,
+            "change_percent": -0.04430830034292614,
+            "speedup": 1.000443279413003
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::argMin()",
+            "metadata": {
+                "axis": "2",
+                "shape": "16x16x16",
+                "type": "3D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.065718,
+            "candidate_median_ms": 0.056977,
+            "change_percent": -13.300769956480718,
+            "speedup": 1.1534127805956789
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::argMin()",
+            "metadata": {
+                "axis": "2",
+                "shape": "512x512x64",
+                "type": "3D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 6.5921015,
+            "candidate_median_ms": 6.549015,
+            "change_percent": -0.65360795794786,
+            "speedup": 1.0065790809762996
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::argMin()",
+            "metadata": {
+                "axis": "2",
+                "shape": "64x64x64",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.1389535,
+            "candidate_median_ms": 0.14425749999999998,
+            "change_percent": 3.81710428308749,
+            "speedup": 0.9632324142592241
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::min()",
+            "metadata": {
+                "axis": "-1",
+                "shape": "1024x512x512",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 27.9652495,
+            "candidate_median_ms": 31.5290915,
+            "change_percent": 12.7438233654951,
+            "speedup": 0.886966549607051
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::min()",
+            "metadata": {
+                "axis": "-1",
+                "shape": "16x16x16",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.173374,
+            "candidate_median_ms": 1.083271,
+            "change_percent": 524.8174466759722,
+            "speedup": 0.16004674730515261
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::min()",
+            "metadata": {
+                "axis": "-1",
+                "shape": "512x512x64",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 1.9907135,
+            "candidate_median_ms": 3.3057030000000003,
+            "change_percent": 66.05619040610316,
+            "speedup": 0.6022057940474386
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::min()",
+            "metadata": {
+                "axis": "-1",
+                "shape": "64x64x64",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.2614655,
+            "candidate_median_ms": 3.4689275,
+            "change_percent": 1226.7247495367455,
+            "speedup": 0.07537358448684789
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::min()",
+            "metadata": {
+                "axis": "0",
+                "shape": "1024x512x512",
+                "type": "3D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 27.6365815,
+            "candidate_median_ms": 27.253263500000003,
+            "change_percent": -1.386994987060884,
+            "speedup": 1.0140650311475539
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::min()",
+            "metadata": {
+                "axis": "0",
+                "shape": "16x16x16",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.083068,
+            "candidate_median_ms": 0.0920095,
+            "change_percent": 10.764072807820089,
+            "speedup": 0.9028198175188432
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::min()",
+            "metadata": {
+                "axis": "0",
+                "shape": "512x512x64",
+                "type": "3D"
+            },
+            "status": "similar",
+            "baseline_median_ms": 1.8949065,
+            "candidate_median_ms": 1.8871134999999999,
+            "change_percent": -0.4112603972808242,
+            "speedup": 1.004129587330068
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::min()",
+            "metadata": {
+                "axis": "0",
+                "shape": "64x64x64",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.2355135,
+            "candidate_median_ms": 0.24959399999999998,
+            "change_percent": 5.978638167238819,
+            "speedup": 0.9435863842880838
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::min()",
+            "metadata": {
+                "axis": "1",
+                "shape": "1024x512x512",
+                "type": "3D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 14.261837,
+            "candidate_median_ms": 14.063174,
+            "change_percent": -1.3929692226884924,
+            "speedup": 1.0141264696006749
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::min()",
+            "metadata": {
+                "axis": "1",
+                "shape": "16x16x16",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.08010400000000001,
+            "candidate_median_ms": 0.082216,
+            "change_percent": 2.636572455807436,
+            "speedup": 0.9743115695241803
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::min()",
+            "metadata": {
+                "axis": "1",
+                "shape": "512x512x64",
+                "type": "3D"
+            },
+            "status": "similar",
+            "baseline_median_ms": 1.6466805,
+            "candidate_median_ms": 1.644366,
+            "change_percent": -0.1405554993819382,
+            "speedup": 1.0014075333593615
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::min()",
+            "metadata": {
+                "axis": "1",
+                "shape": "64x64x64",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.2134075,
+            "candidate_median_ms": 0.2156585,
+            "change_percent": 1.0547895458219616,
+            "speedup": 0.9895622013507467
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::min()",
+            "metadata": {
+                "axis": "2",
+                "shape": "1024x512x512",
+                "type": "3D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 10.604026000000001,
+            "candidate_median_ms": 10.300601,
+            "change_percent": -2.861413202872199,
+            "speedup": 1.029457019061315
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::min()",
+            "metadata": {
+                "axis": "2",
+                "shape": "16x16x16",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.07388800000000001,
+            "candidate_median_ms": 0.0749985,
+            "change_percent": 1.5029504114335024,
+            "speedup": 0.9851930371940774
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::min()",
+            "metadata": {
+                "axis": "2",
+                "shape": "512x512x64",
+                "type": "3D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 8.997940499999999,
+            "candidate_median_ms": 8.7892175,
+            "change_percent": -2.319675263467225,
+            "speedup": 1.0237476203086338
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::min()",
+            "metadata": {
+                "axis": "2",
+                "shape": "64x64x64",
+                "type": "3D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.1927705,
+            "candidate_median_ms": 0.1881335,
+            "change_percent": -2.4054510415234707,
+            "speedup": 1.024647391347102
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::prod()",
+            "metadata": {
+                "axis": "-1",
+                "shape": "1024x512x512",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 27.6621465,
+            "candidate_median_ms": 30.1285935,
+            "change_percent": 8.916325419648842,
+            "speedup": 0.9181360059174352
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::prod()",
+            "metadata": {
+                "axis": "-1",
+                "shape": "16x16x16",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.138677,
+            "candidate_median_ms": 0.195053,
+            "change_percent": 40.6527398198692,
+            "speedup": 0.7109708643291823
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::prod()",
+            "metadata": {
+                "axis": "-1",
+                "shape": "512x512x64",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 1.9383675,
+            "candidate_median_ms": 3.984059,
+            "change_percent": 105.53682415744174,
+            "speedup": 0.48653082195820896
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::prod()",
+            "metadata": {
+                "axis": "-1",
+                "shape": "64x64x64",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.2575185,
+            "candidate_median_ms": 2.536068,
+            "change_percent": 884.8100233575454,
+            "speedup": 0.10154242709580341
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::prod()",
+            "metadata": {
+                "axis": "0",
+                "shape": "1024x512x512",
+                "type": "3D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 27.34135,
+            "candidate_median_ms": 27.041929,
+            "change_percent": -1.0951214918063623,
+            "speedup": 1.01107247193793
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::prod()",
+            "metadata": {
+                "axis": "0",
+                "shape": "16x16x16",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.08218349999999999,
+            "candidate_median_ms": 0.083707,
+            "change_percent": 1.8537784348439907,
+            "speedup": 0.9817996105463103
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::prod()",
+            "metadata": {
+                "axis": "0",
+                "shape": "512x512x64",
+                "type": "3D"
+            },
+            "status": "similar",
+            "baseline_median_ms": 1.9129825,
+            "candidate_median_ms": 1.9061555000000001,
+            "change_percent": -0.3568772845543499,
+            "speedup": 1.0035815546003461
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::prod()",
+            "metadata": {
+                "axis": "0",
+                "shape": "64x64x64",
+                "type": "3D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.219138,
+            "candidate_median_ms": 0.20575300000000002,
+            "change_percent": -6.108023254752704,
+            "speedup": 1.065053729471745
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::prod()",
+            "metadata": {
+                "axis": "1",
+                "shape": "1024x512x512",
+                "type": "3D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 14.147997499999999,
+            "candidate_median_ms": 13.961441,
+            "change_percent": -1.3186071032313813,
+            "speedup": 1.0133622668319122
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::prod()",
+            "metadata": {
+                "axis": "1",
+                "shape": "16x16x16",
+                "type": "3D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.094501,
+            "candidate_median_ms": 0.0746415,
+            "change_percent": -21.01512153310547,
+            "speedup": 1.2660651246290602
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::prod()",
+            "metadata": {
+                "axis": "1",
+                "shape": "512x512x64",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 1.6530005,
+            "candidate_median_ms": 1.813949,
+            "change_percent": 9.736748415986561,
+            "speedup": 0.9112717612237169
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::prod()",
+            "metadata": {
+                "axis": "1",
+                "shape": "64x64x64",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.2031235,
+            "candidate_median_ms": 0.20591500000000001,
+            "change_percent": 1.3742870716583764,
+            "speedup": 0.9864434353981012
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::prod()",
+            "metadata": {
+                "axis": "2",
+                "shape": "1024x512x512",
+                "type": "3D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 10.3770685,
+            "candidate_median_ms": 10.180453499999999,
+            "change_percent": -1.894706583077883,
+            "speedup": 1.0193129903299496
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::prod()",
+            "metadata": {
+                "axis": "2",
+                "shape": "16x16x16",
+                "type": "3D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.073172,
+            "candidate_median_ms": 0.0701325,
+            "change_percent": -4.153911332203576,
+            "speedup": 1.04333939329127
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::prod()",
+            "metadata": {
+                "axis": "2",
+                "shape": "512x512x64",
+                "type": "3D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 8.9760855,
+            "candidate_median_ms": 8.827311,
+            "change_percent": -1.657454131870736,
+            "speedup": 1.0168538867612118
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::prod()",
+            "metadata": {
+                "axis": "2",
+                "shape": "64x64x64",
+                "type": "3D"
+            },
+            "status": "similar",
+            "baseline_median_ms": 0.1891635,
+            "candidate_median_ms": 0.189419,
+            "change_percent": 0.13506834035106763,
+            "speedup": 0.9986511384813562
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::sum()",
+            "metadata": {
+                "axis": "-1",
+                "shape": "1024x512x512",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 27.4884815,
+            "candidate_median_ms": 27.817387,
+            "change_percent": 1.1965211683300918,
+            "speedup": 0.9881762618465926
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::sum()",
+            "metadata": {
+                "axis": "-1",
+                "shape": "16x16x16",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.1981175,
+            "candidate_median_ms": 0.7914555,
+            "change_percent": 299.4879301424659,
+            "speedup": 0.2503204538979134
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::sum()",
+            "metadata": {
+                "axis": "-1",
+                "shape": "512x512x64",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 2.0246785,
+            "candidate_median_ms": 2.9306065,
+            "change_percent": 44.744289031567256,
+            "speedup": 0.6908735444352558
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::sum()",
+            "metadata": {
+                "axis": "-1",
+                "shape": "64x64x64",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.2986535,
+            "candidate_median_ms": 0.693809,
+            "change_percent": 132.31236198470802,
+            "speedup": 0.43045492347317493
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::sum()",
+            "metadata": {
+                "axis": "0",
+                "shape": "1024x512x512",
+                "type": "3D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 27.065883,
+            "candidate_median_ms": 26.7832735,
+            "change_percent": -1.044154000074557,
+            "speedup": 1.0105517161671818
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::sum()",
+            "metadata": {
+                "axis": "0",
+                "shape": "16x16x16",
+                "type": "3D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.0828575,
+            "candidate_median_ms": 0.0795235,
+            "change_percent": -4.023775759587248,
+            "speedup": 1.0419247140782284
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::sum()",
+            "metadata": {
+                "axis": "0",
+                "shape": "512x512x64",
+                "type": "3D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 1.886204,
+            "candidate_median_ms": 1.8696115,
+            "change_percent": -0.8796768536171066,
+            "speedup": 1.0088748384356858
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::sum()",
+            "metadata": {
+                "axis": "0",
+                "shape": "64x64x64",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.220453,
+            "candidate_median_ms": 0.227611,
+            "change_percent": 3.2469505971794432,
+            "speedup": 0.9685516077869699
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::sum()",
+            "metadata": {
+                "axis": "1",
+                "shape": "1024x512x512",
+                "type": "3D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 14.122937499999999,
+            "candidate_median_ms": 13.817052499999999,
+            "change_percent": -2.165873778029535,
+            "speedup": 1.022138223763715
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::sum()",
+            "metadata": {
+                "axis": "1",
+                "shape": "16x16x16",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.07619100000000001,
+            "candidate_median_ms": 0.0778335,
+            "change_percent": 2.155766429105788,
+            "speedup": 0.978897261461967
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::sum()",
+            "metadata": {
+                "axis": "1",
+                "shape": "512x512x64",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 1.6179995,
+            "candidate_median_ms": 1.6353594999999999,
+            "change_percent": 1.0729298742057596,
+            "speedup": 0.9893845970870626
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::sum()",
+            "metadata": {
+                "axis": "1",
+                "shape": "64x64x64",
+                "type": "3D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.2035385,
+            "candidate_median_ms": 0.19249100000000002,
+            "change_percent": -5.427720062789097,
+            "speedup": 1.0573922936656779
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::sum()",
+            "metadata": {
+                "axis": "2",
+                "shape": "1024x512x512",
+                "type": "3D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 10.377507999999999,
+            "candidate_median_ms": 10.04688,
+            "change_percent": -3.186005734710097,
+            "speedup": 1.0329085248355707
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::sum()",
+            "metadata": {
+                "axis": "2",
+                "shape": "16x16x16",
+                "type": "3D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.0714385,
+            "candidate_median_ms": 0.0689335,
+            "change_percent": -3.50651259474934,
+            "speedup": 1.0363393705527792
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::sum()",
+            "metadata": {
+                "axis": "2",
+                "shape": "512x512x64",
+                "type": "3D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 8.857581499999998,
+            "candidate_median_ms": 8.807869,
+            "change_percent": -0.5612423662147312,
+            "speedup": 1.0056441007467298
+        },
+        {
+            "benchmark": "CudaArray Reduction Benchmark",
+            "name": "CudaArray::sum()",
+            "metadata": {
+                "axis": "2",
+                "shape": "64x64x64",
+                "type": "3D"
+            },
+            "status": "faster",
+            "baseline_median_ms": 0.176985,
+            "candidate_median_ms": 0.17236200000000002,
+            "change_percent": -2.6120857699805002,
+            "speedup": 1.0268214571657326
+        },
+        {
+            "benchmark": "CudaArray Shape & Manipulation Benchmark",
+            "name": "CudaArray::flatten()",
+            "metadata": {
+                "shape": "1024x512",
+                "type": "2D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.000175,
+            "candidate_median_ms": 0.000196,
+            "change_percent": 11.999999999999998,
+            "speedup": 0.8928571428571429
+        },
+        {
+            "benchmark": "CudaArray Shape & Manipulation Benchmark",
+            "name": "CudaArray::flatten()",
+            "metadata": {
+                "shape": "16x16x16",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.000169,
+            "candidate_median_ms": 0.000195,
+            "change_percent": 15.38461538461539,
+            "speedup": 0.8666666666666666
+        },
+        {
+            "benchmark": "CudaArray Shape & Manipulation Benchmark",
+            "name": "CudaArray::flatten()",
+            "metadata": {
+                "shape": "1x180000",
+                "type": "2D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.000168,
+            "candidate_median_ms": 0.000198,
+            "change_percent": 17.857142857142858,
+            "speedup": 0.8484848484848485
+        },
+        {
+            "benchmark": "CudaArray Shape & Manipulation Benchmark",
+            "name": "CudaArray::flatten()",
+            "metadata": {
+                "shape": "512x512",
+                "type": "2D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.000169,
+            "candidate_median_ms": 0.000196,
+            "change_percent": 15.97633136094675,
+            "speedup": 0.8622448979591837
+        },
+        {
+            "benchmark": "CudaArray Shape & Manipulation Benchmark",
+            "name": "CudaArray::flatten()",
+            "metadata": {
+                "shape": "512x512x512",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.000168,
+            "candidate_median_ms": 0.000196,
+            "change_percent": 16.666666666666668,
+            "speedup": 0.8571428571428571
+        },
+        {
+            "benchmark": "CudaArray Shape & Manipulation Benchmark",
+            "name": "CudaArray::flatten()",
+            "metadata": {
+                "shape": "512x512x64",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.00016849999999999998,
+            "candidate_median_ms": 0.000196,
+            "change_percent": 16.320474777448084,
+            "speedup": 0.8596938775510203
+        },
+        {
+            "benchmark": "CudaArray Shape & Manipulation Benchmark",
+            "name": "CudaArray::flatten()",
+            "metadata": {
+                "shape": "64x64x64",
+                "type": "3D"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.0002,
+            "candidate_median_ms": 0.000228,
+            "change_percent": 14.000000000000002,
+            "speedup": 0.8771929824561403
+        },
+        {
+            "benchmark": "CudaArray Shape & Manipulation Benchmark",
+            "name": "CudaArray::reshape()",
+            "metadata": {
+                "output-shape": "12x5",
+                "shape": "3x4x5"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.000187,
+            "candidate_median_ms": 0.000214,
+            "change_percent": 14.438502673796796,
+            "speedup": 0.8738317757009345
+        },
+        {
+            "benchmark": "CudaArray Shape & Manipulation Benchmark",
+            "name": "CudaArray::reshape()",
+            "metadata": {
+                "output-shape": "12x8",
+                "shape": "2x6x8"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.000187,
+            "candidate_median_ms": 0.000216,
+            "change_percent": 15.508021390374333,
+            "speedup": 0.8657407407407407
+        },
+        {
+            "benchmark": "CudaArray Shape & Manipulation Benchmark",
+            "name": "CudaArray::reshape()",
+            "metadata": {
+                "output-shape": "16x1",
+                "shape": "4x4"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.000185,
+            "candidate_median_ms": 0.000218,
+            "change_percent": 17.837837837837846,
+            "speedup": 0.8486238532110091
+        },
+        {
+            "benchmark": "CudaArray Shape & Manipulation Benchmark",
+            "name": "CudaArray::reshape()",
+            "metadata": {
+                "output-shape": "16x4",
+                "shape": "8x8"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.000188,
+            "candidate_median_ms": 0.000216,
+            "change_percent": 14.893617021276597,
+            "speedup": 0.8703703703703703
+        },
+        {
+            "benchmark": "CudaArray Shape & Manipulation Benchmark",
+            "name": "CudaArray::reshape()",
+            "metadata": {
+                "output-shape": "1x16",
+                "shape": "4x4"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.000185,
+            "candidate_median_ms": 0.000214,
+            "change_percent": 15.675675675675677,
+            "speedup": 0.8644859813084113
+        },
+        {
+            "benchmark": "CudaArray Shape & Manipulation Benchmark",
+            "name": "CudaArray::reshape()",
+            "metadata": {
+                "output-shape": "2x3x24",
+                "shape": "6x24"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.000195,
+            "candidate_median_ms": 0.000221,
+            "change_percent": 13.33333333333334,
+            "speedup": 0.8823529411764706
+        },
+        {
+            "benchmark": "CudaArray Shape & Manipulation Benchmark",
+            "name": "CudaArray::reshape()",
+            "metadata": {
+                "output-shape": "2x48",
+                "shape": "2x6x8"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.000188,
+            "candidate_median_ms": 0.000216,
+            "change_percent": 14.893617021276597,
+            "speedup": 0.8703703703703703
+        },
+        {
+            "benchmark": "CudaArray Shape & Manipulation Benchmark",
+            "name": "CudaArray::reshape()",
+            "metadata": {
+                "output-shape": "3x20",
+                "shape": "3x4x5"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.000187,
+            "candidate_median_ms": 0.000216,
+            "change_percent": 15.508021390374333,
+            "speedup": 0.8657407407407407
+        },
+        {
+            "benchmark": "CudaArray Shape & Manipulation Benchmark",
+            "name": "CudaArray::reshape()",
+            "metadata": {
+                "output-shape": "3x4x12",
+                "shape": "12x12"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.00019,
+            "candidate_median_ms": 0.000219,
+            "change_percent": 15.263157894736842,
+            "speedup": 0.867579908675799
+        },
+        {
+            "benchmark": "CudaArray Shape & Manipulation Benchmark",
+            "name": "CudaArray::reshape()",
+            "metadata": {
+                "output-shape": "4x16",
+                "shape": "8x8"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.000185,
+            "candidate_median_ms": 0.000215,
+            "change_percent": 16.216216216216214,
+            "speedup": 0.8604651162790697
+        },
+        {
+            "benchmark": "CudaArray Shape & Manipulation Benchmark",
+            "name": "CudaArray::reshape()",
+            "metadata": {
+                "output-shape": "4x3x12",
+                "shape": "12x12"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.000192,
+            "candidate_median_ms": 0.00022,
+            "change_percent": 14.583333333333334,
+            "speedup": 0.8727272727272727
+        },
+        {
+            "benchmark": "CudaArray Shape & Manipulation Benchmark",
+            "name": "CudaArray::reshape()",
+            "metadata": {
+                "output-shape": "8x3x6",
+                "shape": "24x6"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.00019,
+            "candidate_median_ms": 0.000219,
+            "change_percent": 15.263157894736842,
+            "speedup": 0.867579908675799
+        },
+        {
+            "benchmark": "CudaArray Shape & Manipulation Benchmark",
+            "name": "CudaArray::transpose()",
+            "metadata": {
+                "idxs": "[0, 1, 3, 2]",
+                "shape": "4x8x16x32"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.0002,
+            "candidate_median_ms": 0.000233,
+            "change_percent": 16.499999999999993,
+            "speedup": 0.8583690987124464
+        },
+        {
+            "benchmark": "CudaArray Shape & Manipulation Benchmark",
+            "name": "CudaArray::transpose()",
+            "metadata": {
+                "idxs": "[0, 2, 1, 3]",
+                "shape": "4x8x16x32"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.0002,
+            "candidate_median_ms": 0.000234,
+            "change_percent": 16.999999999999993,
+            "speedup": 0.8547008547008548
+        },
+        {
+            "benchmark": "CudaArray Shape & Manipulation Benchmark",
+            "name": "CudaArray::transpose()",
+            "metadata": {
+                "idxs": "[0, 2, 1]",
+                "shape": "16x8x2"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.000197,
+            "candidate_median_ms": 0.000227,
+            "change_percent": 15.228426395939085,
+            "speedup": 0.8678414096916299
+        },
+        {
+            "benchmark": "CudaArray Shape & Manipulation Benchmark",
+            "name": "CudaArray::transpose()",
+            "metadata": {
+                "idxs": "[0, 2, 1]",
+                "shape": "8x16x32"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.000192,
+            "candidate_median_ms": 0.000225,
+            "change_percent": 17.187499999999993,
+            "speedup": 0.8533333333333334
+        },
+        {
+            "benchmark": "CudaArray Shape & Manipulation Benchmark",
+            "name": "CudaArray::transpose()",
+            "metadata": {
+                "idxs": "[1, 0, 2, 3]",
+                "shape": "4x8x16x32"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.000199,
+            "candidate_median_ms": 0.000232,
+            "change_percent": 16.582914572864315,
+            "speedup": 0.8577586206896552
+        },
+        {
+            "benchmark": "CudaArray Shape & Manipulation Benchmark",
+            "name": "CudaArray::transpose()",
+            "metadata": {
+                "idxs": "[1, 0, 2]",
+                "shape": "8x16x32"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.000194,
+            "candidate_median_ms": 0.000224,
+            "change_percent": 15.463917525773194,
+            "speedup": 0.8660714285714286
+        },
+        {
+            "benchmark": "CudaArray Shape & Manipulation Benchmark",
+            "name": "CudaArray::transpose()",
+            "metadata": {
+                "idxs": "[1, 0]",
+                "shape": "128x128"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.0001895,
+            "candidate_median_ms": 0.000224,
+            "change_percent": 18.205804749340366,
+            "speedup": 0.8459821428571429
+        },
+        {
+            "benchmark": "CudaArray Shape & Manipulation Benchmark",
+            "name": "CudaArray::transpose()",
+            "metadata": {
+                "idxs": "[1, 0]",
+                "shape": "16x16"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.000188,
+            "candidate_median_ms": 0.000218,
+            "change_percent": 15.957446808510653,
+            "speedup": 0.8623853211009174
+        },
+        {
+            "benchmark": "CudaArray Shape & Manipulation Benchmark",
+            "name": "CudaArray::transpose()",
+            "metadata": {
+                "idxs": "[1, 0]",
+                "shape": "32x64"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.0001895,
+            "candidate_median_ms": 0.00022,
+            "change_percent": 16.09498680738787,
+            "speedup": 0.8613636363636363
+        },
+        {
+            "benchmark": "CudaArray Shape & Manipulation Benchmark",
+            "name": "CudaArray::transpose()",
+            "metadata": {
+                "idxs": "[1, 0]",
+                "shape": "64x32"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.000189,
+            "candidate_median_ms": 0.000223,
+            "change_percent": 17.98941798941798,
+            "speedup": 0.8475336322869956
+        },
+        {
+            "benchmark": "CudaArray Shape & Manipulation Benchmark",
+            "name": "CudaArray::transpose()",
+            "metadata": {
+                "idxs": "[2, 1, 0]",
+                "shape": "8x16x32"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.000193,
+            "candidate_median_ms": 0.000226,
+            "change_percent": 17.098445595854916,
+            "speedup": 0.8539823008849557
+        },
+        {
+            "benchmark": "CudaArray Shape & Manipulation Benchmark",
+            "name": "CudaArray::transpose()",
+            "metadata": {
+                "idxs": "[3, 2, 1, 0]",
+                "shape": "4x8x16x32"
+            },
+            "status": "slower",
+            "baseline_median_ms": 0.000204,
+            "candidate_median_ms": 0.000232,
+            "change_percent": 13.725490196078432,
+            "speedup": 0.8793103448275862
+        }
+    ]
+}
