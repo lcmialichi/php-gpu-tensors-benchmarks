@@ -58,6 +58,7 @@ class BenchmarkReport implements \JsonSerializable
                 "sapi" => PHP_SAPI,
                 "thread_safety" => PHP_ZTS ? "ZTS" : "NTS",
                 "integer_bits" => PHP_INT_SIZE * 8,
+                "memory_limit" => ini_get("memory_limit"),
                 "benchmark_revision" => getenv("BENCHMARK_REVISION") ?: null,
             ],
             "host" => [

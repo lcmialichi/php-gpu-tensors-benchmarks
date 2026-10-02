@@ -20,24 +20,25 @@ composer install
 
 ## Run
 
-Run all benchmarks:
+The full suite includes host transfers larger than PHP's common 128 MB CLI
+memory limit. Run it with enough PHP memory for the selected workload:
 
 ```bash
-php run_benchmarks.php
+php -d memory_limit=-1 run_benchmarks.php
 ```
 
 Run selected groups:
 
 ```bash
-php run_benchmarks.php --matmul
-php run_benchmarks.php --import
+php -d memory_limit=-1 run_benchmarks.php --matmul
+php -d memory_limit=-1 run_benchmarks.php --import
 ```
 
 If the extension is not enabled in the CLI configuration, specify its module
 path explicitly:
 
 ```bash
-php -n -d extension=/path/to/cuda.so run_benchmarks.php --matmul
+php -n -d memory_limit=-1 -d extension=/path/to/cuda.so run_benchmarks.php --matmul
 ```
 
 JSON and HTML reports are written to `benchmarks/reports/` and are ignored by
@@ -51,8 +52,8 @@ Run the same selection in each PHP mode, keeping the host, GPU, CUDA Toolkit,
 and benchmark options fixed. Save each generated JSON path, then compare them:
 
 ```bash
-php run_benchmarks.php --matmul
-php run_benchmarks.php --matmul
+BENCHMARK_REVISION=$(git rev-parse --short HEAD) php -d memory_limit=-1 run_benchmarks.php --matmul
+BENCHMARK_REVISION=$(git rev-parse --short HEAD) php -d memory_limit=-1 run_benchmarks.php --matmul
 php compare_reports.php \
 	benchmarks/reports/<nts-report>.json \
 	benchmarks/reports/<zts-report>.json \
