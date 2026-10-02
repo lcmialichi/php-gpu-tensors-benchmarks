@@ -140,6 +140,11 @@ class CudaArrayReductionBenchmark extends Benchmark
     #[InjectArgs("argsReduction")]
     public function cudaArrayArgMax(CudaArray $tensor, ?int $axis): void
     {
+        if ($axis === null) {
+            $tensor->argMax();
+            return;
+        }
+
         $tensor->argMax($axis);
     }
 
